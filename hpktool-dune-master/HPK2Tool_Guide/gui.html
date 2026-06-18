@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GUI Guide — HPK2Tool</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="layout">
+
+  <!-- ═══ SIDEBAR ═══════════════════════════════════════════════ -->
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <a class="logo" href="index.html"><span>HPK</span>2Tool</a>
+      <div class="ver">v2.0-beta10.0 · Build 20260422</div>
+    </div>
+
+    <div class="sidebar-group">
+      <div class="sidebar-group-title">Navigation</div>
+      <nav>
+        <a href="index.html">← Home</a>
+        <a href="cli.html">⌨️ CLI Guide</a>
+      </nav>
+    </div>
+
+    <div class="sidebar-group">
+      <div class="sidebar-group-title">GUI Guide</div>
+      <nav>
+        <a href="#overview">Overview</a>
+        <a href="#launching">Launching the GUI</a>
+        <a href="#navigation">Screen Navigation</a>
+        <a href="#menu-bar">Menu Bar</a>
+      </nav>
+    </div>
+
+    <div class="sidebar-group">
+      <div class="sidebar-group-title">Screens</div>
+      <nav>
+        <a href="#solution-builder" class="sub">Solution Builder</a>
+        <a href="#solution-tab" class="sub">↳ Solution Tab</a>
+        <a href="#build-option-tab" class="sub">↳ Build Option Tab</a>
+        <a href="#agent-tabs" class="sub">↳ Agent Tabs</a>
+        <a href="#webservice-tab" class="sub">↳ Web Service Tab</a>
+        <a href="#app-dialog" class="sub">Application Dialog</a>
+        <a href="#accessory-dialog" class="sub">Accessory Dialog</a>
+        <a href="#webservice-dialog" class="sub">Web Service Dialog</a>
+        <a href="#localization-dialog" class="sub">Localization Dialog</a>
+        <a href="#iconset-dialog" class="sub">Icon Set Dialog</a>
+        <a href="#install-screen" class="sub">Install / Uninstall</a>
+        <a href="#management-screen" class="sub">Management</a>
+        <a href="#detail-screen" class="sub">↳ Solution Detail</a>
+        <a href="#configuration-screen" class="sub">Configuration</a>
+        <a href="#attestation-screen" class="sub">Attestation</a>
+        <a href="#about-screen" class="sub">About</a>
+      </nav>
+    </div>
+
+    <div class="sidebar-group">
+      <div class="sidebar-group-title">Workflow</div>
+      <nav>
+        <a href="#workflow">End-to-End Workflow</a>
+      </nav>
+    </div>
+  </aside>
+
+  <!-- ═══ CONTENT ═══════════════════════════════════════════════ -->
+  <main class="content">
+
+    <div class="breadcrumb">
+      <a href="index.html">HPK2Tool Guide</a>
+      <span class="sep">›</span>GUI Guide
+    </div>
+
+    <h1>GUI Guide</h1>
+    <p class="page-subtitle">HP Workpath Solution Utility — Graphical Interface Reference</p>
+    <div class="badge-row">
+      <span class="badge">v2.0-beta10.0</span>
+      <span class="badge bg-gray">JavaFX · 650×600 window</span>
+    </div>
+
+    <!-- ─── OVERVIEW ───────────────────────────────────────────── -->
+    <h2 id="overview">Overview</h2>
+    <p>
+      The <strong>HP Workpath Solution Utility</strong> GUI provides the same capabilities as the CLI
+      but through a graphical interface. It is organized as a single main window with a persistent
+      menu bar, and navigates between functional screens using the <strong>Tools</strong> menu.
+    </p>
+    <p>The GUI covers four main workflows:</p>
+    <ul>
+      <li><strong>Build</strong> — Create a new solution bundle from an APK (<em>Solution Builder</em>).</li>
+      <li><strong>Deploy</strong> — Install or uninstall a bundle on a device (<em>Install / Uninstall</em>).</li>
+      <li><strong>Manage</strong> — Browse, inspect and remove solutions on a device (<em>Management</em>).</li>
+      <li><strong>Configure</strong> — Read or update solution config and attestation data (<em>Configuration, Attestation</em>).</li>
+    </ul>
+
+    <!-- ─── LAUNCHING ──────────────────────────────────────────── -->
+    <h2 id="launching">Launching the GUI</h2>
+    <div class="code-container">
+      <div class="code-tabs">
+        <button class="code-tab-btn active" data-tab="win">Windows</button>
+        <button class="code-tab-btn"        data-tab="linux">Linux</button>
+      </div>
+      <div class="code-panel active" data-tab="win"><pre>"HPK2Tool.exe"</pre></div>
+      <div class="code-panel"        data-tab="linux"><pre>./HPK2ToolGui-linux.sh</pre></div>
+    </div>
+    <p>The application opens at <strong>650 × 600 px</strong> and defaults to the <em>Solution Builder</em> screen.</p>
+
+    <!-- ─── NAVIGATION FLOWCHART ───────────────────────────────── -->
+    <h2 id="navigation">Screen Navigation</h2>
+    <p>All screens are accessed from the persistent menu bar at the top of the window.</p>
+
+    <div class="diagram"><pre>
+Main Window (Menu Bar always visible)
+│
+├─ File ──────────────────────────────────────────────────────────────
+│   ├─ New ─────────────────────────────────────► Solution Builder
+│   ├─ Open  (.bdl, .hpk2) ─────────────────────► Solution Builder  (loaded)
+│   ├─ Open HPK  (.hpk) ────────────────────────► Solution Builder  (loaded)
+│   └─ Exit
+│
+├─ Tools ─────────────────────────────────────────────────────────────
+│   ├─ Install / Uninstall ──────────────────────► Install Screen
+│   ├─ Management ───────────────────────────────► Management Screen
+│   │                                                └─ [Detail] ──► Solution Detail  (read-only)
+│   │                                                    └─ [Raw Data] ──► Raw Data Viewer
+│   ├─ Configuration ────────────────────────────► Configuration Screen
+│   └─ Attestation ──────────────────────────────► Attestation Screen
+│
+└─ Help ──────────────────────────────────────────────────────────────
+    └─ About ────────────────────────────────────► About Dialog
+
+Solution Builder — internal dialogs
+├─ Application  [Add] / [Detail] ───────────────► Application Dialog
+│   ├─ Title / Description  [More] ────────────► Localization Dialog
+│   └─ Icon  [More] ────────────────────────────► Icon Set Dialog
+├─ Accessory  [Add] / [Detail] ─────────────────► Accessory Dialog
+└─ Web Service  [Add] / [Detail] ───────────────► Web Service Endpoint Dialog
+    </pre></div>
+
+    <!-- ─── MENU BAR ───────────────────────────────────────────── -->
+    <h2 id="menu-bar">Menu Bar</h2>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Menu</th><th>Item</th><th>Action</th></tr></thead>
+      <tbody>
+        <tr><td>File</td><td>New</td><td>Clear all fields and open a blank <em>Solution Builder</em>.</td></tr>
+        <tr><td>File</td><td>Open</td><td>Open a file picker for <code>.bdl</code>, <code>.hpk2</code> and load its contents into <em>Solution Builder</em>.</td></tr>
+        <tr><td>File</td><td>Open HPK</td><td>Open a file picker for <code>.hpk</code> and load its contents into <em>Solution Builder</em>.</td></tr>
+        <tr><td>File</td><td>Exit</td><td>Quit the application.</td></tr>
+        <tr><td>Tools</td><td>Install / Uninstall</td><td>Navigate to the <em>Install Screen</em>.</td></tr>
+        <tr><td>Tools</td><td>Management</td><td>Navigate to the <em>Management Screen</em>.</td></tr>
+        <tr><td>Tools</td><td>Configuration</td><td>Navigate to the <em>Configuration Screen</em>.</td></tr>
+        <tr><td>Tools</td><td>Attestation</td><td>Navigate to the <em>Attestation Screen</em>.</td></tr>
+        <tr><td>Help</td><td>About</td><td>Open the <em>About Dialog</em>.</td></tr>
+      </tbody>
+    </table></div>
+
+    <hr class="divider">
+
+    <!-- ══════════════════════════════════════════════════════════
+         SOLUTION BUILDER
+    ══════════════════════════════════════════════════════════════ -->
+    <h2 id="solution-builder">Solution Builder</h2>
+    <p>
+      The main screen for creating and editing a solution bundle. It is divided into a
+      <strong>Component Selector</strong> panel (checkboxes at the top) and a
+      <strong>Tab Area</strong> (left-side tab buttons and their content panels).
+    </p>
+
+    <div class="screen-wrap">
+      <img class="screen" src="docs/images/gui_solution_builder.png" alt="Solution Builder — Solution Tab"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+      <div class="screen-placeholder" style="display:none">
+        <div class="ph-icon">🖥️</div>
+        <div class="ph-title">Solution Builder — Solution Tab</div>
+        <div class="ph-path">docs/images/gui_solution_builder.png</div>
+      </div>
+    </div>
+
+    <h3>Component Selector Checkboxes</h3>
+    <p>
+      Checking a component enables its tab in the left-side tab bar and shows its configuration panel.
+      Unchecking removes that component from the bundle.
+    </p>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Checkbox</th><th>Component</th><th>Effect when checked</th></tr></thead>
+      <tbody>
+        <tr><td>Authentication</td><td>Authentication Agent</td><td>Shows Authentication fields inside the Solution tab.</td></tr>
+        <tr><td>Accessory</td><td>USB Accessories</td><td>Enables the <strong>Accessory</strong> tab.</td></tr>
+        <tr><td>Copy Agent</td><td>Copy Job Agent</td><td>Enables the <strong>Copy Agent</strong> tab.</td></tr>
+        <tr><td>Print Agent</td><td>Print Job Agent</td><td>Enables the <strong>Print Agent</strong> tab.</td></tr>
+        <tr><td>Scan Agent</td><td>Scan Job Agent</td><td>Enables the <strong>Scan Agent</strong> tab.</td></tr>
+        <tr><td>Device Usage</td><td>Device Usage Agent</td><td>Enables the <strong>Device Usage</strong> tab.</td></tr>
+        <tr><td>Statistics</td><td>Statistics Agent</td><td>Enables the <strong>Statistics</strong> tab.</td></tr>
+        <tr><td>Supplies</td><td>Supplies Agent</td><td>Enables the <strong>Supplies</strong> tab.</td></tr>
+        <tr><td>Web Service</td><td>Web Service Provider</td><td>Enables the <strong>Web Service</strong> tab.</td></tr>
+      </tbody>
+    </table></div>
+
+    <!-- ── SOLUTION TAB ─────────────────────────────────────────── -->
+    <h3 id="solution-tab">Solution Tab</h3>
+    <p>The default active tab. Contains all core solution metadata, the applications list, and (when enabled) authentication agent configuration.</p>
+
+    <h4>Solution Metadata Fields</h4>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Field</th><th>Req</th><th>Description</th></tr></thead>
+      <tbody>
+        <tr><td>APK File</td><td><span class="req">Required</span></td><td>Path to the solution <code>.apk</code> file. Click <strong>Select File</strong> to browse.</td></tr>
+        <tr><td>Default Config File</td><td><span class="opt">Optional</span></td><td>Path to a default configuration JSON file. Click <strong>Select File</strong> to browse, or <strong>Clear</strong> to remove.</td></tr>
+        <tr><td>Solution ID</td><td><span class="req">Required</span></td><td>Solution UUID. Click <strong>Generate</strong> to create a new random UUID.</td></tr>
+        <tr><td>Solution Name</td><td><span class="req">Required</span></td><td>Solution name. Also used as the output bundle filename.</td></tr>
+        <tr><td>Description</td><td><span class="req">Required</span></td><td>Short description of the solution.</td></tr>
+        <tr><td>Vendor</td><td><span class="req">Required</span></td><td>Company / developer name.</td></tr>
+        <tr><td>Version</td><td><span class="req">Required</span></td><td>Version string (e.g. <code>1.0.0</code>).</td></tr>
+        <tr><td>Version Number</td><td><span class="req">Required</span></td><td>Integer version number (e.g. <code>1</code>).</td></tr>
+        <tr><td>Date</td><td><span class="req">Required</span></td><td>Release date in <code>yyyymmdd</code> format.</td></tr>
+        <tr><td>Platform Version</td><td><span class="req">Required</span></td><td>Target HP Workpath platform version. Select from dropdown. See <a href="cli.html#platform-versions">Platform Versions</a>.</td></tr>
+        <tr><td>Email</td><td><span class="opt">Optional</span></td><td>Developer support email address.</td></tr>
+        <tr><td>Phone</td><td><span class="opt">Optional</span></td><td>Developer support phone number.</td></tr>
+        <tr><td>URL</td><td><span class="opt">Optional</span></td><td>Developer support website URL.</td></tr>
+      </tbody>
+    </table></div>
+
+    <h4>Application List</h4>
+    <p>
+      Each solution supports up to one <strong>Main application</strong> and
+      five <strong>Sub-applications</strong>. Applications are managed in a table with
+      <strong>Add</strong>, <strong>Detail</strong>, and <strong>Delete</strong> actions.
+    </p>
+    <p>Click <strong>Add Application</strong> to open the <a href="#app-dialog">Application Dialog</a>.</p>
+
+    <h4>Authentication Agent (visible when "Authentication" is checked)</h4>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Field</th><th>Req</th><th>Description</th></tr></thead>
+      <tbody>
+        <tr><td>Authentication ID</td><td><span class="req">Required</span></td><td>UUID. Click <strong>Generate</strong> to create one.</td></tr>
+        <tr><td>Authentication Name</td><td><span class="req">Required</span></td><td>Agent identifier name.</td></tr>
+        <tr><td>Authentication Path</td><td><span class="req">Required</span></td><td>Android component path: <code>package/ClassName</code>.</td></tr>
+        <tr><td>Pre-Prompt</td><td><span class="opt">Optional</span></td><td>Checkbox. Prompt the user for credentials before launching the solution.</td></tr>
+        <tr><td>Title</td><td><span class="req">Required</span></td><td>Click <strong>More</strong> to open the <a href="#localization-dialog">Localization Dialog</a>.</td></tr>
+        <tr><td>Description</td><td><span class="req">Required</span></td><td>Click <strong>More</strong> to open the Localization Dialog.</td></tr>
+      </tbody>
+    </table></div>
+
+    <div class="screen-wrap">
+      <img class="screen" src="docs/images/gui_solution_builder_auth.png" alt="Solution Builder — Authentication section"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+      <div class="screen-placeholder" style="display:none">
+        <div class="ph-icon">🖥️</div>
+        <div class="ph-title">Solution Builder — Authentication Section</div>
+        <div class="ph-path">docs/images/gui_solution_builder_auth.png</div>
+      </div>
+    </div>
+
+    <!-- ── BUILD OPTION TAB ─────────────────────────────────────── -->
+    <h3 id="build-option-tab">Build Option Tab</h3>
+    <p>Controls signing and serial number settings for the output bundle.</p>
+
+    <div class="screen-wrap">
+      <img class="screen" src="docs/images/gui_solution_builder_build.png" alt="Solution Builder — Build Option Tab"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+      <div class="screen-placeholder" style="display:none">
+        <div class="ph-icon">🖥️</div>
+        <div class="ph-title">Solution Builder — Build Option Tab</div>
+        <div class="ph-path">docs/images/gui_solution_builder_build.png</div>
+      </div>
+    </div>
+
+    <div class="table-wrap"><table>
+      <thead><tr><th>Field</th><th>Req</th><th>Description</th></tr></thead>
+      <tbody>
+        <tr><td>Bundle Serial</td><td><span class="opt">Optional</span></td><td>Custom bundle serial number string.</td></tr>
+        <tr><td>Sign Bundle</td><td><span class="opt">Optional</span></td><td>Checkbox. When checked, enables the <strong>Signing Key</strong> field.</td></tr>
+        <tr><td>Signing Key</td><td><span class="req">Required if Sign is checked</span></td><td>Path to a PEM signing key file. Click <strong>Select File</strong> to browse.</td></tr>
+      </tbody>
+    </table></div>
+
+    <h3>Footer Buttons</h3>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Button</th><th>Action</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Create Bundle</strong> (main button)</td><td>Builds the <code>.hpk2</code> solution bundle into the output directory.</td></tr>
+        <tr><td><strong>Create Bundle (TODO) ▾</strong> (dropdown)</td><td>Select <em>Create HPK</em> to also generate an <code>.hpk</code> file alongside the <code>.bdl</code>.</td></tr>
+      </tbody>
+    </table></div>
+
+    <div class="callout tip">
+      <span class="callout-icon">💡</span>
+      <div class="callout-body">
+        <strong>Tip — Output Directory</strong>
+        The output directory is configured in the <strong>Build Option</strong> tab.
+        The resulting <code>.hpk2</code> file will be named after the <strong>Solution Name</strong> field.
+      </div>
+    </div>
+
+    <!-- ── AGENT TABS ───────────────────────────────────────────── -->
+    <h3 id="agent-tabs">Agent Tabs (Copy / Print / Scan / Device Usage / Supplies / Statistics)</h3>
+    <p>
+      Each agent tab is enabled by checking the corresponding component checkbox at the top.
+      All agent tabs share the same simple structure — a single <strong>Enable</strong> checkbox
+      that includes that agent in the bundle.
+    </p>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Tab</th><th>Checkbox Label</th><th>Notes</th></tr></thead>
+      <tbody>
+        <tr><td>Copy Agent</td><td>Enable Copy Agent</td><td>Registers the solution as a Copy Job listener.</td></tr>
+        <tr><td>Print Agent</td><td>Enable Print Agent</td><td>Registers the solution as a Print Job listener.</td></tr>
+        <tr><td>Scan Agent</td><td>Enable Scan Agent</td><td>Registers the solution as a Scan Job listener.</td></tr>
+        <tr><td>Device Usage</td><td>Enable Device Usage Agent</td><td>Provides device usage statistics to the solution.</td></tr>
+        <tr><td>Supplies</td><td>Enable Supplies Agent</td><td>Provides toner/ink supply status to the solution.</td></tr>
+        <tr><td>Statistics</td><td>Enable Statistics Agent</td><td>Enables job statistics tracking. Additional checkbox: <strong>Critical Solution</strong> — marks this solution as critical for statistics purposes.</td></tr>
+      </tbody>
+    </table></div>
+
+    <!-- ── WEB SERVICE TAB ──────────────────────────────────────── -->
+    <h3 id="webservice-tab">Web Service Tab</h3>
+    <p>Configures the Web Service provider component. Enabled by checking <strong>Web Service</strong> in the Component Selector.</p>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Field / Control</th><th>Req</th><th>Description</th></tr></thead>
+      <tbody>
+        <tr><td>Title</td><td><span class="req">Required</span></td><td>Localized web service title. Click <strong>More</strong> for the <a href="#localization-dialog">Localization Dialog</a>.</td></tr>
+        <tr><td>Description</td><td><span class="req">Required</span></td><td>Localized description. Click <strong>More</strong> for the Localization Dialog.</td></tr>
+        <tr><td>Endpoints table</td><td><span class="req">Required</span></td><td>List of registered REST endpoints. Click <strong>Add</strong> to open the <a href="#webservice-dialog">Web Service Endpoint Dialog</a>.</td></tr>
+      </tbody>
+    </table></div>
+
+    <!-- ── ACCESSORY TAB ────────────────────────────────────────── -->
+    <h3>Accessory Tab</h3>
+    <p>
+      Manages USB accessories. Enabled by checking <strong>Accessory</strong> in the Component Selector.
+      Click <strong>Add Accessory</strong> to open the <a href="#accessory-dialog">Accessory Dialog</a>.
+      Up to 10 accessories can be registered.
+    </p>
+
+    <hr class="divider">
+
+    <!-- ══════════════════════════════════════════════════════════
+         APPLICATION DIALOG
+    ══════════════════════════════════════════════════════════════ -->
+    <h2 id="app-dialog">Application Dialog</h2>
+    <p>
+      Modal dialog for adding or editing an application entry. Opened via
+      <strong>Add Application</strong> or <strong>Detail</strong> in the Solution Builder.
+    </p>
+
+    <div class="screen-wrap">
+      <img class="screen" src="docs/images/gui_application_dialog.png" alt="Application Dialog"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+      <div class="screen-placeholder" style="display:none">
+        <div class="ph-icon">🗔</div>
+        <div class="ph-title">Application Dialog</div>
+        <div class="ph-path">docs/images/gui_application_dialog.png</div>
+      </div>
+    </div>
+
+    <div class="table-wrap"><table>
+      <thead><tr><th>Field</th><th>Req</th><th>Description</th></tr></thead>
+      <tbody>
+        <tr><td>Application ID</td><td><span class="req">Required</span></td><td>Application UUID. Click <strong>Generate</strong> to create one.</td></tr>
+        <tr><td>Application Name</td><td><span class="req">Required</span></td><td>Internal name identifier.</td></tr>
+        <tr><td>Application Path</td><td><span class="req">Required</span></td><td>Android component: <code>com.example.app/com.example.app.MainActivity</code>.</td></tr>
+        <tr><td>Title</td><td><span class="req">Required</span></td><td>Localized display title. Click <strong>More</strong> for <a href="#localization-dialog">Localization Dialog</a>, <strong>Clear</strong> to reset.</td></tr>
+        <tr><td>Description</td><td><span class="req">Required</span></td><td>Localized description. Click <strong>More</strong> for Localization Dialog.</td></tr>
+        <tr><td>Icon</td><td><span class="req">Required</span></td><td>Application icon. Click <strong>More</strong> for <a href="#iconset-dialog">Icon Set Dialog</a>, <strong>Clear</strong> to remove.</td></tr>
+        <tr><td>Home Screen App</td><td><span class="req">Required</span></td><td>Checkbox. Registers this application as a Home Screen app.</td></tr>
+        <tr><td>Default Home Screen</td><td><span class="opt">Optional</span></td><td>Checkbox (enabled only if Home Screen App is checked). Sets this as the <em>default</em> Home Screen app.</td></tr>
+      </tbody>
+    </table></div>
+
+    <p>Click <strong>Add</strong> (enabled only when all required fields are valid) to save, or <strong>Cancel</strong> to discard.</p>
+
+    <hr class="divider">
+
+    <!-- ══════════════════════════════════════════════════════════
+         ACCESSORY DIALOG
+    ══════════════════════════════════════════════════════════════ -->
+    <h2 id="accessory-dialog">Accessory Dialog</h2>
+    <p>Modal dialog for registering a USB accessory. Opened via <strong>Add Accessory</strong> in the Accessory Tab.</p>
+
+    <div class="screen-wrap">
+      <img class="screen" src="docs/images/gui_accessory_dialog.png" alt="Accessory Dialog"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+      <div class="screen-placeholder" style="display:none">
+        <div class="ph-icon">🔌</div>
+        <div class="ph-title">Accessory Dialog</div>
+        <div class="ph-path">docs/images/gui_accessory_dialog.png</div>
+      </div>
+    </div>
+
+    <div class="table-wrap"><table>
+      <thead><tr><th>Field</th><th>Req</th><th>Description</th></tr></thead>
+      <tbody>
+        <tr><td>Type</td><td><span class="req">Required</span></td><td>Radio buttons: <strong>Owned</strong> (exclusive access) or <strong>Shared</strong> (shared with other solutions).</td></tr>
+        <tr><td>Vendor ID</td><td><span class="req">Required</span></td><td>USB Vendor ID in hexadecimal (e.g. <code>0x04F9</code>).</td></tr>
+        <tr><td>Product ID</td><td><span class="req">Required</span></td><td>USB Product ID in hexadecimal (e.g. <code>0x0027</code>).</td></tr>
+        <tr><td>Serial Number</td><td><span class="opt">Optional</span></td><td>Target a specific device by serial number. Leave blank to match any device.</td></tr>
+        <tr><td>Serial = NULL</td><td><span class="opt">Optional</span></td><td>Checkbox. Explicitly sets the serial number to <code>NULL</code> (no serial matching).</td></tr>
+      </tbody>
+    </table></div>
+
+    <hr class="divider">
+
+    <!-- ══════════════════════════════════════════════════════════
+         WEB SERVICE DIALOG
+    ══════════════════════════════════════════════════════════════ -->
+    <h2 id="webservice-dialog">Web Service Endpoint Dialog</h2>
+    <p>Modal dialog for adding a REST endpoint to the Web Service provider.</p>
+
+    <div class="screen-wrap">
+      <img class="screen" src="docs/images/gui_webservice_dialog.png" alt="Web Service Endpoint Dialog"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+      <div class="screen-placeholder" style="display:none">
+        <div class="ph-icon">🌐</div>
+        <div class="ph-title">Web Service Endpoint Dialog</div>
+        <div class="ph-path">docs/images/gui_webservice_dialog.png</div>
+      </div>
+    </div>
+
+    <div class="table-wrap"><table>
+      <thead><tr><th>Field</th><th>Req</th><th>Description</th></tr></thead>
+      <tbody>
+        <tr><td>HTTP Method</td><td><span class="req">Required</span></td><td>Radio buttons: <strong>GET</strong>, <strong>POST</strong>, <strong>PUT</strong>, <strong>DELETE</strong>.</td></tr>
+        <tr><td>Category</td><td><span class="req">Required</span></td><td>Endpoint category string (e.g. <code>scanning</code>, <code>printing</code>).</td></tr>
+        <tr><td>Absolute Path</td><td><span class="req">Required</span></td><td>Full URL path (e.g. <code>/api/v1/scan/jobs</code>).</td></tr>
+        <tr><td>Auth Type</td><td><span class="req">Required</span></td><td>Radio buttons: <strong>None</strong>, <strong>X-Auth</strong>, <strong>Admin</strong>.</td></tr>
+      </tbody>
+    </table></div>
+
+    <hr class="divider">
+
+    <!-- ══════════════════════════════════════════════════════════
+         LOCALIZATION DIALOG
+    ══════════════════════════════════════════════════════════════ -->
+    <h2 id="localization-dialog">Localization Dialog</h2>
+    <p>
+      Modal editor for providing translated strings for a field (title, description, etc.).
+      Each row represents one locale. Click <strong>OK</strong> to save or <strong>Cancel</strong> to discard.
+    </p>
+
+    <div class="screen-wrap">
+      <img class="screen" src="docs/images/gui_localization_dialog.png" alt="Localization Dialog"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+      <div class="screen-placeholder" style="display:none">
+        <div class="ph-icon">🌍</div>
+        <div class="ph-title">Localization Dialog</div>
+        <div class="ph-path">docs/images/gui_localization_dialog.png</div>
+      </div>
+    </div>
+
+    <p>The dialog dynamically adds rows for each language. At minimum, provide an <strong>en-US</strong> entry. Common locale tags:</p>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Language Tag</th><th>Language</th></tr></thead>
+      <tbody>
+        <tr><td><code>en-US</code></td><td>English (United States) — default fallback</td></tr>
+        <tr><td><code>ko-KR</code></td><td>Korean</td></tr>
+        <tr><td><code>fr-FR</code></td><td>French</td></tr>
+        <tr><td><code>de-DE</code></td><td>German</td></tr>
+        <tr><td><code>ja-JP</code></td><td>Japanese</td></tr>
+        <tr><td><code>zh-CN</code></td><td>Chinese (Simplified)</td></tr>
+        <tr><td><code>es-ES</code></td><td>Spanish</td></tr>
+      </tbody>
+    </table></div>
+
+    <hr class="divider">
+
+    <!-- ══════════════════════════════════════════════════════════
+         ICON SET DIALOG
+    ══════════════════════════════════════════════════════════════ -->
+    <h2 id="iconset-dialog">Icon Set Dialog</h2>
+    <p>
+      Modal dialog for providing icons at multiple resolutions. Each row maps a size key
+      (e.g. <code>90x90</code>) to an image file path (<code>.png</code>, <code>.jpg</code>, <code>.jpeg</code>).
+    </p>
+
+    <div class="screen-wrap">
+      <img class="screen" src="docs/images/gui_iconset_dialog.png" alt="Icon Set Dialog"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+      <div class="screen-placeholder" style="display:none">
+        <div class="ph-icon">🖼️</div>
+        <div class="ph-title">Icon Set Dialog</div>
+        <div class="ph-path">docs/images/gui_iconset_dialog.png</div>
+      </div>
+    </div>
+
+    <p>Click <strong>OK</strong> to save the icon set or <strong>Cancel</strong> to discard.</p>
+
+    <hr class="divider">
+
+    <!-- ══════════════════════════════════════════════════════════
+         INSTALL SCREEN
+    ══════════════════════════════════════════════════════════════ -->
+    <h2 id="install-screen">Install / Uninstall Screen</h2>
+    <p>Access via <strong>Tools › Install / Uninstall</strong>. Install a solution bundle onto a device or remove an installed solution by UUID.</p>
+
+    <div class="screen-wrap">
+      <img class="screen" src="docs/images/gui_install.png" alt="Install / Uninstall Screen"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+      <div class="screen-placeholder" style="display:none">
+        <div class="ph-icon">📦</div>
+        <div class="ph-title">Install / Uninstall Screen</div>
+        <div class="ph-path">docs/images/gui_install.png</div>
+      </div>
+    </div>
+
+    <div class="table-wrap"><table>
+      <thead><tr><th>Field / Button</th><th>Req</th><th>Description</th></tr></thead>
+      <tbody>
+        <tr><td>Device Address</td><td><span class="req">Required</span></td><td>IP address of the target HP Workpath device.</td></tr>
+        <tr><td>Password</td><td><span class="opt">Optional</span></td><td>Device admin password. Remembered from last session.</td></tr>
+        <tr><td>Solution Bundle</td><td><span class="req">Required for Install</span></td><td>Path to the <code>.bdl</code> or <code>.hpk2</code> file. Click <strong>Select File</strong> to browse.</td></tr>
+        <tr><td>Solution ID</td><td><span class="req">Required for Uninstall</span></td><td>UUID of the solution to uninstall.</td></tr>
+        <tr><td><strong>Install</strong> button</td><td>—</td><td>Installs the selected bundle. Enabled when a bundle file is selected.</td></tr>
+        <tr><td><strong>Uninstall</strong> button</td><td>—</td><td>Removes the solution. Enabled when a valid UUID is entered.</td></tr>
+        <tr><td>Progress indicator</td><td>—</td><td>Shown during the network operation.</td></tr>
+        <tr><td>Status label</td><td>—</td><td>Shows connection progress: <em>Connecting → Authorizing → Sending → Done / Error</em>.</td></tr>
+      </tbody>
+    </table></div>
+
+    <hr class="divider">
+
+    <!-- ══════════════════════════════════════════════════════════
+         MANAGEMENT SCREEN
+    ══════════════════════════════════════════════════════════════ -->
+    <h2 id="management-screen">Management Screen</h2>
+    <p>Access via <strong>Tools › Management</strong>. Browse all installed solutions on a device.</p>
+
+    <div class="screen-wrap">
+      <img class="screen" src="docs/images/gui_management.png" alt="Management Screen"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+      <div class="screen-placeholder" style="display:none">
+        <div class="ph-icon">📋</div>
+        <div class="ph-title">Management Screen</div>
+        <div class="ph-path">docs/images/gui_management.png</div>
+      </div>
+    </div>
+
+    <div class="table-wrap"><table>
+      <thead><tr><th>Field / Button</th><th>Description</th></tr></thead>
+      <tbody>
+        <tr><td>Device Address</td><td>IP address of the target device.</td></tr>
+        <tr><td>Password</td><td>Device admin password (optional).</td></tr>
+        <tr><td><strong>Enumerate</strong> button</td><td>Queries the device for all installed solutions and populates the table.</td></tr>
+        <tr><td>Solutions table</td><td>Lists: Solution ID, Name, Vendor. Each row has <strong>Detail</strong> (opens read-only detail view) and <strong>Delete</strong> (uninstalls) actions.</td></tr>
+        <tr><td>Status label</td><td>Shows result or error message.</td></tr>
+      </tbody>
+    </table></div>
+
+    <h3 id="detail-screen">Solution Detail (Read-Only)</h3>
+    <p>
+      Opened via <strong>Detail</strong> in the Management table. Displays a read-only view of an
+      installed solution's complete metadata using the same tab layout as the Solution Builder.
+    </p>
+
+    <div class="screen-wrap">
+      <img class="screen" src="docs/images/gui_management_detail.png" alt="Solution Detail — Read-Only"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+      <div class="screen-placeholder" style="display:none">
+        <div class="ph-icon">🔍</div>
+        <div class="ph-title">Solution Detail (Read-Only)</div>
+        <div class="ph-path">docs/images/gui_management_detail.png</div>
+      </div>
+    </div>
+
+    <p>
+      The <strong>Raw Data</strong> button opens a text area showing the full JSON payload returned
+      by the device. The <strong>Close</strong> button returns to the Management screen.
+    </p>
+
+    <hr class="divider">
+
+    <!-- ══════════════════════════════════════════════════════════
+         CONFIGURATION SCREEN
+    ══════════════════════════════════════════════════════════════ -->
+    <h2 id="configuration-screen">Configuration Screen</h2>
+    <p>Access via <strong>Tools › Configuration</strong>. Read or update the configuration data of an installed solution.</p>
+
+    <div class="screen-wrap">
+      <img class="screen" src="docs/images/gui_configuration.png" alt="Configuration Screen"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+      <div class="screen-placeholder" style="display:none">
+        <div class="ph-icon">⚙️</div>
+        <div class="ph-title">Configuration Screen</div>
+        <div class="ph-path">docs/images/gui_configuration.png</div>
+      </div>
+    </div>
+
+    <div class="table-wrap"><table>
+      <thead><tr><th>Field / Button</th><th>Req</th><th>Description</th></tr></thead>
+      <tbody>
+        <tr><td>Device Address</td><td><span class="req">Required</span></td><td>IP address of the target device.</td></tr>
+        <tr><td>Password</td><td><span class="opt">Optional</span></td><td>Device admin password.</td></tr>
+        <tr><td>Solution ID</td><td><span class="req">Required</span></td><td>UUID of the target solution.</td></tr>
+        <tr><td>Config Data</td><td><span class="req">Required for Update</span></td><td>Configuration payload as a JSON string. Populated automatically when <strong>Get</strong> is clicked.</td></tr>
+        <tr><td><strong>Get</strong> button</td><td>—</td><td>Fetches the current configuration from the device and displays it in the Config Data text area.</td></tr>
+        <tr><td><strong>Update</strong> button</td><td>—</td><td>Pushes the contents of Config Data to the device.</td></tr>
+        <tr><td>Status label</td><td>—</td><td>Shows operation result or error message.</td></tr>
+      </tbody>
+    </table></div>
+
+    <hr class="divider">
+
+    <!-- ══════════════════════════════════════════════════════════
+         ATTESTATION SCREEN
+    ══════════════════════════════════════════════════════════════ -->
+    <h2 id="attestation-screen">Attestation Screen</h2>
+    <p>Access via <strong>Tools › Attestation</strong>. Update HP.io attestation credentials for an installed solution.</p>
+
+    <div class="screen-wrap">
+      <img class="screen" src="docs/images/gui_attestation.png" alt="Attestation Screen"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+      <div class="screen-placeholder" style="display:none">
+        <div class="ph-icon">🔐</div>
+        <div class="ph-title">Attestation Screen</div>
+        <div class="ph-path">docs/images/gui_attestation.png</div>
+      </div>
+    </div>
+
+    <div class="table-wrap"><table>
+      <thead><tr><th>Field / Button</th><th>Req</th><th>Description</th></tr></thead>
+      <tbody>
+        <tr><td>Solution File</td><td><span class="req">Required</span></td><td>Path to the solution bundle (<code>.bdl</code>, <code>.hpk2</code>). Click <strong>Select File</strong>.</td></tr>
+        <tr><td>Solution ID</td><td><span class="req">Required</span></td><td>UUID of the target solution on the device.</td></tr>
+        <tr><td>Device Address</td><td><span class="req">Required</span></td><td>IP address of the target device.</td></tr>
+        <tr><td>Password</td><td><span class="req">Required</span></td><td>Device admin password.</td></tr>
+        <tr><td>Username</td><td><span class="req">Required</span></td><td>HP.io portal username (email address).</td></tr>
+        <tr><td>LDB Service Key</td><td><span class="req">Required</span></td><td>LDB service key from the HP.io developer portal (treated as a password field).</td></tr>
+        <tr><td>Attestation Data</td><td><span class="req">Required</span></td><td>Attestation JSON: <code>{"client_id":"…","client_secret":"…"}</code>. Obtained from the HP.io portal.</td></tr>
+        <tr><td>Command File</td><td><span class="opt">Optional</span></td><td>Path to an external attestation command file. Click <strong>Select</strong> to browse, <strong>Clear</strong> to remove.</td></tr>
+        <tr><td><strong>Update</strong> button</td><td>—</td><td>Submits all attestation data to the device. Enabled only when all required fields are filled.</td></tr>
+        <tr><td>Status label</td><td>—</td><td>Shows operation result or error message.</td></tr>
+      </tbody>
+    </table></div>
+
+    <hr class="divider">
+
+    <!-- ══════════════════════════════════════════════════════════
+         ABOUT DIALOG
+    ══════════════════════════════════════════════════════════════ -->
+    <h2 id="about-screen">About Dialog</h2>
+    <p>Access via <strong>Help › About</strong>. Displays version and build information.</p>
+
+    <div class="screen-wrap">
+      <img class="screen" src="docs/images/gui_about.png" alt="About Dialog"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+      <div class="screen-placeholder" style="display:none">
+        <div class="ph-icon">ℹ️</div>
+        <div class="ph-title">About Dialog</div>
+        <div class="ph-path">docs/images/gui_about.png</div>
+      </div>
+    </div>
+
+    <p>Contains the tool version (<code>v2.0-beta10.0+D20260422</code>), the HP application icon, an <strong>OK</strong> button to close, and a <strong>License</strong> button for third-party notices.</p>
+
+    <hr class="divider">
+
+    <!-- ─── END-TO-END WORKFLOW ────────────────────────────────── -->
+    <h2 id="workflow">End-to-End Workflow</h2>
+    <p>
+      The following steps walk through a complete workflow: building a solution bundle
+      in the GUI and deploying it to a device.
+    </p>
+
+    <h3>Workflow — Build and Deploy a Solution</h3>
+    <ol class="steps">
+      <li>
+        <strong>Launch</strong> the HP Workpath Solution Utility and confirm it opens on the
+        <em>Solution Builder</em> screen (or choose <strong>File › New</strong>).
+      </li>
+      <li>
+        <strong>Select APK:</strong> In the Solution tab, click <strong>Select File</strong>
+        next to <em>APK File</em> and choose your <code>.apk</code>.
+      </li>
+      <li>
+        <strong>Fill Solution Metadata:</strong> Enter <em>Solution ID</em> (click <strong>Generate</strong>),
+        <em>Solution Name</em>, <em>Description</em>, <em>Vendor</em>, <em>Version</em>,
+        <em>Version Number</em>, <em>Date</em>, and select a <em>Platform Version</em> from the dropdown.
+      </li>
+      <li>
+        <strong>Add an Application:</strong> Click <strong>Add Application</strong>, fill in
+        the <a href="#app-dialog">Application Dialog</a>, and click <strong>Add</strong>.
+      </li>
+      <li>
+        <strong>Enable Components (optional):</strong> Check <em>Scan Agent</em>,
+        <em>Authentication</em>, etc. in the Component Selector to add those capabilities to the bundle.
+        Fill in any additional fields that appear in their respective tabs.
+      </li>
+      <li>
+        <strong>Build:</strong> Click <strong>Create Bundle</strong>. The progress indicator spins
+        during the build. On success, a status message shows the output path.
+        Use the dropdown arrow to also generate an <code>.hpk</code> file.
+      </li>
+      <li>
+        <strong>Install:</strong> Go to <strong>Tools › Install / Uninstall</strong>.
+        Enter the device IP and password, select the generated <code>.hpk2</code> file,
+        and click <strong>Install</strong>. (Also Install <code>.bdl</code> is possible.)
+      </li>
+      <li>
+        <strong>Verify:</strong> Go to <strong>Tools › Management</strong>.
+        Enter the device IP and password, click <strong>Enumerate</strong>,
+        and confirm your solution appears in the list. Click <strong>Detail</strong> to inspect it.
+      </li>
+    </ol>
+
+    <div class="callout tip">
+      <span class="callout-icon">💡</span>
+      <div class="callout-body">
+        <strong>Tip — Re-open an Existing Bundle</strong>
+        Use <strong>File › Open</strong> to load an existing <code>.bdl</code>, <code>.hpk2</code> back into
+        the Solution Builder for editing and re-building. Use <strong>File › Open HPK</strong>
+        for legacy <code>.hpk</code> bundles.
+      </div>
+    </div>
+
+    <div class="content-footer">
+      <span>HPK2Tool v2.0-beta10.0 · Build 20260422 · HP Inc.</span>
+      <span>
+        <a href="index.html">Home</a> ·
+        <a href="cli.html">← CLI Guide</a>
+      </span>
+    </div>
+
+  </main>
+</div>
+
+<script>
+  document.addEventListener('click', function (e) {
+    const codeBtn = e.target.closest('.code-tab-btn');
+    if (codeBtn) {
+      const c = codeBtn.closest('.code-container');
+      const t = codeBtn.dataset.tab;
+      c.querySelectorAll('.code-tab-btn').forEach(b => b.classList.toggle('active', b.dataset.tab === t));
+      c.querySelectorAll('.code-panel').forEach(p => p.classList.toggle('active', p.dataset.tab === t));
+    }
+  });
+</script>
+</body>
+</html>

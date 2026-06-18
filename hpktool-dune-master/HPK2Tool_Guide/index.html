@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HPK2Tool — Developer Guide</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="layout">
+
+  <!-- ═══ SIDEBAR ═══════════════════════════════════════════════ -->
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <a class="logo" href="index.html"><span>HPK</span>2Tool</a>
+      <div class="ver">v2.0-beta10.0 · Build 20260422</div>
+    </div>
+
+    <div class="sidebar-group">
+      <div class="sidebar-group-title">Overview</div>
+      <nav>
+        <a href="index.html" class="active">Introduction</a>
+        <a href="#prerequisites">Prerequisites</a>
+        <a href="#architecture">Architecture</a>
+        <a href="#getting-started">Getting Started</a>
+        <a href="#bundle-formats">Bundle Formats</a>
+      </nav>
+    </div>
+
+    <div class="sidebar-group">
+      <div class="sidebar-group-title">Guides</div>
+      <nav>
+        <a href="cli.html">⌨️ CLI Guide</a>
+        <a href="gui.html">🖥️ GUI Guide</a>
+      </nav>
+    </div>
+  </aside>
+
+  <!-- ═══ CONTENT ═══════════════════════════════════════════════ -->
+  <main class="content">
+
+    <div class="breadcrumb">HPK2Tool Guide</div>
+
+    <h1>HP Workpath Solution Utility</h1>
+    <p class="page-subtitle">HPK2Tool — Developer Guide</p>
+
+    <div class="badge-row">
+      <span class="badge">v2.0-beta10.0</span>
+      <span class="badge bg-gray">Build 20260422</span>
+      <span class="badge bg-green">HPK v2.5</span>
+      <span class="badge bg-purple">Platform 31.8</span>
+    </div>
+
+    <p>
+      The <strong>HP Workpath Solution Utility (HPK2Tool)</strong> is a developer tool for packaging,
+      deploying, and managing HP Workpath solution bundles (<code>.bdl</code> / <code>.hpk</code>)
+      on HP Workpath-capable MFPs and printers. It takes an Android Package (<code>.apk</code>) and
+      metadata options, and produces a signed, deployable solution bundle ready to install over the
+      network.
+    </p>
+    <p>
+      HPK2Tool ships as both a <strong>Command-Line Interface (CLI)</strong> and a
+      <strong>Graphical User Interface (GUI)</strong>, supporting Windows, Linux, and macOS.
+    </p>
+
+    <div class="card-grid">
+      <a class="card" href="cli.html">
+        <div class="card-icon">⌨️</div>
+        <h3>CLI Guide</h3>
+        <p>All 10 commands with full option references, platform-specific code examples, and end-to-end scenarios.</p>
+      </a>
+      <a class="card" href="gui.html">
+        <div class="card-icon">🖥️</div>
+        <h3>GUI Guide</h3>
+        <p>Screen-by-screen walkthrough of every dialog and panel, with field descriptions and workflow examples.</p>
+      </a>
+    </div>
+
+    <!-- ─── PREREQUISITES ──────────────────────────────────────── -->
+    <h2 id="prerequisites">Prerequisites</h2>
+
+    <p>
+      The Solution Packaging Utility CLI tool is supported in the Windows, Linux, and Mac environments.
+      The system requirements for running the tool are:
+    </p>
+    <ul>
+      <li>An <strong>x64/x86</strong> machine with at least <strong>8 GB of RAM</strong> and <strong>10 GB of free disk space</strong>.</li>
+      <li>
+        <a href="https://dotnet.microsoft.com/en-us/download/dotnet/8.0" target="_blank"
+           rel="noopener"><strong>.NET Desktop Runtime 8</strong></a> must be installed.
+      </li>
+    </ul>
+
+    <div class="os-section" id="os-reqs">
+      <div class="os-tabs">
+        <button class="os-tab-btn active" data-os="windows">🪟&nbsp; Windows</button>
+        <button class="os-tab-btn"        data-os="linux">🐧&nbsp; Linux</button>
+        <button class="os-tab-btn"        data-os="macos">🍎&nbsp; macOS</button>
+      </div>
+
+      <!-- WINDOWS -->
+      <div class="os-panel active" data-os="windows">
+        <h4>Windows Requirements</h4>
+        <ul>
+          <li>Windows 10 or newer.</li>
+          <li>
+            <strong>Windows Subsystem for Linux (WSL) 1</strong> using the
+            <strong>Ubuntu 20.04</strong> Linux distribution as your default WSL container.
+          </li>
+        </ul>
+        <div class="callout note">
+          <span class="callout-icon">📌</span>
+          <div class="callout-body">
+            <strong>Note — WSL 1 Required</strong>
+            WSL 1 is required due to the OXPd2 solution bundle format utilizing
+            <code>squashfs</code> and <code>dm-verity</code> in the build process.
+            WSL 2 is <em>not</em> supported.
+          </div>
+        </div>
+
+        <h4>Installing WSL 1 with Ubuntu 20.04</h4>
+        <ol class="steps">
+          <li>Open <strong>PowerShell as Administrator</strong> and run:</li>
+        </ol>
+<pre class="standalone">wsl --install -d Ubuntu-20.04
+wsl --set-version Ubuntu-20.04 1
+wsl --set-default Ubuntu-20.04</pre>
+        <ol start="2">
+          <li>Verify: <code>wsl --list --verbose</code> — the <strong>VERSION</strong> column must show <code>1</code>.</li>
+        </ol>
+
+        <h4>Installing .NET Desktop Runtime 8 on Windows</h4>
+        <ol>
+          <li>Visit <a href="https://dotnet.microsoft.com/en-us/download/dotnet/8.0" target="_blank">https://dotnet.microsoft.com/en-us/download/dotnet/8.0</a>.</li>
+          <li>Download the <strong>.NET Desktop Runtime 8.x.x — Windows x64 Installer</strong>.</li>
+          <li>Run the installer and follow the prompts.</li>
+          <li>Verify in a new terminal: <code>dotnet --version</code> → should print <code>8.x.x</code>.</li>
+        </ol>
+      </div>
+
+      <!-- LINUX -->
+      <div class="os-panel" data-os="linux">
+        <h4>Linux Requirements</h4>
+        <ul>
+          <li>Debian 9+, Ubuntu 16.04+, or Fedora 30+</li>
+        </ul>
+
+        <h4>Installing .NET Runtime 8 on Ubuntu / Debian</h4>
+<pre class="standalone">sudo apt-get update
+sudo apt-get install -y dotnet-runtime-8.0</pre>
+        <p>Or download the binary tarball directly from
+          <a href="https://dotnet.microsoft.com/en-us/download/dotnet/8.0" target="_blank">dotnet.microsoft.com</a>
+          and extract it to a directory on your <code>PATH</code>.
+        </p>
+
+        <h4>Installing .NET Runtime 8 on Fedora</h4>
+<pre class="standalone">sudo dnf install dotnet-runtime-8.0</pre>
+
+        <h4>Verify</h4>
+<pre class="standalone">dotnet --version   # should print 8.x.x</pre>
+      </div>
+
+      <!-- MACOS -->
+      <div class="os-panel" data-os="macos">
+        <h4>macOS Requirements</h4>
+        <ul>
+          <li>macOS High Sierra 10.13 or newer.</li>
+        </ul>
+        <div class="callout warning">
+          <span class="callout-icon">⚠️</span>
+          <div class="callout-body">
+            <strong>OpenSSL Required on Some Versions</strong>
+            Some macOS versions require <strong>OpenSSL</strong> to be installed in order to
+            sign your solution bundle.
+          </div>
+        </div>
+
+        <h4>Installing OpenSSL via Homebrew</h4>
+<pre class="standalone"># Install Homebrew if not already installed
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+brew install openssl
+
+# Add to PATH — append to ~/.zshrc or ~/.bash_profile
+export PATH="/usr/local/opt/openssl@3/bin:$PATH"</pre>
+
+        <h4>Installing .NET Runtime 8 on macOS</h4>
+        <ol>
+          <li>Visit <a href="https://dotnet.microsoft.com/en-us/download/dotnet/8.0" target="_blank">https://dotnet.microsoft.com/en-us/download/dotnet/8.0</a>.</li>
+          <li>Download the <strong>.NET Runtime 8.x.x — macOS x64</strong> (Intel) or <strong>Arm64</strong> (Apple Silicon) installer.</li>
+          <li>Run the <code>.pkg</code> installer and follow the prompts.</li>
+          <li>Verify: <code>dotnet --version</code></li>
+        </ol>
+      </div>
+    </div><!-- /os-section -->
+
+    <!-- ─── ARCHITECTURE ───────────────────────────────────────── -->
+    <h2 id="architecture">Architecture Overview</h2>
+    <p>
+      HPK2Tool is a Kotlin/JVM multi-module application. The CLI and GUI share a
+      <strong>Common Library</strong> for all services, data models, and utilities.
+      Both tools produce the same output — a signed solution bundle ready to deploy to an
+      HP Workpath device.
+    </p>
+
+    <div class="diagram"><pre>
+┌────────────────────────────────────────────────────────────────────┐
+│                         HPK2Tool  v2.0                             │
+│                                                                    │
+│   ┌──────────────────────┐        ┌──────────────────────────┐    │
+│   │      CLI Module      │        │        GUI Module        │    │
+│   │  HPK2Tool-cli.exe    │        │  HP Workpath Solution    │    │
+│   │  HPK2ToolCli-linux   │        │     Utility  (JavaFX)    │    │
+│   └──────────┬───────────┘        └────────────┬─────────────┘    │
+│              │                                 │                  │
+│              └────────────────┬────────────────┘                  │
+│                               │                                   │
+│                  ┌────────────▼────────────┐                      │
+│                  │     Common Library      │                      │
+│                  │  Services  │  Models    │                      │
+│                  │  Parsers   │  Utilities │                      │
+│                  └────────────┬────────────┘                      │
+│                               │                                   │
+│          ┌────────────────────┼────────────────────┐              │
+│          │                    │                    │              │
+│   ┌──────▼──────┐   ┌─────────▼────────┐   ┌──────▼──────┐      │
+│   │  --create   │   │     --json       │   │    Open     │      │
+│   │ .apk + CLI  │   │  .apk + manifest │   │  Existing   │      │
+│   │  options    │   │    JSON file     │   │  .bdl/.hpk  │      │
+│   └──────┬──────┘   └─────────┬────────┘   └──────┬──────┘      │
+│          └────────────────────┼────────────────────┘              │
+│                               │                                   │
+│                  ┌────────────▼────────────┐                      │
+│                  │     Solution Bundle     │                      │
+│                  │   .bdl / .pak / .hpk    │                      │
+│                  └────────────┬────────────┘                      │
+│                               │                                   │
+│          ┌────────────────────┼────────────────────┐              │
+│          │                    │                    │              │
+│   ┌──────▼──────┐   ┌─────────▼────────┐   ┌──────▼──────┐      │
+│   │  --install  │   │  --config-get /  │   │--attestation│      │
+│   │  --uninstall│   │  --config-update │   │  -update    │      │
+│   └──────┬──────┘   └─────────┬────────┘   └──────┬──────┘      │
+│          └────────────────────┼────────────────────┘              │
+│                               │                                   │
+│                  ┌────────────▼────────────┐                      │
+│                  │   HP Workpath Device    │                      │
+│                  │     (MFP / Printer)     │                      │
+│                  └─────────────────────────┘                      │
+└────────────────────────────────────────────────────────────────────┘
+    </pre></div>
+
+    <!-- ─── GETTING STARTED ────────────────────────────────────── -->
+    <h2 id="getting-started">Getting Started</h2>
+
+    <h3>Executables</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Platform</th><th>Module</th><th>Executable</th></tr></thead>
+        <tbody>
+          <tr><td>Windows</td><td>CLI</td><td><code>HPK2Tool-cli.exe</code></td></tr>
+          <tr><td>Windows</td><td>GUI</td><td><code>HPK2Tool.exe</code></td></tr>
+          <tr><td>Linux</td><td>CLI</td><td><code>HPK2ToolCli-linux.sh</code></td></tr>
+          <tr><td>Linux</td><td>GUI</td><td><code>HPK2ToolGui-linux.sh</code></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Verify Installation</h3>
+    <div class="code-container">
+      <div class="code-tabs">
+        <button class="code-tab-btn active" data-tab="ps">PowerShell</button>
+        <button class="code-tab-btn"        data-tab="cmd">CMD</button>
+        <button class="code-tab-btn"        data-tab="linux">Linux / macOS</button>
+      </div>
+      <div class="code-panel active" data-tab="ps"><pre>.\HPK2Tool-cli.exe --help</pre></div>
+      <div class="code-panel"        data-tab="cmd"><pre>HPK2Tool-cli.exe --help</pre></div>
+      <div class="code-panel"        data-tab="linux"><pre>./HPK2ToolCli-linux.sh --help</pre></div>
+    </div>
+
+    <h3>Launching the GUI</h3>
+    <div class="code-container">
+      <div class="code-tabs">
+        <button class="code-tab-btn active" data-tab="ps">Windows</button>
+        <button class="code-tab-btn"        data-tab="linux">Linux</button>
+      </div>
+      <div class="code-panel active" data-tab="ps"><pre>"HPK2Tool.exe"</pre></div>
+      <div class="code-panel"        data-tab="linux"><pre>./HPK2ToolGui-linux.sh</pre></div>
+    </div>
+
+    <!-- ─── BUNDLE FORMATS ────────────────────────────────────── -->
+    <h2 id="bundle-formats">Bundle Formats</h2>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Extension</th><th>Format</th><th>Description</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><code>.bdl</code> / <code>.pak</code></td>
+            <td>OXPd2 Solution Bundle</td>
+            <td>Current standard deployable bundle. Required for <code>--install</code>. Produced by default with <code>--create</code> or <code>--json</code>.</td>
+          </tr>
+          <tr>
+            <td><code>.hpk</code></td>
+            <td>HPK Legacy Package</td>
+            <td>Older HP Workpath package format. Generated alongside <code>.bdl</code> using <code>--build-hpk</code>. Can be opened in the GUI via <strong>File › Open HPK</strong>.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout tip">
+      <span class="callout-icon">💡</span>
+      <div class="callout-body">
+        <strong>Tip</strong>
+        Use <code>--build-hpk &lt;name.hpk&gt;</code> with <code>--create</code> to generate both
+        a <code>.bdl</code> and an <code>.hpk</code> file in a single run.
+      </div>
+    </div>
+
+    <div class="content-footer">
+      <span>HPK2Tool v2.0-beta10.0 · Build 20260422 · HP Inc.</span>
+      <span>
+        <a href="cli.html">CLI Guide</a> ·
+        <a href="gui.html">GUI Guide</a>
+      </span>
+    </div>
+
+  </main>
+</div>
+
+<script>
+  document.addEventListener('click', function (e) {
+    // Code tabs
+    const codeBtn = e.target.closest('.code-tab-btn');
+    if (codeBtn) {
+      const c = codeBtn.closest('.code-container');
+      const t = codeBtn.dataset.tab;
+      c.querySelectorAll('.code-tab-btn').forEach(b => b.classList.toggle('active', b.dataset.tab === t));
+      c.querySelectorAll('.code-panel').forEach(p => p.classList.toggle('active', p.dataset.tab === t));
+    }
+    // OS tabs
+    const osBtn = e.target.closest('.os-tab-btn');
+    if (osBtn) {
+      const c = osBtn.closest('.os-section');
+      const o = osBtn.dataset.os;
+      c.querySelectorAll('.os-tab-btn').forEach(b => b.classList.toggle('active', b.dataset.os === o));
+      c.querySelectorAll('.os-panel').forEach(p => p.classList.toggle('active', p.dataset.os === o));
+    }
+  });
+</script>
+</body>
+</html>

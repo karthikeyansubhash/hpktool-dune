@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+
+<MenuBar xmlns="http://javafx.com/javafx"
+         xmlns:fx="http://javafx.com/fxml"
+         fx:controller="com.hp.workpath.pkgmgt.util.gui.controllers.MenuController">
+    <Menu text="%menu_file">
+        <MenuItem onAction="#handleNewMenuAction" text="%menu_new"/>
+        <SeparatorMenuItem/>
+        <MenuItem onAction="#handleOpenAction" text="%menu_open"/>
+        <MenuItem onAction="#handleOpenHPKAction" text="%menu_open_hpk"/>
+        <SeparatorMenuItem/>
+        <MenuItem onAction="#handleExitMenuAction" text="%menu_exit"/>
+    </Menu>
+    <Menu text="%menu_tools">
+        <MenuItem onAction="#handleInstallMenuAction" text="%menu_install_uninstall"/>
+        <MenuItem onAction="#handleManagementMenuAction" text="%menu_management"/>
+        <MenuItem onAction="#handleConfigurationMenuAction" text="%menu_configuration"/>
+        <MenuItem onAction="#handleAttestationMenuAction" text="%menu_attestation"/>
+    </Menu>
+    <Menu text="%menu_help">
+        <MenuItem onAction="#handleAboutMenuAction" text="%menu_about"/>
+    </Menu>
+</MenuBar>

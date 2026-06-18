@@ -1,0 +1,43 @@
+plugins {
+    id 'java'
+    id 'org.jetbrains.kotlin.jvm' version '1.9.21'
+}
+
+allprojects {
+    apply plugin: 'java'
+    apply plugin: 'org.jetbrains.kotlin.jvm'
+
+    group = 'com.hp.workpath.pkgmgt.util'
+    version = '2.0-beta10.0+D20260616'
+
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
+        testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+        testImplementation 'org.mockito:mockito-core:5.11.0'
+        testImplementation 'org.mockito:mockito-junit-jupiter:5.11.0'
+    }
+
+    java {
+        toolchain {
+            languageVersion.set(JavaLanguageVersion.of(21))
+        }
+    }
+
+    test {
+        useJUnitPlatform()
+    }
+}
+
+tasks.register('copyWin', Copy) {
+    dependsOn(':cli:jpackageWinCliZip')
+    dependsOn(':gui:jpackageWinGuiZip')
+}
+
+tasks.register('copyLinux', Copy) {
+    dependsOn(':cli:jpackageLinuxCliZip')
+    dependsOn(':gui:jpackageLinuxGuiZip')
+}

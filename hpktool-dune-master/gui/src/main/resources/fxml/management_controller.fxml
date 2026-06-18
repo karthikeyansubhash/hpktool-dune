@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.hp.workpath.pkgmgt.util.gui.controllers.ManagementController"
+            stylesheets="@default.css">
+    <center>
+        <ScrollPane fitToWidth="true"
+                    fitToHeight="true">
+            <VBox fx:id="vbBackground" styleClass="background">
+                <VBox styleClass="vbox-components-top">
+                    <VBox styleClass="vbox-component" VBox.vgrow="ALWAYS">
+                        <VBox VBox.vgrow="ALWAYS">
+                            <HBox styleClass="hbox-line" VBox.vgrow="ALWAYS">
+                                <Label HBox.hgrow="ALWAYS" text="%label_page_desc_management" wrapText="true"/>
+                            </HBox>
+                        </VBox>
+                    </VBox>
+                </VBox>
+                <VBox styleClass="vbox-components">
+                    <VBox styleClass="vbox-component">
+                        <HBox styleClass="hbox-line">
+                            <Label HBox.hgrow="NEVER" text="%label_mandatory_mark" styleClass="label-mandatory"/>
+                            <Label HBox.hgrow="NEVER" text="%label_device_address" styleClass="label-name"/>
+                            <TextField fx:id="tfDeviceAddress" HBox.hgrow="ALWAYS" promptText="%hint_ip_address"/>
+                        </HBox>
+                        <HBox styleClass="hbox-line">
+                            <Label HBox.hgrow="NEVER" text="%label_mandatory_mark" styleClass="label-mandatory"/>
+                            <Label HBox.hgrow="NEVER" text="%label_device_password" styleClass="label-name"/>
+                            <PasswordField fx:id="pfDevicePassword" HBox.hgrow="ALWAYS"
+                                           promptText="%hint_admin_password"/>
+                        </HBox>
+                    </VBox>
+                </VBox>
+                <VBox styleClass="vbox-components" VBox.vgrow="SOMETIMES">
+                    <VBox styleClass="vbox-component" VBox.vgrow="SOMETIMES">
+                        <HBox styleClass="hbox-line" VBox.vgrow="SOMETIMES">
+                            <TableView fx:id="tvSolution" HBox.hgrow="ALWAYS" prefHeight="200.0">
+                                <columnResizePolicy>
+                                    <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
+                                </columnResizePolicy>
+                                <placeholder>
+                                    <Label text="%label_no_solution"/>
+                                </placeholder>
+                                <columns>
+                                    <TableColumn fx:id="tcSolutionId" text="%table_solution_id" minWidth="120"/>
+                                    <TableColumn fx:id="tcSolutionName" text="%table_solution_name" minWidth="60"/>
+                                    <TableColumn fx:id="tcSolutionVendor" text="%table_solution_vendor" minWidth="60"/>
+                                    <TableColumn fx:id="tcSolutionDetail" minWidth="30" maxWidth="30"/>
+                                    <TableColumn fx:id="tcSolutionDelete" minWidth="30" maxWidth="30"/>
+                                </columns>
+                            </TableView>
+                        </HBox>
+                    </VBox>
+                </VBox>
+            </VBox>
+        </ScrollPane>
+    </center>
+    <bottom>
+        <VBox styleClass="vbox-footer">
+            <HBox styleClass="hbox-line">
+                <Button fx:id="btEnumerate" mnemonicParsing="false" HBox.hgrow="NEVER" text="%btn_enumerate"
+                        styleClass="button-main" onAction="#handleSolutionEnumerate"/>
+                <ProgressIndicator fx:id="piProgress" HBox.hgrow="NEVER" visible="false" managed="false"/>
+                <Label fx:id="lbResult" HBox.hgrow="ALWAYS"/>
+            </HBox>
+        </VBox>
+    </bottom>
+</BorderPane>

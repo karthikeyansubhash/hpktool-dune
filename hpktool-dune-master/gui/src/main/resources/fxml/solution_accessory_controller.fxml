@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.hp.workpath.pkgmgt.util.gui.controllers.SolutionAccessoryController"
+            stylesheets="@default.css">
+    <center>
+        <VBox styleClass="background">
+            <VBox styleClass="vbox-components-top">
+                <VBox styleClass="vbox-component">
+                    <HBox styleClass="hbox-line">
+                        <Label HBox.hgrow="NEVER" text="%label_mandatory_mark" styleClass="label-mandatory"/>
+                        <Label HBox.hgrow="NEVER" text="%label_accessory_type" styleClass="label-name"/>
+                        <fx:define>
+                            <ToggleGroup fx:id="toggleAccessoryType"/>
+                        </fx:define>
+                        <RadioButton fx:id="rbOwned" mnemonicParsing="false" text="%radio_accessory_owned"
+                                     toggleGroup="$toggleAccessoryType" selected="true"/>
+                        <RadioButton fx:id="rbShared" mnemonicParsing="false" text="%radio_accessory_shared"
+                                     toggleGroup="$toggleAccessoryType"/>
+                    </HBox>
+                    <HBox styleClass="hbox-line">
+                        <Label HBox.hgrow="NEVER" text="%label_mandatory_mark" styleClass="label-mandatory"/>
+                        <Label HBox.hgrow="NEVER" text="%label_accessory_vendor_id" styleClass="label-name"/>
+                        <TextField fx:id="tfAccessoryVendorId" HBox.hgrow="ALWAYS"
+                                   promptText="%hint_accessory_vendor_id"/>
+                    </HBox>
+                    <HBox styleClass="hbox-line">
+                        <Label HBox.hgrow="NEVER" text="%label_mandatory_mark" styleClass="label-mandatory"/>
+                        <Label HBox.hgrow="NEVER" text="%label_accessory_product_id" styleClass="label-name"/>
+                        <TextField fx:id="tfAccessoryProductId" HBox.hgrow="ALWAYS"
+                                   promptText="%hint_accessory_product_id"/>
+                    </HBox>
+                    <HBox styleClass="hbox-line">
+                        <Label HBox.hgrow="NEVER" styleClass="label-mandatory"/>
+                        <Label HBox.hgrow="NEVER" text="%label_accessory_serial_number" styleClass="label-name"/>
+                        <TextField fx:id="tfAccessorySerialNumber" HBox.hgrow="ALWAYS"
+                                   promptText="%hint_accessory_serial_number"/>
+                        <CheckBox fx:id="cbAccessorySerialNumberNull" HBox.hgrow="NEVER" text="%btn_null"
+                                onAction="#handleAccessorySerialNumberNull"/>
+                    </HBox>
+                    <HBox styleClass="hbox-line">
+                        <Button fx:id="btAdd" mnemonicParsing="false" HBox.hgrow="NEVER" text="%btn_add"
+                                disable="true" onAction="#handleAddAccessory"/>
+                        <Button fx:id="btCancel" mnemonicParsing="false" HBox.hgrow="NEVER" text="%btn_cancel"
+                                styleClass="button-white" onAction="#handleCancelAccessory"/>
+                    </HBox>
+                </VBox>
+            </VBox>
+        </VBox>
+    </center>
+</BorderPane>

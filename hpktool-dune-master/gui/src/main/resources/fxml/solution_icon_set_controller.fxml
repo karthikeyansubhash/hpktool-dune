@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.hp.workpath.pkgmgt.util.gui.controllers.SolutionIconSetController"
+            stylesheets="@default.css">
+    <center>
+        <ScrollPane fitToHeight="true"
+                    fitToWidth="true">
+            <VBox styleClass="background">
+                <VBox styleClass="vbox-components-top">
+                    <VBox fx:id="vbIconMapBox" styleClass="vbox-component"/>
+                </VBox>
+            </VBox>
+        </ScrollPane>
+    </center>
+    <bottom>
+        <VBox styleClass="vbox-footer">
+            <HBox styleClass="hbox-line">
+                <Button fx:id="btOk" mnemonicParsing="false" HBox.hgrow="NEVER" text="%btn_ok"
+                        onAction="#handleOk"/>
+                <Button fx:id="btCancel" mnemonicParsing="false" HBox.hgrow="NEVER" text="%btn_cancel"
+                        styleClass="button-white" onAction="#handleCancel"/>
+            </HBox>
+        </VBox>
+    </bottom>
+</BorderPane>

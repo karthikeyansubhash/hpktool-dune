@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.ImageView?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.hp.workpath.pkgmgt.util.gui.controllers.AboutController"
+            stylesheets="@default.css">
+    <center>
+        <VBox styleClass="background">
+            <VBox styleClass="vbox-components-top">
+                <VBox styleClass="vbox-component">
+                    <HBox styleClass="hbox-line">
+                        <ImageView fx:id="ivIcon" fitWidth="48" fitHeight="48"/>
+                        <VBox alignment="CENTER_LEFT">
+                            <Label fx:id="lbText" HBox.hgrow="ALWAYS" wrapText="true"/>
+                        </VBox>
+                    </HBox>
+                    <HBox styleClass="hbox-line-center">
+                        <Button fx:id="btOk" mnemonicParsing="false" HBox.hgrow="NEVER" text="%btn_ok"
+                                styleClass="button-white" onAction="#handleOk"/>
+                        <Button mnemonicParsing="false" HBox.hgrow="NEVER" text="%btn_license"
+                                styleClass="button-main-alt" onAction="#handleLicense"/>
+                    </HBox>
+                </VBox>
+            </VBox>
+        </VBox>
+    </center>
+</BorderPane>

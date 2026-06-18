@@ -1,0 +1,5 @@
+rootProject.name = 'hpktool'
+include 'common'
+include 'cli'
+include 'gui'
+

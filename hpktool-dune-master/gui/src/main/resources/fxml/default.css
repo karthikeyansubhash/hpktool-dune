@@ -1,0 +1,267 @@
+* {
+    hp-gray0:   #f4f4f4;
+    hp-gray1:   #e9e9e9;
+    hp-gray2:   #dedede;
+    hp-gray3:   #d3d3d3;
+    hp-gray4:   #c8c8c8;
+    hp-gray5:   #bdbdbd;
+    hp-gray6:   #b2b2b2;
+    hp-gray7:   #a7a7a7;
+    hp-red0:    #ff3900;
+    hp-green0:  #00d072;
+    hp-green2:  #31d78d;
+    hp-blue0:   #0096d6;
+    hp-blue2:   #31a9dd;
+    hp-orange0: #ff8901;
+    hp-orange2: #fe9f31;
+}
+.background {
+    -fx-background-color: white;
+}
+.vbox-components {
+    -fx-padding: 0 10 10 10;
+}
+.vbox-components-top {
+    -fx-padding: 10 10 10 10;
+}
+.vbox-component {
+    -fx-background-color: hp-gray0;
+    -fx-background-radius: 3 3 3 3;
+    -fx-padding: 15 15 15 15;
+    -fx-spacing: 10;
+}
+.vbox-component-inner {
+    -fx-spacing: 10;
+}
+.vbox-footer {
+    -fx-background-color: hp-gray1;
+    -fx-padding: 15 15 15 15;
+    -fx-spacing: 10;
+    -fx-border-width: 1;
+    -fx-border-color: hp-gray2;
+}
+.vbox-image {
+    -fx-alignment: center-left;
+    -fx-pref-height: 80
+}
+.vbox-inner {
+    -fx-alignment: center;
+}
+.tabs {
+    -fx-vbar-policy: NEVER;
+    -fx-background-color: hp-gray0;
+    -fx-border-width: 0;
+    -fx-padding: 0;
+    -fx-min-height: 40;
+    -fx-max-height: 40;
+}
+.tabs:focused {
+    -fx-background-color: white;
+}
+.tabs > .scroll-bar:horizontal {
+    -fx-background-color: transparent;
+}
+.titled-pane-hp > .title {
+    -fx-border-width: 0;
+    -fx-background-color: hp-gray1;
+}
+.titled-pane-hp > .title > .text {
+    -fx-font-weight: bold;
+    -fx-font-size: 14;
+    -fx-translate-x: 5;
+}
+.titled-pane-hp > .content {
+    -fx-border-width: 0;
+    -fx-background-color: hp-gray0;
+}
+.hbox-line {
+    -fx-spacing: 10;
+    -fx-alignment: center-left;
+}
+.hbox-line > .label-mandatory {
+    -fx-min-width: 8;
+    -fx-pref-width: 8;
+}
+.hbox-line > .label-name {
+    -fx-min-width: 130;
+    -fx-pref-width: 130;
+}
+.text-area:focused {
+    -fx-border-color: hp-blue2;
+}
+.text-area-error {
+    -fx-border-radius: 3;
+    -fx-border-color: hp-red0;
+}
+.hbox-line-inner {
+    -fx-padding: 5 0 5 0;
+    -fx-spacing: 10;
+    -fx-alignment: center-left;
+}
+.hbox-line-center {
+    -fx-spacing: 10;
+    -fx-alignment: center;
+}
+.button {
+    -fx-background-color: hp-blue2;
+    -fx-text-fill: white;
+    -fx-min-width: 100;
+}
+.button:hover {
+    -fx-background-color: hp-blue0;
+}
+.button-white {
+    -fx-background-color: hp-gray3;
+    -fx-text-fill: black;
+}
+.button-white:hover {
+    -fx-background-color: hp-gray5;
+}
+.button-main {
+    -fx-background-color: hp-green2;
+    -fx-text-fill: white;
+    -fx-min-width: 100;
+}
+.button-main:hover {
+    -fx-background-color: hp-green0;
+}
+.button-main-alt {
+    -fx-background-color: hp-orange2;
+    -fx-text-fill: white;
+    -fx-min-width: 100;
+}
+.button-main-alt:hover {
+    -fx-background-color: hp-orange0;
+}
+.button-tab {
+    -fx-background-color: hp-gray2;
+    -fx-background-radius: 10 10 0 0;
+    -fx-text-fill: black;
+    -fx-min-width: 100;
+}
+.button-tab:hover {
+    -fx-background-color: hp-gray3;
+    -fx-background-radius: 10 10 0 0;
+}
+.button-tab-selected {
+    -fx-background-color: hp-gray5;
+    -fx-background-radius: 10 10 0 0;
+    -fx-text-fill: black;
+    -fx-font-weight : bolder;
+    -fx-min-width: 100;
+}
+.button-tab-selected:hover {
+    -fx-background-color: hp-gray4;
+    -fx-background-radius: 10 10 0 0;
+}
+.button-information {
+    -fx-background-color: white;
+    -fx-background-size: 20 20;
+    -fx-background-image: url("../images/ic_information_nor.png");
+    -fx-background-repeat: no-repeat;
+    -fx-min-width: 20;
+    -fx-min-height: 20;
+}
+.button-information:hover {
+    -fx-background-color : white;
+    -fx-background-size: 20 20;
+    -fx-background-image: url("../images/ic_information_pre.png");
+    -fx-background-repeat: no-repeat;
+    -fx-min-width: 20;
+    -fx-min-height: 20;
+}
+.button-uninstall {
+    -fx-background-color : white;
+    -fx-background-image: url("../images/ic_delete_nor.png");
+    -fx-background-size: 20 20;
+    -fx-background-repeat: no-repeat;
+    -fx-min-width: 20;
+    -fx-min-height: 20;
+}
+.button-uninstall:hover {
+    -fx-background-color : white;
+    -fx-background-image: url("../images/ic_delete_pre.png");
+    -fx-background-size: 20 20;
+    -fx-background-repeat: no-repeat;
+    -fx-min-width: 20;
+    -fx-min-height: 20;
+}
+.split-menu-button-hp {
+    -fx-alignment: center;
+    -fx-background-color: hp-gray1;
+}
+.split-menu-button-hp > .label {
+    -fx-background-color: hp-green2;
+    -fx-background-insets: 0;
+    -fx-background-radius: 3 0 0 3;
+    -fx-text-fill: white;
+    -fx-min-width: 100;
+}
+.split-menu-button-hp > .label:hover {
+    -fx-background-color: hp-green0;
+}
+.split-menu-button-hp > .label:disabled {
+    -fx-opacity: 1;
+}
+.split-menu-button-hp > .arrow-button {
+    -fx-background-color: hp-green2;
+    -fx-background-insets: 0 0 0 1;
+    -fx-background-radius: 0 3 3 0;
+}
+.split-menu-button-hp > .arrow-button:hover {
+    -fx-background-color: hp-green0;
+}
+.split-menu-button-hp > .arrow-button > .arrow {
+    -fx-background-color: white;
+}
+.split-menu-button-hp .context-menu {
+    -fx-background-color: hp-gray7, hp-gray3;
+    -fx-background-radius: 3 0 3 3;
+    -fx-padding: 4 1 4 1;
+}
+.split-menu-button-hp .menu-item {
+    -fx-background-color: hp-green2;
+    -fx-padding: 5 0 5 0;
+    -fx-pref-width: 98;
+}
+.split-menu-button-hp .menu-item:hover {
+    -fx-background-color: hp-green0;
+}
+.split-menu-button-hp .menu-item > .label {
+    -fx-background-color: transparent;
+    -fx-alignment: center;
+    -fx-text-fill: white;
+    -fx-padding: 0;
+    -fx-pref-width: 98;
+}
+.text-field:focused {
+    -fx-border-color: hp-blue2;
+}
+.text-field-error {
+    -fx-border-radius: 3;
+    -fx-border-color: hp-red0;
+}
+.table-view {
+    -fx-min-height: 130;
+    -fx-pref-width: 300;
+}
+.table-view-error {
+    -fx-border-color: hp-red0;
+}
+.table-column {
+    -fx-alignment: center;
+}
+.label-error {
+    -fx-text-fill: hp-red0;
+}
+.label-italic {
+    -fx-font-style: italic;
+}
+.checkbox-error {
+    -fx-border-color: hp-red0;
+}
+.progress-indicator {
+    -fx-progress-color: hp-green2;
+    -fx-pref-width: 25;
+    -fx-pref-height: 25;
+}

@@ -1,0 +1,11 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="HpkToolKtGui" type="JetRunConfigurationType">
+    <option name="MAIN_CLASS_NAME" value="com.hp.workpath.pkgmgt.util.gui.HpkToolKt" />
+    <module name="hpktool.gui.main" />
+    <shortenClasspath name="NONE" />
+    <option name="VM_PARAMETERS" value="--add-opens java.base/java.util=ALL-UNNAMED" />
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>

@@ -1,0 +1,1 @@
+ca-ES,cs-CZ,da-DK,de-DE,el-GR,en-US,es-ES,fi-FI,fr-FR,hr-HR,hu-HU,id-ID,it-IT,ja-JP,ko-KR,nl-NL,nb-NO,pl-PL,pt-BR,ro-RO,ru-RU,sl-SI,sk-SK,sv-SE,th-TH,tr-TR,zh-CN,zh-TW,ar-SA,he-IL

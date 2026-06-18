@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.hp.workpath.pkgmgt.util.gui.controllers.ManagementDetailApplicationController"
+            stylesheets="@default.css">
+    <center>
+        <VBox fx:id="vbBackground" styleClass="background">
+            <VBox styleClass="vbox-components-top">
+                <VBox styleClass="vbox-component">
+                    <HBox styleClass="hbox-line">
+                        <Label HBox.hgrow="NEVER" text="%label_application_id" styleClass="label-name"/>
+                        <TextField fx:id="tfApplicationId" HBox.hgrow="ALWAYS" editable="false"/>
+                    </HBox>
+                    <HBox styleClass="hbox-line">
+                        <Label HBox.hgrow="NEVER" text="%label_application_name" styleClass="label-name"/>
+                        <TextField fx:id="tfApplicationName" HBox.hgrow="ALWAYS" editable="false"/>
+                    </HBox>
+                    <HBox styleClass="hbox-line">
+                        <Label HBox.hgrow="NEVER" text="%label_application_path" styleClass="label-name"/>
+                        <TextField fx:id="tfApplicationPath" HBox.hgrow="ALWAYS" editable="false"/>
+                    </HBox>
+                    <HBox styleClass="hbox-line">
+                        <Label HBox.hgrow="NEVER" text="%label_application_title" styleClass="label-name"/>
+                        <TextField fx:id="tfApplicationTitle" HBox.hgrow="ALWAYS" editable="false"/>
+                        <Button mnemonicParsing="false" HBox.hgrow="NEVER" text="%btn_more"
+                                onAction="#handleApplicationTitle"/>
+                    </HBox>
+                    <HBox styleClass="hbox-line">
+                        <Label HBox.hgrow="NEVER" text="%label_application_description" styleClass="label-name"/>
+                        <TextField fx:id="tfApplicationDescription" HBox.hgrow="ALWAYS" editable="false"/>
+                        <Button mnemonicParsing="false" HBox.hgrow="NEVER" text="%btn_more"
+                                onAction="#handleApplicationDescription"/>
+                    </HBox>
+<!--                    TODO : Can not bring icon file from device.-->
+<!--                    <HBox styleClass="hbox-line">-->
+<!--                        <Label HBox.hgrow="NEVER" text="%label_application_icon" styleClass="label-name"/>-->
+<!--                        <VBox HBox.hgrow="ALWAYS" styleClass="vbox-image">-->
+<!--                            <ImageView fx:id="ivApplicationIcon" fitWidth="80.0" fitHeight="80.0" preserveRatio="true"/>-->
+<!--                        </VBox>-->
+<!--                    </HBox>-->
+                    <HBox fx:id="hbApplicationType" styleClass="hbox-line">
+                        <Label HBox.hgrow="NEVER" text="%label_application_type" styleClass="label-name"/>
+                        <CheckBox fx:id="cbApplicationHome" text="%checkbox_application_home"/>
+                        <CheckBox fx:id="cbApplicationHomeDefault" text="%checkbox_home_default" disable="true"/>
+                    </HBox>
+                    <HBox styleClass="hbox-line">
+                        <Button fx:id="btClose" mnemonicParsing="false" HBox.hgrow="NEVER" text="%btn_close"
+                                styleClass="button-white" onAction="#handleClose"/>
+                    </HBox>
+                </VBox>
+            </VBox>
+        </VBox>
+    </center>
+</BorderPane>

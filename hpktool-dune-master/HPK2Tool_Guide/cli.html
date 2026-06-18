@@ -1,0 +1,928 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CLI Guide — HPK2Tool</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="layout">
+
+  <!-- ═══ SIDEBAR ═══════════════════════════════════════════════ -->
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <a class="logo" href="index.html"><span>HPK</span>2Tool</a>
+      <div class="ver">v2.0-beta10.0 · Build 20260422</div>
+    </div>
+
+    <div class="sidebar-group">
+      <div class="sidebar-group-title">Navigation</div>
+      <nav>
+        <a href="index.html">← Home</a>
+        <a href="gui.html">🖥️ GUI Guide</a>
+      </nav>
+    </div>
+
+    <div class="sidebar-group">
+      <div class="sidebar-group-title">CLI Guide</div>
+      <nav>
+        <a href="#overview">Overview</a>
+        <a href="#running">Running the CLI</a>
+      </nav>
+    </div>
+
+    <div class="sidebar-group">
+      <div class="sidebar-group-title">Commands</div>
+      <nav>
+        <a href="#create" class="sub">--create</a>
+        <a href="#json"   class="sub">--json</a>
+        <a href="#install" class="sub">--install</a>
+        <a href="#uninstall" class="sub">--uninstall</a>
+        <a href="#solution-list" class="sub">--solution-list</a>
+        <a href="#solution-detail" class="sub">--solution-detail</a>
+        <a href="#config-get" class="sub">--config-get</a>
+        <a href="#config-update" class="sub">--config-update</a>
+        <a href="#attestation-update" class="sub">--attestation-update</a>
+        <a href="#help" class="sub">--help</a>
+      </nav>
+    </div>
+
+    <div class="sidebar-group">
+      <div class="sidebar-group-title">Reference</div>
+      <nav>
+        <a href="#platform-versions">Platform Versions</a>
+        <a href="#localization-format">Localization JSON</a>
+        <a href="#accessory-format">Accessory Format</a>
+        <a href="#webservice-format">Web Service Format</a>
+        <a href="#scenarios">End-to-End Scenarios</a>
+      </nav>
+    </div>
+  </aside>
+
+  <!-- ═══ CONTENT ═══════════════════════════════════════════════ -->
+  <main class="content">
+
+    <div class="breadcrumb">
+      <a href="index.html">HPK2Tool Guide</a>
+      <span class="sep">›</span>CLI Guide
+    </div>
+
+    <h1>CLI Guide</h1>
+    <p class="page-subtitle">HPK2Tool Command-Line Interface — Complete Reference</p>
+    <div class="badge-row">
+      <span class="badge">v2.0-beta10.0</span>
+      <span class="badge bg-gray">HPK2Tool-cli.exe / HPK2ToolCli-linux.sh</span>
+    </div>
+
+    <!-- ─── OVERVIEW ───────────────────────────────────────────── -->
+    <h2 id="overview">Overview</h2>
+    <p>
+      The HPK2Tool CLI provides 10 commands covering the full HP Workpath solution lifecycle —
+      from building a solution bundle out of an APK, to installing, configuring, and updating
+      attestation data on a live device.
+    </p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Command</th><th>Purpose</th></tr></thead>
+        <tbody>
+          <tr><td><code>--create</code></td><td>Build a solution bundle from an APK and command-line options</td></tr>
+          <tr><td><code>--json</code></td><td>Build a solution bundle from an APK and a JSON manifest file</td></tr>
+          <tr><td><code>--install</code></td><td>Install a solution bundle onto a device</td></tr>
+          <tr><td><code>--uninstall</code></td><td>Uninstall a solution from a device</td></tr>
+          <tr><td><code>--solution-list</code></td><td>List all installed solutions on a device</td></tr>
+          <tr><td><code>--solution-detail</code></td><td>Get details for a specific installed solution</td></tr>
+          <tr><td><code>--config-get</code></td><td>Retrieve solution configuration data from a device</td></tr>
+          <tr><td><code>--config-update</code></td><td>Push solution configuration data to a device</td></tr>
+          <tr><td><code>--attestation-update</code></td><td>Update HP.io attestation credentials on a device</td></tr>
+          <tr><td><code>--help</code></td><td>Print help text</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="callout note">
+      <span class="callout-icon">📌</span>
+      <div class="callout-body">
+        <strong>One Command Per Invocation</strong>
+        Only one command flag may be supplied per invocation. Combining two command flags
+        (e.g. <code>--create --install</code>) will result in an error.
+      </div>
+    </div>
+
+    <!-- ─── RUNNING ────────────────────────────────────────────── -->
+    <h2 id="running">Running the CLI</h2>
+    <div class="code-container">
+      <div class="code-tabs">
+        <button class="code-tab-btn active" data-tab="ps">PowerShell</button>
+        <button class="code-tab-btn"        data-tab="cmd">CMD</button>
+        <button class="code-tab-btn"        data-tab="linux">Linux / macOS</button>
+      </div>
+      <div class="code-panel active" data-tab="ps"><pre>.\HPK2Tool-cli.exe &lt;command&gt; [options]</pre></div>
+      <div class="code-panel"        data-tab="cmd"><pre>HPK2Tool-cli.exe &lt;command&gt; [options]</pre></div>
+      <div class="code-panel"        data-tab="linux"><pre>./HPK2ToolCli-linux.sh &lt;command&gt; [options]</pre></div>
+    </div>
+
+    <div class="callout warning">
+      <span class="callout-icon">⚠️</span>
+      <div class="callout-body">
+        <strong>JSON String Quoting Rule</strong>
+        When passing JSON values (e.g. <code>--application-title-main</code>), always wrap the argument in <strong>double quotes</strong>.<br><br>
+        If the value has <strong>no spaces</strong>:<br>
+        <code>"{"en-US":"MyTitle"}"</code><br><br>
+        If the value <strong>contains spaces</strong>, wrap the value with an extra pair of double-quotes:<br>
+        <code>"{"en-US":""My Title""}"</code>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- ══════════════════════════════════════════════════════════
+         COMMAND: --create
+    ══════════════════════════════════════════════════════════════ -->
+    <h2 id="create"><code>--create</code> — Build Solution Bundle</h2>
+    <p>
+      Packages an APK file and solution metadata into a deployable <code>.hpk2</code> solution bundle.
+      Optionally generates an <code>.hpk</code> file in the same run.
+    </p>
+    <div class="cmd-syntax">HPK2Tool-cli.exe --create --output &lt;dir&gt; --solution-id &lt;uuid&gt; --solution-name &lt;name&gt; ... --apk &lt;file.apk&gt; --platform-version &lt;version&gt;</div>
+
+    <h3>Solution Metadata Options</h3>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Option</th><th>Req</th><th>Description</th></tr></thead>
+      <tbody>
+        <tr><td><code>--output</code></td><td><span class="req">Required</span></td><td>Output directory where the bundle will be written.</td></tr>
+        <tr><td><code>--solution-id</code></td><td><span class="req">Required</span></td><td>Unique solution UUID (e.g. <code>aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee</code>).</td></tr>
+        <tr><td><code>--solution-name</code></td><td><span class="req">Required</span></td><td>Solution name. Used as the bundle filename.</td></tr>
+        <tr><td><code>--solution-description</code></td><td><span class="req">Required</span></td><td>Short description of the solution.</td></tr>
+        <tr><td><code>--solution-vendor</code></td><td><span class="req">Required</span></td><td>Vendor / company name.</td></tr>
+        <tr><td><code>--solution-version</code></td><td><span class="req">Required</span></td><td>Version string (e.g. <code>1.0.0</code>).</td></tr>
+        <tr><td><code>--solution-version-number</code></td><td><span class="req">Required</span></td><td>Integer version number (e.g. <code>1</code>).</td></tr>
+        <tr><td><code>--apk</code></td><td><span class="req">Required</span></td><td>Path to the solution <code>.apk</code> file.</td></tr>
+        <tr><td><code>--platform-version</code></td><td><span class="req">Required</span></td><td>Target HP Workpath platform version (e.g. <code>31.8</code>). See <a href="#platform-versions">Platform Versions</a>.</td></tr>
+        <tr><td><code>--solution-date</code></td><td><span class="opt">Optional</span></td><td>Release date in <code>yyyymmdd</code> format (e.g. <code>20260422</code>).</td></tr>
+        <tr><td><code>--solution-email</code></td><td><span class="opt">Optional</span></td><td>Developer support email address.</td></tr>
+        <tr><td><code>--solution-phone</code></td><td><span class="opt">Optional</span></td><td>Developer support phone number.</td></tr>
+        <tr><td><code>--solution-url</code></td><td><span class="opt">Optional</span></td><td>Developer support URL.</td></tr>
+        <tr><td><code>--default-config</code></td><td><span class="opt">Optional</span></td><td>Path to a default configuration JSON file embedded in the bundle.</td></tr>
+        <tr><td><code>--solution-bundle-serial</code></td><td><span class="opt">Optional</span></td><td>Bundle serial number string.</td></tr>
+      </tbody>
+    </table></div>
+
+    <h3>Application Options</h3>
+    <p>
+      Each solution supports one <strong>main</strong> application and up to
+      <strong>5 sub-applications</strong> (<code>-1</code> through <code>-5</code>).
+      Replace <code>-main</code> with <code>-1</code>, <code>-2</code>, etc. for sub-apps.
+    </p>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Option</th><th>Req</th><th>Description</th></tr></thead>
+      <tbody>
+        <tr><td><code>--application-id-main</code></td><td><span class="opt">Optional</span></td><td>Application UUID.</td></tr>
+        <tr><td><code>--application-name-main</code></td><td><span class="req">Required if id set</span></td><td>Application name.</td></tr>
+        <tr><td><code>--application-path-main</code></td><td><span class="req">Required if id set</span></td><td>Android component path: <code>package/ClassName</code>.</td></tr>
+        <tr><td><code>--application-title-main</code></td><td><span class="req">Required if id set</span></td><td>Localized title JSON: <code>{"en-US":"Title"}</code>. See <a href="#localization-format">Localization Format</a>.</td></tr>
+        <tr><td><code>--application-description-main</code></td><td><span class="req">Required if id set</span></td><td>Localized description JSON.</td></tr>
+        <tr><td><code>--application-icon-main</code></td><td><span class="req">Required if id set</span></td><td>Path to an icon file (<code>.png</code>, <code>.jpg</code>, <code>.jpeg</code>).</td></tr>
+        <tr><td><code>--application-icon-set-main</code></td><td><span class="req">Required if id set</span></td><td>Icon set JSON: <code>{"90x90":"/path/icon.png"}</code>. Overrides <code>--application-icon-main</code>.</td></tr>
+        <tr><td><code>--application-home</code></td><td><span class="opt">Optional flag</span></td><td>Register the main app as a Home Screen application.</td></tr>
+        <tr><td><code>--application-home-default</code></td><td><span class="opt">Optional flag</span></td><td>Register as the <em>default</em> Home Screen application.</td></tr>
+      </tbody>
+    </table></div>
+
+    <h3>Authentication Agent Options</h3>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Option</th><th>Req</th><th>Description</th></tr></thead>
+      <tbody>
+        <tr><td><code>--authentication-id</code></td><td><span class="opt">Optional</span></td><td>Authentication agent UUID.</td></tr>
+        <tr><td><code>--authentication-name</code></td><td><span class="req">Required if id set</span></td><td>Authentication agent name.</td></tr>
+        <tr><td><code>--authentication-title</code></td><td><span class="req">Required if id set</span></td><td>Localized title JSON.</td></tr>
+        <tr><td><code>--authentication-description</code></td><td><span class="req">Required if id set</span></td><td>Localized description JSON.</td></tr>
+        <tr><td><code>--authentication-path</code></td><td><span class="req">Required if id set</span></td><td>Android component path for the auth activity.</td></tr>
+        <tr><td><code>--authentication-pre-prompt</code></td><td><span class="opt">Optional flag</span></td><td>Prompt the user for credentials before launching the solution.</td></tr>
+      </tbody>
+    </table></div>
+
+    <h3>USB Accessory Options</h3>
+    <p>Up to <strong>10</strong> USB accessories can be registered (<code>--accessory-1</code> … <code>--accessory-10</code>). See <a href="#accessory-format">Accessory Format</a>.</p>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Option</th><th>Req</th><th>Format</th></tr></thead>
+      <tbody>
+        <tr><td><code>--accessory-1</code> … <code>--accessory-10</code></td><td><span class="opt">Optional</span></td><td><code>type,vendor-id,product-id[,serial-number]</code></td></tr>
+      </tbody>
+    </table></div>
+
+    <h3>Job Agent Flags</h3>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Flag</th><th>Description</th></tr></thead>
+      <tbody>
+        <tr><td><code>--copy-agent</code></td><td>Enable the Copy Job Agent.</td></tr>
+        <tr><td><code>--print-agent</code></td><td>Enable the Print Job Agent.</td></tr>
+        <tr><td><code>--scan-agent</code></td><td>Enable the Scan Job Agent.</td></tr>
+        <tr><td><code>--device-usage</code></td><td>Enable the Device Usage Agent.</td></tr>
+        <tr><td><code>--supplies</code></td><td>Enable the Supplies Agent.</td></tr>
+      </tbody>
+    </table></div>
+
+    <h3>Web Service Options</h3>
+    <p>All three options below are required together when <code>--webservice</code> is set. See <a href="#webservice-format">Web Service Format</a>.</p>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Option</th><th>Req</th><th>Description</th></tr></thead>
+      <tbody>
+        <tr><td><code>--webservice</code></td><td><span class="opt">Optional flag</span></td><td>Enable the Web Service provider.</td></tr>
+        <tr><td><code>--webservice-title</code></td><td><span class="req">Required if --webservice</span></td><td>Localized title JSON.</td></tr>
+        <tr><td><code>--webservice-description</code></td><td><span class="req">Required if --webservice</span></td><td>Localized description JSON.</td></tr>
+        <tr><td><code>--webservice-endpoint</code></td><td><span class="req">Required if --webservice</span></td><td>Endpoint definition string. Multiple endpoints separated by <code>:</code>.</td></tr>
+      </tbody>
+    </table></div>
+
+    <h3>Example — Minimal Bundle</h3>
+    <div class="code-container">
+      <div class="code-tabs">
+        <button class="code-tab-btn active" data-tab="ps">PowerShell</button>
+        <button class="code-tab-btn"        data-tab="cmd">CMD</button>
+        <button class="code-tab-btn"        data-tab="linux">Linux / macOS</button>
+      </div>
+      <div class="code-panel active" data-tab="ps"><pre>.\HPK2Tool-cli.exe --create `
+  --output "C:\output" `
+  --solution-id "aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee" `
+  --solution-name "MyScanner" `
+  --solution-description "Simple scan solution" `
+  --solution-vendor "Acme Corp" `
+  --solution-version "1.0.0" `
+  --solution-version-number 1 `
+  --apk "C:\apps\scanner.apk" `
+  --platform-version 31.8</pre></div>
+      <div class="code-panel" data-tab="cmd"><pre>HPK2Tool-cli.exe --create ^
+  --output "C:\output" ^
+  --solution-id "aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee" ^
+  --solution-name "MyScanner" ^
+  --solution-description "Simple scan solution" ^
+  --solution-vendor "Acme Corp" ^
+  --solution-version "1.0.0" ^
+  --solution-version-number 1 ^
+  --apk "C:\apps\scanner.apk" ^
+  --platform-version 31.8</pre></div>
+      <div class="code-panel" data-tab="linux"><pre>./HPK2ToolCli-linux.sh --create \
+  --output "/home/user/output" \
+  --solution-id "aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee" \
+  --solution-name "MyScanner" \
+  --solution-description "Simple scan solution" \
+  --solution-vendor "Acme Corp" \
+  --solution-version "1.0.0" \
+  --solution-version-number 1 \
+  --apk "/home/user/apps/scanner.apk" \
+  --platform-version 31.8</pre></div>
+    </div>
+
+    <h3>Example — Full Bundle with Application, Authentication &amp; Agents</h3>
+    <div class="code-container">
+      <div class="code-tabs">
+        <button class="code-tab-btn active" data-tab="ps">PowerShell</button>
+        <button class="code-tab-btn"        data-tab="linux">Linux / macOS</button>
+      </div>
+      <div class="code-panel active" data-tab="ps"><pre>.\HPK2Tool-cli.exe --create `
+  --output "C:\output" `
+  --solution-id "aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee" `
+  --solution-name "EnterpriseScanner" `
+  --solution-description "Enterprise scan-to-destination solution" `
+  --solution-vendor "Acme Corporation" `
+  --solution-version "2.1.0" `
+  --solution-version-number 3 `
+  --solution-date "20260422" `
+  --solution-email "support@acme.com" `
+  --solution-url "https://acme.com/support" `
+  --apk "C:\apps\scanner.apk" `
+  --platform-version 31.8 `
+  --default-config "C:\config\default.json" `
+  --application-id-main "11111111-1111-1111-1111-111111111111" `
+  --application-name-main "MainScanApp" `
+  --application-path-main "com.acme.scanner/com.acme.scanner.MainActivity" `
+  --application-title-main "{"en-US":""Enterprise Scanner"","ko-KR":"엔터프라이즈 스캐너"}" `
+  --application-description-main "{"en-US":""Scan to email, folder and cloud destinations""}" `
+  --application-icon-main "C:\apps\icon.png" `
+  --authentication-id "22222222-2222-2222-2222-222222222222" `
+  --authentication-name "AuthAgent" `
+  --authentication-title "{"en-US":"Authentication"}" `
+  --authentication-description "{"en-US":""HP.io authentication agent""}" `
+  --authentication-path "com.acme.scanner/com.acme.scanner.AuthActivity" `
+  --authentication-pre-prompt `
+  --scan-agent `
+  --copy-agent `
+  --accessory-1 "OWNED,0x04F9,0x0027" `
+  --build-hpk "EnterpriseScanner.hpk"</pre></div>
+      <div class="code-panel" data-tab="linux"><pre>./HPK2ToolCli-linux.sh --create \
+  --output "/home/user/output" \
+  --solution-id "aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee" \
+  --solution-name "EnterpriseScanner" \
+  --solution-description "Enterprise scan-to-destination solution" \
+  --solution-vendor "Acme Corporation" \
+  --solution-version "2.1.0" \
+  --solution-version-number 3 \
+  --solution-date "20260422" \
+  --solution-email "support@acme.com" \
+  --solution-url "https://acme.com/support" \
+  --apk "/home/user/apps/scanner.apk" \
+  --platform-version 31.8 \
+  --default-config "/home/user/config/default.json" \
+  --application-id-main "11111111-1111-1111-1111-111111111111" \
+  --application-name-main "MainScanApp" \
+  --application-path-main "com.acme.scanner/com.acme.scanner.MainActivity" \
+  --application-title-main "{"en-US":""Enterprise Scanner"","ko-KR":"엔터프라이즈 스캐너"}" \
+  --application-description-main "{"en-US":""Scan to email, folder and cloud destinations""}" \
+  --application-icon-main "/home/user/apps/icon.png" \
+  --authentication-id "22222222-2222-2222-2222-222222222222" \
+  --authentication-name "AuthAgent" \
+  --authentication-title "{"en-US":"Authentication"}" \
+  --authentication-description "{"en-US":""HP.io authentication agent""}" \
+  --authentication-path "com.acme.scanner/com.acme.scanner.AuthActivity" \
+  --authentication-pre-prompt \
+  --scan-agent \
+  --copy-agent \
+  --accessory-1 "OWNED,0x04F9,0x0027" \
+  --build-hpk "EnterpriseScanner.hpk"</pre></div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- ══════════════════════════════════════════════════════════
+         COMMAND: --json
+    ══════════════════════════════════════════════════════════════ -->
+    <h2 id="json"><code>--json</code> — Build from JSON Manifest</h2>
+    <p>
+      Builds a solution bundle from an APK and a pre-written JSON manifest file, instead of
+      individual CLI options. Useful for repeatable builds and CI pipelines.
+    </p>
+    <div class="cmd-syntax">HPK2Tool-cli.exe --json --output &lt;dir&gt; --apk &lt;file.apk&gt; --manifest &lt;manifest.json&gt;</div>
+
+    <div class="table-wrap"><table>
+      <thead><tr><th>Option</th><th>Req</th><th>Description</th></tr></thead>
+      <tbody>
+        <tr><td><code>--output</code></td><td><span class="req">Required</span></td><td>Output directory.</td></tr>
+        <tr><td><code>--apk</code></td><td><span class="req">Required</span></td><td>Path to the solution <code>.apk</code> file.</td></tr>
+        <tr><td><code>--manifest</code></td><td><span class="req">Required</span></td><td>Path to the JSON manifest file describing the solution.</td></tr>
+        <tr><td><code>--default-config</code></td><td><span class="opt">Optional</span></td><td>Path to a default configuration JSON file to embed.</td></tr>
+      </tbody>
+    </table></div>
+
+    <h3>Example</h3>
+    <div class="code-container">
+      <div class="code-tabs">
+        <button class="code-tab-btn active" data-tab="ps">PowerShell</button>
+        <button class="code-tab-btn"        data-tab="linux">Linux / macOS</button>
+      </div>
+      <div class="code-panel active" data-tab="ps"><pre>.\HPK2Tool-cli.exe --json `
+  --output "C:\output" `
+  --apk "C:\apps\scanner.apk" `
+  --manifest "C:\manifest\solution.json"</pre></div>
+      <div class="code-panel" data-tab="linux"><pre>./HPK2ToolCli-linux.sh --json \
+  --output "/home/user/output" \
+  --apk "/home/user/apps/scanner.apk" \
+  --manifest "/home/user/manifest/solution.json"</pre></div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- ══════════════════════════════════════════════════════════
+         COMMAND: --install
+    ══════════════════════════════════════════════════════════════ -->
+    <h2 id="install"><code>--install</code> — Install Solution on Device</h2>
+    <p>Installs a <code>.bdl</code> or <code>.hpk2</code> bundle onto an HP Workpath device over the network.</p>
+    <div class="cmd-syntax">HPK2Tool-cli.exe --install --install-file &lt;bundle&gt; --host &lt;ip&gt; [--password &lt;pwd&gt;]</div>
+
+    <div class="table-wrap"><table>
+      <thead><tr><th>Option</th><th>Req</th><th>Description</th></tr></thead>
+      <tbody>
+        <tr><td><code>--install-file</code></td><td><span class="req">Required</span></td><td>Path to the solution bundle (<code>.bdl</code> or <code>.hpk2</code>).</td></tr>
+        <tr><td><code>--host</code></td><td><span class="req">Required</span></td><td>Device IP address.</td></tr>
+        <tr><td><code>--password</code></td><td><span class="opt">Optional</span></td><td>Device admin password. Omit if no password is set.</td></tr>
+      </tbody>
+    </table></div>
+
+    <h3>Example</h3>
+    <div class="code-container">
+      <div class="code-tabs">
+        <button class="code-tab-btn active" data-tab="ps">PowerShell</button>
+        <button class="code-tab-btn"        data-tab="linux">Linux / macOS</button>
+      </div>
+      <div class="code-panel active" data-tab="ps"><pre>.\HPK2Tool-cli.exe --install `
+  --install-file "C:\output\MyScanner.bdl" `
+  --host "192.168.1.100" `
+  --password "admin1234"</pre></div>
+      <div class="code-panel" data-tab="linux"><pre>./HPK2ToolCli-linux.sh --install \
+  --install-file "/home/user/output/MyScanner.bdl" \
+  --host "192.168.1.100" \
+  --password "admin1234"</pre></div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- ══════════════════════════════════════════════════════════
+         COMMAND: --uninstall
+    ══════════════════════════════════════════════════════════════ -->
+    <h2 id="uninstall"><code>--uninstall</code> — Uninstall Solution from Device</h2>
+    <p>Removes an installed solution from an HP Workpath device.</p>
+    <div class="cmd-syntax">HPK2Tool-cli.exe --uninstall --solution-id &lt;uuid&gt; --host &lt;ip&gt; [--password &lt;pwd&gt;]</div>
+
+    <div class="table-wrap"><table>
+      <thead><tr><th>Option</th><th>Req</th><th>Description</th></tr></thead>
+      <tbody>
+        <tr><td><code>--solution-id</code></td><td><span class="req">Required</span></td><td>UUID of the solution to uninstall.</td></tr>
+        <tr><td><code>--host</code></td><td><span class="req">Required</span></td><td>Device IP address.</td></tr>
+        <tr><td><code>--password</code></td><td><span class="opt">Optional</span></td><td>Device admin password.</td></tr>
+      </tbody>
+    </table></div>
+
+    <h3>Example</h3>
+    <div class="code-container">
+      <div class="code-tabs">
+        <button class="code-tab-btn active" data-tab="ps">PowerShell</button>
+        <button class="code-tab-btn"        data-tab="linux">Linux / macOS</button>
+      </div>
+      <div class="code-panel active" data-tab="ps"><pre>.\HPK2Tool-cli.exe --uninstall `
+  --solution-id "aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee" `
+  --host "192.168.1.100" `
+  --password "admin1234"</pre></div>
+      <div class="code-panel" data-tab="linux"><pre>./HPK2ToolCli-linux.sh --uninstall \
+  --solution-id "aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee" \
+  --host "192.168.1.100" \
+  --password "admin1234"</pre></div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- ══════════════════════════════════════════════════════════
+         COMMAND: --solution-list
+    ══════════════════════════════════════════════════════════════ -->
+    <h2 id="solution-list"><code>--solution-list</code> — List Installed Solutions</h2>
+    <p>Retrieves a list of all solutions currently installed on the target device.</p>
+    <div class="cmd-syntax">HPK2Tool-cli.exe --solution-list --host &lt;ip&gt; [--password &lt;pwd&gt;]</div>
+
+    <div class="table-wrap"><table>
+      <thead><tr><th>Option</th><th>Req</th><th>Description</th></tr></thead>
+      <tbody>
+        <tr><td><code>--host</code></td><td><span class="req">Required</span></td><td>Device IP address.</td></tr>
+        <tr><td><code>--password</code></td><td><span class="opt">Optional</span></td><td>Device admin password.</td></tr>
+      </tbody>
+    </table></div>
+
+    <h3>Example</h3>
+    <div class="code-container">
+      <div class="code-tabs">
+        <button class="code-tab-btn active" data-tab="ps">PowerShell</button>
+        <button class="code-tab-btn"        data-tab="linux">Linux / macOS</button>
+      </div>
+      <div class="code-panel active" data-tab="ps"><pre>.\HPK2Tool-cli.exe --solution-list `
+  --host "192.168.1.100" `
+  --password "admin1234"</pre></div>
+      <div class="code-panel" data-tab="linux"><pre>./HPK2ToolCli-linux.sh --solution-list \
+  --host "192.168.1.100" \
+  --password "admin1234"</pre></div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- ══════════════════════════════════════════════════════════
+         COMMAND: --solution-detail
+    ══════════════════════════════════════════════════════════════ -->
+    <h2 id="solution-detail"><code>--solution-detail</code> — Get Solution Details</h2>
+    <p>Retrieves detailed metadata for a specific installed solution.</p>
+    <div class="cmd-syntax">HPK2Tool-cli.exe --solution-detail --solution-id &lt;uuid&gt; --host &lt;ip&gt; [--password &lt;pwd&gt;]</div>
+
+    <div class="table-wrap"><table>
+      <thead><tr><th>Option</th><th>Req</th><th>Description</th></tr></thead>
+      <tbody>
+        <tr><td><code>--solution-id</code></td><td><span class="req">Required</span></td><td>UUID of the solution to inspect.</td></tr>
+        <tr><td><code>--host</code></td><td><span class="req">Required</span></td><td>Device IP address.</td></tr>
+        <tr><td><code>--password</code></td><td><span class="opt">Optional</span></td><td>Device admin password.</td></tr>
+      </tbody>
+    </table></div>
+
+    <h3>Example</h3>
+    <div class="code-container">
+      <div class="code-tabs">
+        <button class="code-tab-btn active" data-tab="ps">PowerShell</button>
+        <button class="code-tab-btn"        data-tab="linux">Linux / macOS</button>
+      </div>
+      <div class="code-panel active" data-tab="ps"><pre>.\HPK2Tool-cli.exe --solution-detail `
+  --solution-id "aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee" `
+  --host "192.168.1.100" `
+  --password "admin1234"</pre></div>
+      <div class="code-panel" data-tab="linux"><pre>./HPK2ToolCli-linux.sh --solution-detail \
+  --solution-id "aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee" \
+  --host "192.168.1.100" \
+  --password "admin1234"</pre></div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- ══════════════════════════════════════════════════════════
+         COMMAND: --config-get
+    ══════════════════════════════════════════════════════════════ -->
+    <h2 id="config-get"><code>--config-get</code> — Retrieve Configuration</h2>
+    <p>Fetches the current configuration data for an installed solution from the device.</p>
+    <div class="cmd-syntax">HPK2Tool-cli.exe --config-get --solution-id &lt;uuid&gt; --host &lt;ip&gt; [--password &lt;pwd&gt;]</div>
+
+    <div class="table-wrap"><table>
+      <thead><tr><th>Option</th><th>Req</th><th>Description</th></tr></thead>
+      <tbody>
+        <tr><td><code>--solution-id</code></td><td><span class="req">Required</span></td><td>UUID of the target solution.</td></tr>
+        <tr><td><code>--host</code></td><td><span class="req">Required</span></td><td>Device IP address.</td></tr>
+        <tr><td><code>--password</code></td><td><span class="opt">Optional</span></td><td>Device admin password.</td></tr>
+      </tbody>
+    </table></div>
+
+    <h3>Example</h3>
+    <div class="code-container">
+      <div class="code-tabs">
+        <button class="code-tab-btn active" data-tab="ps">PowerShell</button>
+        <button class="code-tab-btn"        data-tab="linux">Linux / macOS</button>
+      </div>
+      <div class="code-panel active" data-tab="ps"><pre>.\HPK2Tool-cli.exe --config-get `
+  --solution-id "aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee" `
+  --host "192.168.1.100" `
+  --password "admin1234"</pre></div>
+      <div class="code-panel" data-tab="linux"><pre>./HPK2ToolCli-linux.sh --config-get \
+  --solution-id "aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee" \
+  --host "192.168.1.100" \
+  --password "admin1234"</pre></div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- ══════════════════════════════════════════════════════════
+         COMMAND: --config-update
+    ══════════════════════════════════════════════════════════════ -->
+    <h2 id="config-update"><code>--config-update</code> — Update Configuration</h2>
+    <p>Pushes a new configuration JSON payload to an installed solution on the device.</p>
+    <div class="cmd-syntax">HPK2Tool-cli.exe --config-update --solution-id &lt;uuid&gt; --host &lt;ip&gt; --config-data &lt;json&gt; [--password &lt;pwd&gt;]</div>
+
+    <div class="table-wrap"><table>
+      <thead><tr><th>Option</th><th>Req</th><th>Description</th></tr></thead>
+      <tbody>
+        <tr><td><code>--solution-id</code></td><td><span class="req">Required</span></td><td>UUID of the target solution.</td></tr>
+        <tr><td><code>--host</code></td><td><span class="req">Required</span></td><td>Device IP address.</td></tr>
+        <tr><td><code>--config-data</code></td><td><span class="req">Required</span></td><td>Configuration payload as a JSON string (e.g. <code>{"key":"value"}</code>).</td></tr>
+        <tr><td><code>--password</code></td><td><span class="opt">Optional</span></td><td>Device admin password.</td></tr>
+      </tbody>
+    </table></div>
+
+    <h3>Example</h3>
+    <div class="code-container">
+      <div class="code-tabs">
+        <button class="code-tab-btn active" data-tab="ps">PowerShell</button>
+        <button class="code-tab-btn"        data-tab="cmd">CMD</button>
+        <button class="code-tab-btn"        data-tab="linux">Linux / macOS</button>
+      </div>
+      <div class="code-panel active" data-tab="ps"><pre>.\HPK2Tool-cli.exe --config-update `
+  --solution-id "aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee" `
+  --host "192.168.1.100" `
+  --password "admin1234" `
+  --config-data "{"scanDestination":"smb://fileserver/scans","colorMode":"grayscale"}"</pre></div>
+      <div class="code-panel" data-tab="cmd"><pre>HPK2Tool-cli.exe --config-update ^
+  --solution-id "aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee" ^
+  --host "192.168.1.100" ^
+  --password "admin1234" ^
+  --config-data "{\"scanDestination\":\"smb://fileserver/scans\",\"colorMode\":\"grayscale\"}"</pre></div>
+      <div class="code-panel" data-tab="linux"><pre>./HPK2ToolCli-linux.sh --config-update \
+  --solution-id "aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee" \
+  --host "192.168.1.100" \
+  --password "admin1234" \
+  --config-data "{"scanDestination":"smb://fileserver/scans","colorMode":"grayscale"}"</pre></div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- ══════════════════════════════════════════════════════════
+         COMMAND: --attestation-update
+    ══════════════════════════════════════════════════════════════ -->
+    <h2 id="attestation-update"><code>--attestation-update</code> — Update Attestation</h2>
+    <p>
+      Updates the HP.io attestation credentials stored on the device for an installed solution.
+      Attestation data is obtained from the HP.io developer portal.
+    </p>
+    <div class="cmd-syntax">HPK2Tool-cli.exe --attestation-update --solution-id &lt;uuid&gt; --host &lt;ip&gt; --password &lt;pwd&gt; --username &lt;user&gt; --ldbkey &lt;key&gt; --attestation-data &lt;json&gt;</div>
+
+    <div class="table-wrap"><table>
+      <thead><tr><th>Option</th><th>Req</th><th>Description</th></tr></thead>
+      <tbody>
+        <tr><td><code>--solution-id</code></td><td><span class="req">Required</span></td><td>UUID of the target solution.</td></tr>
+        <tr><td><code>--host</code></td><td><span class="req">Required</span></td><td>Device IP address.</td></tr>
+        <tr><td><code>--password</code></td><td><span class="req">Required</span></td><td>Device admin password.</td></tr>
+        <tr><td><code>--username</code></td><td><span class="req">Required</span></td><td>HP.io portal username (email).</td></tr>
+        <tr><td><code>--ldbkey</code></td><td><span class="req">Required</span></td><td>LDB service key from the HP.io portal.</td></tr>
+        <tr><td><code>--attestation-data</code></td><td><span class="req">Required</span></td><td>Attestation JSON: <code>{"client_id":"…","client_secret":"…"}</code>.</td></tr>
+        <tr><td><code>--cmdloc</code></td><td><span class="opt">Optional</span></td><td>Path to an external attestation command file (overrides built-in command).</td></tr>
+      </tbody>
+    </table></div>
+
+    <h3>Example</h3>
+    <div class="code-container">
+      <div class="code-tabs">
+        <button class="code-tab-btn active" data-tab="ps">PowerShell</button>
+        <button class="code-tab-btn"        data-tab="linux">Linux / macOS</button>
+      </div>
+      <div class="code-panel active" data-tab="ps"><pre>.\HPK2Tool-cli.exe --attestation-update `
+  --solution-id "aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee" `
+  --host "192.168.1.100" `
+  --password "admin1234" `
+  --username "developer@acme.com" `
+  --ldbkey "ldb-service-key-string" `
+  --attestation-data "{"client_id":"my-client-id","client_secret":"my-client-secret"}"</pre></div>
+      <div class="code-panel" data-tab="linux"><pre>./HPK2ToolCli-linux.sh --attestation-update \
+  --solution-id "aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee" \
+  --host "192.168.1.100" \
+  --password "admin1234" \
+  --username "developer@acme.com" \
+  --ldbkey "ldb-service-key-string" \
+  --attestation-data "{"client_id":"my-client-id","client_secret":"my-client-secret"}"</pre></div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- ══════════════════════════════════════════════════════════
+         COMMAND: --help
+    ══════════════════════════════════════════════════════════════ -->
+    <h2 id="help"><code>--help</code> — Print Help</h2>
+    <p>Prints all available commands and options to the console.</p>
+    <div class="code-container">
+      <div class="code-tabs">
+        <button class="code-tab-btn active" data-tab="ps">PowerShell</button>
+        <button class="code-tab-btn"        data-tab="linux">Linux / macOS</button>
+      </div>
+      <div class="code-panel active" data-tab="ps"><pre>.\HPK2Tool-cli.exe --help</pre></div>
+      <div class="code-panel" data-tab="linux"><pre>./HPK2ToolCli-linux.sh --help</pre></div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- ─── PLATFORM VERSIONS ──────────────────────────────────── -->
+    <h2 id="platform-versions">Platform Version Reference</h2>
+    <p>
+      Use the <code>--platform-version</code> value from the <strong>Version</strong> column below.
+      Each platform version links to a specific HPK bundle format version.
+    </p>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Version</th><th>HPK Format</th><th>XSD</th><th>Notes</th></tr></thead>
+      <tbody>
+        <tr><td><code>19.3</code></td><td>v2.4 (HPK_1_3)</td><td>hpk_2.4.xsd</td><td></td></tr>
+        <tr><td><code>19.4</code></td><td>v2.4 (HPK_1_3)</td><td>hpk_2.4.xsd</td><td></td></tr>
+        <tr><td><code>26.4</code></td><td>v2.4 (HPK_1_3)</td><td>hpk_2.4.xsd</td><td></td></tr>
+        <tr><td><code>29.4</code></td><td>v2.4 (HPK_1_3)</td><td>hpk_2.4.xsd</td><td></td></tr>
+        <tr><td><code>29.5</code></td><td>v2.5 (HPK_1_4)</td><td>hpk_2.5.xsd</td><td></td></tr>
+        <tr><td><code>29.6</code></td><td>v2.5 (HPK_1_4)</td><td>hpk_2.5.xsd</td><td></td></tr>
+        <tr><td><code>29.7</code></td><td>v2.5 (HPK_1_4)</td><td>hpk_2.5.xsd</td><td></td></tr>
+        <tr><td><code>31.7</code></td><td>v2.5 (HPK_1_4)</td><td>hpk_2.5.xsd</td><td></td></tr>
+        <tr><td><code>31.8</code></td><td>v2.5 (HPK_1_4)</td><td>hpk_2.5.xsd</td><td></td></tr>
+        <tr><td><code>31.9</code></td><td>v2.6 (HPK_1_5)</td><td>hpk_2.6.xsd</td><td>✅ <strong>Latest Stable</strong></tr>
+      </tbody>
+    </table></div>
+
+    <hr class="divider">
+
+    <!-- ─── LOCALIZATION FORMAT ────────────────────────────────── -->
+    <h2 id="localization-format">Localization JSON Format</h2>
+    <p>
+      Options such as <code>--application-title-main</code>, <code>--authentication-title</code>,
+      and <code>--webservice-title</code> accept a JSON object mapping IETF language tags to
+      localized strings.
+    </p>
+<pre class="standalone">{
+  "en-US": "Scan to Email",
+  "ko-KR": "이메일로 스캔",
+  "fr-FR": "Numériser vers E-mail",
+  "de-DE": "An E-Mail scannen",
+  "ja-JP": "メールにスキャン",
+  "zh-CN": "扫描至电子邮件"
+}</pre>
+    <div class="callout tip">
+      <span class="callout-icon">💡</span>
+      <div class="callout-body">
+        <strong>Minimum Requirement</strong>
+        At least one locale entry is required. <code>en-US</code> is used as the fallback locale
+        when the device locale is not present in the JSON.
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- ─── ACCESSORY FORMAT ───────────────────────────────────── -->
+    <h2 id="accessory-format">USB Accessory Format</h2>
+    <p>
+      Each <code>--accessory-N</code> value is a comma-separated string:
+    </p>
+    <div class="cmd-syntax">type,vendor-id,product-id[,serial-number]</div>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Field</th><th>Values</th><th>Description</th></tr></thead>
+      <tbody>
+        <tr><td><code>type</code></td><td><code>OWNED</code> or <code>SHARED</code></td><td><code>OWNED</code> — exclusive access; <code>SHARED</code> — shared with other solutions.</td></tr>
+        <tr><td><code>vendor-id</code></td><td>Hex (e.g. <code>0x04F9</code>)</td><td>USB Vendor ID.</td></tr>
+        <tr><td><code>product-id</code></td><td>Hex (e.g. <code>0x0027</code>)</td><td>USB Product ID.</td></tr>
+        <tr><td><code>serial-number</code></td><td>String or <code>NULL</code></td><td>Optional. Match a specific device by serial number.</td></tr>
+      </tbody>
+    </table></div>
+<pre class="standalone"># Without serial number
+--accessory-1 "OWNED,0x04F9,0x0027"
+
+# With serial number
+--accessory-2 "SHARED,0x04F9,0x0027,SN12345678"
+
+# Explicitly null serial number
+--accessory-3 "OWNED,0x04F9,0x0027,NULL"</pre>
+
+    <hr class="divider">
+
+    <!-- ─── WEB SERVICE FORMAT ────────────────────────────────── -->
+    <h2 id="webservice-format">Web Service Endpoint Format</h2>
+    <p>
+      The <code>--webservice-endpoint</code> value uses a comma-separated format.
+      Multiple endpoints are separated by a colon (<code>:</code>).
+    </p>
+    <div class="cmd-syntax">method,category,absolutePath,authType[:method,category,absolutePath,authType …]</div>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Field</th><th>Values</th><th>Description</th></tr></thead>
+      <tbody>
+        <tr><td><code>method</code></td><td><code>GET</code>, <code>POST</code>, <code>PUT</code>, <code>DELETE</code></td><td>HTTP method.</td></tr>
+        <tr><td><code>category</code></td><td>String</td><td>Endpoint category (e.g. <code>printing</code>, <code>scanning</code>).</td></tr>
+        <tr><td><code>absolutePath</code></td><td>String</td><td>Absolute URL path (e.g. <code>/api/v1/scan/jobs</code>).</td></tr>
+        <tr><td><code>authType</code></td><td><code>NONE</code>, <code>X_AUTH</code>, <code>ADMIN</code></td><td>Authentication type required for this endpoint.</td></tr>
+      </tbody>
+    </table></div>
+<pre class="standalone"># Single endpoint
+--webservice-endpoint "GET,scanning,/api/v1/scan/status,NONE"
+
+# Multiple endpoints (colon-separated)
+--webservice-endpoint "GET,scanning,/api/v1/scan/status,NONE:POST,scanning,/api/v1/scan/jobs,X_AUTH"</pre>
+
+    <hr class="divider">
+
+    <!-- ─── END-TO-END SCENARIOS ──────────────────────────────── -->
+    <h2 id="scenarios">End-to-End Scenarios</h2>
+
+    <h3>Scenario 1 — Simple Scanner App</h3>
+    <p>
+      A straightforward workflow: build a minimal bundle, install it, then verify with a solution list.
+    </p>
+
+    <h4>Step 1 — Build the bundle</h4>
+    <div class="code-container">
+      <div class="code-tabs">
+        <button class="code-tab-btn active" data-tab="ps">PowerShell</button>
+        <button class="code-tab-btn"        data-tab="linux">Linux</button>
+      </div>
+      <div class="code-panel active" data-tab="ps"><pre>.\HPK2Tool-cli.exe --create `
+  --output "C:\output" `
+  --solution-id "aaaaaaaa-0000-0000-0000-eeeeeeeeeeee" `
+  --solution-name "SimpleScanner" `
+  --solution-description "Scan to network folder" `
+  --solution-vendor "Acme Corp" `
+  --solution-version "1.0.0" `
+  --solution-version-number 1 `
+  --apk "C:\apps\scanner.apk" `
+  --platform-version 31.8 `
+  --scan-agent</pre></div>
+      <div class="code-panel" data-tab="linux"><pre>./HPK2ToolCli-linux.sh --create \
+  --output "/home/user/output" \
+  --solution-id "aaaaaaaa-0000-0000-0000-eeeeeeeeeeee" \
+  --solution-name "SimpleScanner" \
+  --solution-description "Scan to network folder" \
+  --solution-vendor "Acme Corp" \
+  --solution-version "1.0.0" \
+  --solution-version-number 1 \
+  --apk "/home/user/apps/scanner.apk" \
+  --platform-version 31.8 \
+  --scan-agent</pre></div>
+    </div>
+
+    <h4>Step 2 — Install on the device</h4>
+    <div class="code-container">
+      <div class="code-tabs">
+        <button class="code-tab-btn active" data-tab="ps">PowerShell</button>
+        <button class="code-tab-btn"        data-tab="linux">Linux</button>
+      </div>
+      <div class="code-panel active" data-tab="ps"><pre>.\HPK2Tool-cli.exe --install `
+  --install-file "C:\output\SimpleScanner.bdl" `
+  --host "192.168.1.100" `
+  --password "admin1234"</pre></div>
+      <div class="code-panel" data-tab="linux"><pre>./HPK2ToolCli-linux.sh --install \
+  --install-file "/home/user/output/SimpleScanner.bdl" \
+  --host "192.168.1.100" \
+  --password "admin1234"</pre></div>
+    </div>
+
+    <h4>Step 3 — Verify installation</h4>
+    <div class="code-container">
+      <div class="code-tabs">
+        <button class="code-tab-btn active" data-tab="ps">PowerShell</button>
+        <button class="code-tab-btn"        data-tab="linux">Linux</button>
+      </div>
+      <div class="code-panel active" data-tab="ps"><pre>.\HPK2Tool-cli.exe --solution-list `
+  --host "192.168.1.100" `
+  --password "admin1234"</pre></div>
+      <div class="code-panel" data-tab="linux"><pre>./HPK2ToolCli-linux.sh --solution-list \
+  --host "192.168.1.100" \
+  --password "admin1234"</pre></div>
+    </div>
+
+    <h3>Scenario 2 — Enterprise Suite</h3>
+    <p>
+      A multi-app solution with authentication agent, scan agent, and web service.
+      After deployment, push a production configuration and update attestation credentials.
+    </p>
+
+    <h4>Step 1 — Build the bundle</h4>
+    <div class="code-container">
+      <div class="code-tabs">
+        <button class="code-tab-btn active" data-tab="ps">PowerShell</button>
+      </div>
+      <div class="code-panel active" data-tab="ps"><pre>.\HPK2Tool-cli.exe --create `
+  --output "C:\release" `
+  --solution-id "bbbbbbbb-1111-2222-3333-cccccccccccc" `
+  --solution-name "EnterpriseSuite" `
+  --solution-description "Enterprise scan, print and authentication suite" `
+  --solution-vendor "Acme Corporation" `
+  --solution-version "3.0.0" `
+  --solution-version-number 5 `
+  --apk "C:\apps\enterprise.apk" `
+  --platform-version 31.8 `
+  --application-id-main "11111111-aaaa-bbbb-cccc-111111111111" `
+  --application-name-main "ScanApp" `
+  --application-path-main "com.acme.enterprise/com.acme.enterprise.ScanActivity" `
+  --application-title-main "{"en-US":""Enterprise Scan"","ko-KR":"엔터프라이즈 스캔"}" `
+  --application-id-1 "22222222-aaaa-bbbb-cccc-222222222222" `
+  --application-name-1 "PrintApp" `
+  --application-path-1 "com.acme.enterprise/com.acme.enterprise.PrintActivity" `
+  --application-title-1 "{"en-US":""Enterprise Print""}" `
+  --authentication-id "33333333-aaaa-bbbb-cccc-333333333333" `
+  --authentication-name "CorpAuth" `
+  --authentication-title "{"en-US":""Corporate Authentication""}" `
+  --authentication-description "{"en-US":""Single sign-on via HP.io""}" `
+  --authentication-path "com.acme.enterprise/com.acme.enterprise.AuthActivity" `
+  --authentication-pre-prompt `
+  --scan-agent `
+  --print-agent `
+  --webservice `
+  --webservice-title "{"en-US":""Enterprise API""}" `
+  --webservice-description "{"en-US":""REST API for enterprise integrations""}" `
+  --webservice-endpoint "GET,scanning,/api/v1/scan/status,NONE:POST,scanning,/api/v1/scan/jobs,X_AUTH"</pre></div>
+    </div>
+
+    <h4>Step 2 — Install</h4>
+    <div class="code-container">
+      <div class="code-tabs">
+        <button class="code-tab-btn active" data-tab="ps">PowerShell</button>
+      </div>
+      <div class="code-panel active" data-tab="ps"><pre>.\HPK2Tool-cli.exe --install `
+  --install-file "C:\release\EnterpriseSuite.bdl" `
+  --host "192.168.1.100" `
+  --password "admin1234"</pre></div>
+    </div>
+
+    <h4>Step 3 — Push production configuration</h4>
+    <div class="code-container">
+      <div class="code-tabs">
+        <button class="code-tab-btn active" data-tab="ps">PowerShell</button>
+      </div>
+      <div class="code-panel active" data-tab="ps"><pre>.\HPK2Tool-cli.exe --config-update `
+  --solution-id "bbbbbbbb-1111-2222-3333-cccccccccccc" `
+  --host "192.168.1.100" `
+  --password "admin1234" `
+  --config-data "{"smtpServer":"mail.acme.com","smtpPort":587,"defaultFrom":"printer@acme.com"}"</pre></div>
+    </div>
+
+    <h4>Step 4 — Update attestation credentials</h4>
+    <div class="code-container">
+      <div class="code-tabs">
+        <button class="code-tab-btn active" data-tab="ps">PowerShell</button>
+      </div>
+      <div class="code-panel active" data-tab="ps"><pre>.\HPK2Tool-cli.exe --attestation-update `
+  --solution-id "bbbbbbbb-1111-2222-3333-cccccccccccc" `
+  --host "192.168.1.100" `
+  --password "admin1234" `
+  --username "developer@acme.com" `
+  --ldbkey "ldb-prod-service-key" `
+  --attestation-data "{"client_id":"prod-client-id","client_secret":"prod-client-secret"}"</pre></div>
+    </div>
+
+    <div class="content-footer">
+      <span>HPK2Tool v2.0-beta10.0 · Build 20260422 · HP Inc.</span>
+      <span>
+        <a href="index.html">Home</a> ·
+        <a href="gui.html">GUI Guide →</a>
+      </span>
+    </div>
+
+  </main>
+</div>
+
+<script>
+  document.addEventListener('click', function (e) {
+    const codeBtn = e.target.closest('.code-tab-btn');
+    if (codeBtn) {
+      const c = codeBtn.closest('.code-container');
+      const t = codeBtn.dataset.tab;
+      c.querySelectorAll('.code-tab-btn').forEach(b => b.classList.toggle('active', b.dataset.tab === t));
+      c.querySelectorAll('.code-panel').forEach(p => p.classList.toggle('active', p.dataset.tab === t));
+    }
+  });
+</script>
+</body>
+</html>

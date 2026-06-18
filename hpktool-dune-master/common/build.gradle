@@ -1,0 +1,14 @@
+dependencies {
+//    oxpd2lib from oxpd-e2 library
+    api files("libs/oxpd2lib.jar")
+//    apktool lib from workpath-dune/apktool forked opensource build result
+    implementation files("libs/apktool-lib-2.7.0.jar")
+    api("com.fasterxml.jackson.core:jackson-databind:2.14.1")
+    implementation("org.apache.httpcomponents:httpmime:4.5.14")
+    implementation("org.simpleframework:simple-xml:2.7.1") {
+        exclude group: 'stax'
+        exclude module: 'stax-api'
+        exclude group: 'xpp3'
+    }
+    runtimeOnly("javax.mail:mail:1.4.7")
+}

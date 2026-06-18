@@ -1,0 +1,126 @@
+plugins {
+    id 'application'
+    id 'com.github.johnrengelman.shadow' version '8.1.1'
+    id "org.panteleyev.jpackageplugin" version "1.5.2"
+}
+
+dependencies {
+    implementation(project(":common"))
+    implementation 'net.sf.jopt-simple:jopt-simple:5.0.4'
+}
+
+application {
+    mainClass = 'com.hp.workpath.pkgmgt.util.cli.HpkToolKt'
+}
+
+shadowJar {
+    archiveBaseName.set('hpktool')
+    archiveVersion.set('')
+    archiveFileName.set('hpktool.cli.jar')
+}
+
+tasks.register('makeFilesWriteable', Exec) {
+    if (System.getProperty("os.name").startsWith("Windows")) {
+        doFirst {
+            println "${layout.projectDirectory}"
+        }
+        workingDir "${layout.projectDirectory}"
+        commandLine 'attrib', '-r', '/s', '/d', 'build/*'
+        ignoreExitValue = true
+    } else {
+        commandLine 'chmod', '-R', '777', "${layout.buildDirectory.get().asFile}"
+        ignoreExitValue = true
+    }
+}
+
+clean {
+    dependsOn(makeFilesWriteable)
+}
+
+tasks.register('cleanJpackage', Exec) {
+    dependsOn(makeFilesWriteable)
+    description = "Clean jpackage output"
+    if (System.getProperty('os.name').toLowerCase().contains('win')) {
+        workingDir = "${layout.projectDirectory}"
+        commandLine 'rm', '-r', 'build/HPK2Tool_win'
+        ignoreExitValue = true
+    } else if (System.getProperty('os.name').toLowerCase().contains('linux')) {
+        commandLine "rm", "-r", "${layout.buildDirectory.get().asFile}/HPK2Tool_linux"
+        ignoreExitValue = true
+    }
+}
+
+jpackage {
+    dependsOn(cleanJpackage)
+    dependsOn(shadowJar)
+    appName = 'HPK2Tool-cli'
+    vendor = "HP Development Company, L.P."
+    appVersion = "0.0.0"
+    copyright = "(c) 2024 HP Development Company, L.P."
+    mainJar = 'hpktool.cli.jar'
+    input = "${layout.buildDirectory.get().asFile}/libs"
+    addModules = ['java.base','java.xml','java.logging','java.desktop','java.datatransfer','java.scripting','java.sql','java.compiler','java.net.http','jdk.jfr','java.security.sasl','java.security.jgss','java.naming','jdk.unsupported','jdk.crypto.ec']
+    javaOptions = ["--add-opens", "java.base/java.util=ALL-UNNAMED"]
+    type = 'APP_IMAGE'
+    icon = "${rootProject.projectDir}/common/src/main/resources/images/hp.ico"
+    windows {
+        destination = "${layout.buildDirectory.get().asFile}/HPK2Tool_win"
+        winConsole = true
+    }
+    linux {
+        destination = "${layout.buildDirectory.get().asFile}/HPK2Tool_linux"
+    }
+}
+
+tasks.register('copyWindowsSpu', Copy) {
+    dependsOn(jpackage)
+    from "${rootProject.projectDir}/common/spu_windows"
+    if (System.getProperty('os.name').toLowerCase().contains('win')) {
+        into "${layout.buildDirectory.get().asFile}/HPK2Tool_win/HPK2Tool-cli/common/spu_windows"
+    } else if (System.getProperty('os.name').toLowerCase().contains('linux')) {
+        into "${layout.buildDirectory.get().asFile}/HPK2Tool_linux/HPK2Tool-cli/common/spu_windows"
+    }
+    include "*"
+}
+
+tasks.register('copyLicense', Copy) {
+    dependsOn(copyWindowsSpu)
+    from "${rootProject.projectDir}/common/src/main/resources"
+    if (System.getProperty('os.name').toLowerCase().contains('win')) {
+        into "${layout.buildDirectory.get().asFile}/HPK2Tool_win/HPK2Tool-cli"
+    } else if (System.getProperty('os.name').toLowerCase().contains('linux')) {
+        into "${layout.buildDirectory.get().asFile}/HPK2Tool_linux/HPK2Tool-cli"
+    }
+    include "LICENSE", "readme.txt"
+}
+
+tasks.register('jpackageWinCliZip', Zip) {
+    dependsOn(copyLicense)
+    from "${layout.buildDirectory.get().asFile}/HPK2Tool_win"
+    include '**'
+    archiveFileName = "HPK2ToolCli-win.zip"
+    destinationDirectory = file("${rootProject.layout.buildDirectory.get().asFile}")
+//    destinationDirectory = file("${layout.buildDirectory.get().asFile}")
+}
+
+tasks.register('jpackageLinuxCopy', Copy) {
+    dependsOn(jpackage)
+    from "${rootProject.projectDir}/common"
+    into "${layout.buildDirectory.get().asFile}/HPK2Tool_linux/HPK2Tool-cli"
+    include 'HPK2ToolCli-linux.sh'
+}
+
+tasks.register('jpackageLinuxCopy2', Exec) {
+    dependsOn(jpackageLinuxCopy)
+    commandLine "chmod", "+x", "${layout.buildDirectory.get().asFile}/HPK2Tool_linux/HPK2Tool-cli/HPK2ToolCli-linux.sh"
+    ignoreExitValue = true
+}
+
+tasks.register('jpackageLinuxCliZip', Zip) {
+    dependsOn(copyLicense)
+    dependsOn(jpackageLinuxCopy2)
+    from "${layout.buildDirectory.get().asFile}/HPK2Tool_linux"
+    include '**'
+    archiveFileName = "HPK2ToolCli-linux.zip"
+    destinationDirectory = file("${rootProject.layout.buildDirectory.get().asFile}")
+}

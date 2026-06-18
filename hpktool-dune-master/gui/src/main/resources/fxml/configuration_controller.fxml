@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.hp.workpath.pkgmgt.util.gui.controllers.ConfigurationController"
+            stylesheets="@default.css">
+    <center>
+        <ScrollPane fitToWidth="true"
+                    fitToHeight="true">
+            <VBox fx:id="vbBackground" styleClass="background">
+                <VBox styleClass="vbox-components-top">
+                    <VBox styleClass="vbox-component" VBox.vgrow="ALWAYS">
+                        <VBox VBox.vgrow="ALWAYS">
+                            <HBox styleClass="hbox-line" VBox.vgrow="ALWAYS">
+                                <Label HBox.hgrow="ALWAYS" text="%label_page_desc_configuration" wrapText="true"/>
+                            </HBox>
+                        </VBox>
+                    </VBox>
+                </VBox>
+                <VBox styleClass="vbox-components" VBox.vgrow="ALWAYS">
+                    <VBox styleClass="vbox-component" VBox.vgrow="ALWAYS">
+                        <HBox styleClass="hbox-line">
+                            <Label HBox.hgrow="NEVER" text="%label_mandatory_mark" styleClass="label-mandatory"/>
+                            <Label HBox.hgrow="NEVER" text="%label_device_address" styleClass="label-name"/>
+                            <TextField fx:id="tfDeviceAddress" HBox.hgrow="ALWAYS" promptText="%hint_ip_address"/>
+                        </HBox>
+                        <HBox styleClass="hbox-line">
+                            <Label HBox.hgrow="NEVER" text="%label_mandatory_mark" styleClass="label-mandatory"/>
+                            <Label HBox.hgrow="NEVER" text="%label_device_password" styleClass="label-name"/>
+                            <PasswordField fx:id="pfDevicePassword" HBox.hgrow="ALWAYS"
+                                           promptText="%hint_admin_password"/>
+                        </HBox>
+                        <HBox styleClass="hbox-line">
+                            <Label HBox.hgrow="NEVER" text="%label_mandatory_mark" styleClass="label-mandatory"/>
+                            <Label HBox.hgrow="NEVER" text="%label_solution_id" styleClass="label-name"/>
+                            <TextField fx:id="tfSolutionId" HBox.hgrow="ALWAYS" promptText="%hint_uuid"/>
+                        </HBox>
+                        <HBox styleClass="hbox-line" VBox.vgrow="ALWAYS">
+                            <Label HBox.hgrow="NEVER" text="%label_mandatory_mark" styleClass="label-mandatory"/>
+                            <Label HBox.hgrow="NEVER" text="%label_configuration_data" styleClass="label-name"/>
+                            <TextArea fx:id="taConfigData" HBox.hgrow="ALWAYS" promptText="%hint_config_data"/>
+                        </HBox>
+                    </VBox>
+                </VBox>
+            </VBox>
+        </ScrollPane>
+    </center>
+    <bottom>
+        <VBox styleClass="vbox-footer">
+            <HBox styleClass="hbox-line">
+                <Button fx:id="btGet" mnemonicParsing="false" HBox.hgrow="NEVER" text="%btn_get"
+                        styleClass="button-main" onAction="#handleConfigurationGet"/>
+                <Button fx:id="btUpdate" mnemonicParsing="false" HBox.hgrow="NEVER" text="%btn_update"
+                        styleClass="button-main-alt" onAction="#handleConfigurationUpdate"/>
+                <ProgressIndicator fx:id="piProgress" HBox.hgrow="NEVER" visible="false" managed="false"/>
+                <Label fx:id="lbOperationResult" HBox.hgrow="ALWAYS"/>
+            </HBox>
+        </VBox>
+    </bottom>
+</BorderPane>

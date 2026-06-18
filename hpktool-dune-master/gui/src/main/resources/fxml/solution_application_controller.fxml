@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.image.ImageView?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.hp.workpath.pkgmgt.util.gui.controllers.SolutionApplicationController"
+            stylesheets="@default.css">
+    <center>
+        <VBox fx:id="vbBackground" styleClass="background">
+            <VBox styleClass="vbox-components-top">
+                <VBox styleClass="vbox-component">
+                    <HBox styleClass="hbox-line">
+                        <Label HBox.hgrow="NEVER" text="%label_mandatory_mark" styleClass="label-mandatory"/>
+                        <Label HBox.hgrow="NEVER" text="%label_application_id" styleClass="label-name"/>
+                        <TextField fx:id="tfApplicationId" HBox.hgrow="ALWAYS" promptText="%hint_uuid"/>
+                        <Button mnemonicParsing="false" HBox.hgrow="NEVER" text="%btn_generate"
+                                onAction="#handleApplicationIdGenerate"/>
+                    </HBox>
+                    <HBox styleClass="hbox-line">
+                        <Label HBox.hgrow="NEVER" text="%label_mandatory_mark" styleClass="label-mandatory"/>
+                        <Label HBox.hgrow="NEVER" text="%label_application_name" styleClass="label-name"/>
+                        <TextField fx:id="tfApplicationName" HBox.hgrow="ALWAYS" promptText="%hint_application_name"/>
+                    </HBox>
+                    <HBox styleClass="hbox-line">
+                        <Label HBox.hgrow="NEVER" text="%label_mandatory_mark" styleClass="label-mandatory"/>
+                        <Label HBox.hgrow="NEVER" text="%label_application_path" styleClass="label-name"/>
+                        <TextField fx:id="tfApplicationPath" HBox.hgrow="ALWAYS" promptText="%hint_path"/>
+                    </HBox>
+                    <HBox styleClass="hbox-line">
+                        <Label HBox.hgrow="NEVER" text="%label_mandatory_mark" styleClass="label-mandatory"/>
+                        <Label HBox.hgrow="NEVER" text="%label_application_title" styleClass="label-name"/>
+                        <TextField fx:id="tfApplicationTitle" HBox.hgrow="ALWAYS"
+                                   promptText="%hint_localized_string_en_us"/>
+                        <VBox HBox.hgrow="NEVER" styleClass="vbox-inner">
+                            <HBox styleClass="hbox-line-inner">
+                                <Button mnemonicParsing="false" HBox.hgrow="NEVER" text="%btn_clear_user_string"
+                                        styleClass="button-white" onAction="#handleApplicationTitleClear"/>
+                                <Button mnemonicParsing="false" HBox.hgrow="NEVER" text="%btn_more"
+                                        onAction="#handleApplicationTitle"/>
+                            </HBox>
+                            <Label fx:id="lbTitleStatus" styleClass="label-italic"/>
+                        </VBox>
+                    </HBox>
+                    <HBox styleClass="hbox-line">
+                        <Label HBox.hgrow="NEVER" text="%label_mandatory_mark" styleClass="label-mandatory"/>
+                        <Label HBox.hgrow="NEVER" text="%label_application_description" styleClass="label-name"/>
+                        <TextField fx:id="tfApplicationDescription" HBox.hgrow="ALWAYS"
+                                   promptText="%hint_localized_string_en_us"/>
+                        <VBox HBox.hgrow="NEVER" styleClass="vbox-inner">
+                            <HBox styleClass="hbox-line-inner">
+                                <Button mnemonicParsing="false" HBox.hgrow="NEVER" text="%btn_clear_user_string"
+                                        styleClass="button-white" onAction="#handleApplicationDescriptionClear"/>
+                                <Button mnemonicParsing="false" HBox.hgrow="NEVER" text="%btn_more"
+                                        onAction="#handleApplicationDescription"/>
+                            </HBox>
+                            <Label fx:id="lbDescriptionStatus" styleClass="label-italic"/>
+                        </VBox>
+                    </HBox>
+                    <HBox styleClass="hbox-line">
+                        <Label HBox.hgrow="NEVER" text="%label_mandatory_mark" styleClass="label-mandatory"/>
+                        <Label HBox.hgrow="NEVER" text="%label_application_icon" styleClass="label-name"/>
+                        <VBox HBox.hgrow="ALWAYS" styleClass="vbox-image">
+                            <ImageView fx:id="ivApplicationIcon" fitWidth="80.0" fitHeight="80.0" preserveRatio="true"/>
+                        </VBox>
+                        <VBox HBox.hgrow="NEVER" styleClass="vbox-inner">
+                            <HBox styleClass="hbox-line-inner">
+                                <Button mnemonicParsing="false" HBox.hgrow="NEVER" text="%btn_clear_user_icon"
+                                        styleClass="button-white" onAction="#handleApplicationIconClear"/>
+                                <Button mnemonicParsing="false" HBox.hgrow="NEVER" text="%btn_more"
+                                        onAction="#handleApplicationIcon"/>
+                            </HBox>
+                            <Label fx:id="lbIconStatus" styleClass="label-italic"/>
+                        </VBox>
+                    </HBox>
+                    <HBox fx:id="hbApplicationType" styleClass="hbox-line">
+                        <Label HBox.hgrow="NEVER" text="%label_mandatory_mark" styleClass="label-mandatory"/>
+                        <Label HBox.hgrow="NEVER" text="%label_application_type" styleClass="label-name"/>
+                        <CheckBox fx:id="cbApplicationHome" text="%checkbox_application_home"
+                                  onAction="#handleApplicationHomeCheckBox"/>
+                        <CheckBox fx:id="cbApplicationHomeDefault" text="%checkbox_home_default" disable="true"
+                                  onAction="#handleApplicationHomeDefaultCheckBox"/>
+                    </HBox>
+                    <HBox styleClass="hbox-line">
+                        <Button fx:id="btAdd" mnemonicParsing="false" HBox.hgrow="NEVER" text="%btn_add"
+                                disable="true" onAction="#handleAddApplication"/>
+                        <Button fx:id="btCancel" mnemonicParsing="false" HBox.hgrow="NEVER" text="%btn_cancel"
+                                styleClass="button-white" onAction="#handleCancelApplication"/>
+                    </HBox>
+                </VBox>
+            </VBox>
+        </VBox>
+    </center>
+</BorderPane>

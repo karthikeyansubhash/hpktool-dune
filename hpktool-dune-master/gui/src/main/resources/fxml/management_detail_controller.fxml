@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.hp.workpath.pkgmgt.util.gui.controllers.ManagementDetailController"
+            stylesheets="@default.css">
+    <center>
+        <ScrollPane fx:id="spBackground"
+                    fitToHeight="true"
+                    fitToWidth="true">
+            <VBox fx:id="vbBackground" styleClass="background">
+                <VBox styleClass="vbox-components-top">
+                    <ScrollPane styleClass="tabs">
+                        <HBox>
+                            <Button fx:id="btSolutionTab"
+                                    mnemonicParsing="false" HBox.hgrow="NEVER" text="%label_solution"
+                                    styleClass="button-tab-selected" onAction="#handleComponentButton"/>
+                            <Button fx:id="btAccessoryTab" visible="false" managed="false"
+                                    mnemonicParsing="false" HBox.hgrow="NEVER" text="%label_accessory"
+                                    styleClass="button-tab" onAction="#handleComponentButton"/>
+                            <Button fx:id="btCopyAgentTab" visible="false" managed="false"
+                                    mnemonicParsing="false" HBox.hgrow="NEVER" text="%label_copy_agent"
+                                    styleClass="button-tab" onAction="#handleComponentButton"/>
+                            <Button fx:id="btPrintAgentTab" visible="false" managed="false"
+                                    mnemonicParsing="false" HBox.hgrow="NEVER" text="%label_print_agent"
+                                    styleClass="button-tab" onAction="#handleComponentButton"/>
+                            <Button fx:id="btScanAgentTab" visible="false" managed="false"
+                                    mnemonicParsing="false" HBox.hgrow="NEVER" text="%label_scan_agent"
+                                    styleClass="button-tab" onAction="#handleComponentButton"/>
+                            <Button fx:id="btDeviceUsageTab" visible="false" managed="false"
+                                    mnemonicParsing="false" HBox.hgrow="NEVER" text="%label_device_usage"
+                                    styleClass="button-tab" onAction="#handleComponentButton"/>
+                            <Button fx:id="btStatisticsTab" visible="false" managed="false"
+                                    mnemonicParsing="false" HBox.hgrow="NEVER" text="%label_statistics"
+                                    styleClass="button-tab" onAction="#handleComponentButton"/>
+                            <Button fx:id="btSuppliesTab" visible="false" managed="false"
+                                    mnemonicParsing="false" HBox.hgrow="NEVER" text="%label_supplies"
+                                    styleClass="button-tab" onAction="#handleComponentButton"/>
+                            <Button fx:id="btWebServiceTab" visible="false" managed="false"
+                                    mnemonicParsing="false" HBox.hgrow="NEVER" text="%label_webservice"
+                                    styleClass="button-tab" onAction="#handleComponentButton"/>
+                        </HBox>
+                    </ScrollPane>
+                    <!--Solution Box-->
+                    <VBox fx:id="vbSolutionBox" styleClass="vbox-component">
+                        <!--Configuration can get with other API-->
+                        <HBox styleClass="hbox-line">
+                            <Label HBox.hgrow="NEVER" text="%label_solution_id" styleClass="label-name"/>
+                            <TextField fx:id="tfSolutionId" HBox.hgrow="ALWAYS" editable="false"/>
+                        </HBox>
+                        <HBox styleClass="hbox-line">
+                            <Label HBox.hgrow="NEVER" text="%label_solution_name" styleClass="label-name"/>
+                            <TextField fx:id="tfSolutionName" HBox.hgrow="ALWAYS" editable="false"/>
+                        </HBox>
+                        <HBox styleClass="hbox-line">
+                            <Label HBox.hgrow="NEVER" text="%label_solution_description" styleClass="label-name"/>
+                            <TextField fx:id="tfSolutionDescription" HBox.hgrow="ALWAYS" editable="false"/>
+                        </HBox>
+                        <HBox styleClass="hbox-line">
+                            <Label HBox.hgrow="NEVER" text="%label_solution_vendor" styleClass="label-name"/>
+                            <TextField fx:id="tfSolutionVendor" HBox.hgrow="ALWAYS" editable="false"/>
+                        </HBox>
+                        <HBox styleClass="hbox-line">
+                            <Label HBox.hgrow="NEVER" text="%label_solution_version" styleClass="label-name"/>
+                            <TextField fx:id="tfSolutionVersion" HBox.hgrow="ALWAYS" editable="false"/>
+                        </HBox>
+                        <HBox styleClass="hbox-line">
+                            <Label HBox.hgrow="NEVER" text="%label_solution_date" styleClass="label-name"/>
+                            <TextField fx:id="tfSolutionVersionNumber" HBox.hgrow="ALWAYS" editable="false"/>
+                        </HBox>
+                        <HBox styleClass="hbox-line">
+                            <Label HBox.hgrow="NEVER" text="%label_solution_date" styleClass="label-name"/>
+                            <TextField fx:id="tfSolutionDate" HBox.hgrow="ALWAYS" editable="false"/>
+                        </HBox>
+                        <HBox styleClass="hbox-line">
+                            <Label HBox.hgrow="NEVER" text="%label_solution_platform_version" styleClass="label-name"/>
+                            <ComboBox fx:id="cbSolutionPlatformVersion" HBox.hgrow="NEVER" editable="false"/>
+                        </HBox>
+                        <HBox styleClass="hbox-line">
+                            <Label HBox.hgrow="NEVER" text="%label_solution_email" styleClass="label-name"/>
+                            <TextField fx:id="tfSolutionEmail" HBox.hgrow="ALWAYS" editable="false"/>
+                        </HBox>
+                        <HBox styleClass="hbox-line">
+                            <Label HBox.hgrow="NEVER" text="%label_solution_phone" styleClass="label-name"/>
+                            <TextField fx:id="tfSolutionPhone" HBox.hgrow="ALWAYS" editable="false"/>
+                        </HBox>
+                        <HBox styleClass="hbox-line">
+                            <Label HBox.hgrow="NEVER" text="%label_solution_url" styleClass="label-name"/>
+                            <TextField fx:id="tfSolutionUrl" HBox.hgrow="ALWAYS" editable="false"/>
+                        </HBox>
+                        <!--application-->
+                        <VBox fx:id="vbApplicationBox" styleClass="vbox-component-inner">
+                            <HBox styleClass="hbox-line">
+                                <Label HBox.hgrow="NEVER" text="%label_applications" styleClass="label-name"/>
+                                <VBox HBox.hgrow="ALWAYS">
+                                    <HBox styleClass="hbox-line-inner">
+                                        <TableView fx:id="tvApplication" HBox.hgrow="ALWAYS">
+                                            <columnResizePolicy>
+                                                <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
+                                            </columnResizePolicy>
+                                            <placeholder>
+                                                <Label text="%label_no_application"/>
+                                            </placeholder>
+                                            <columns>
+                                                <TableColumn fx:id="tcApplicationId" text="%table_application_id"
+                                                             minWidth="100" maxWidth="300"/>
+                                                <TableColumn fx:id="tcApplicationName" text="%table_application_name"
+                                                             minWidth="60" maxWidth="300"/>
+                                                <TableColumn fx:id="tcApplicationPath" text="%table_application_path"
+                                                             minWidth="60"/>
+                                                <TableColumn fx:id="tcApplicationType" text="%table_application_type"
+                                                             minWidth="60" maxWidth="200"/>
+                                                <TableColumn fx:id="tcApplicationDetail" minWidth="30" maxWidth="30"/>
+                                            </columns>
+                                        </TableView>
+                                    </HBox>
+                                </VBox>
+                            </HBox>
+                        </VBox>
+                        <!--authentication-->
+                        <VBox fx:id="vbAuthenticationBox" styleClass="vbox-component-inner" visible="false"
+                              managed="false">
+                            <HBox styleClass="hbox-line">
+                                <Label HBox.hgrow="NEVER" text="%label_authentication_id" styleClass="label-name"/>
+                                <TextField fx:id="tfAuthenticationId" HBox.hgrow="ALWAYS" editable="false"/>
+                            </HBox>
+                            <HBox styleClass="hbox-line">
+                                <Label HBox.hgrow="NEVER" text="%label_authentication_name" styleClass="label-name"/>
+                                <TextField fx:id="tfAuthenticationName" HBox.hgrow="ALWAYS" editable="false"/>
+                            </HBox>
+                            <HBox styleClass="hbox-line">
+                                <Label HBox.hgrow="NEVER" text="%label_authentication_path" styleClass="label-name"/>
+                                <TextField fx:id="tfAuthenticationPath" HBox.hgrow="ALWAYS" editable="false"/>
+                            </HBox>
+                            <HBox styleClass="hbox-line">
+                                <Label HBox.hgrow="NEVER" text="%label_authentication_pre_prompt"
+                                       styleClass="label-name"/>
+                                <CheckBox fx:id="cbAuthenticationPrePrompt" text="%checkbox_enable" disable="true"/>
+                            </HBox>
+                            <HBox styleClass="hbox-line">
+                                <Label HBox.hgrow="NEVER" text="%label_authentication_title" styleClass="label-name"/>
+                                <TextField fx:id="tfAuthenticationTitle" HBox.hgrow="ALWAYS" editable="false"/>
+                                <Button mnemonicParsing="false" HBox.hgrow="NEVER" text="%btn_more"
+                                        onAction="#handleAuthenticationTitle"/>
+                            </HBox>
+                            <HBox styleClass="hbox-line">
+                                <Label HBox.hgrow="NEVER" text="%label_authentication_description"
+                                       styleClass="label-name"/>
+                                <TextField fx:id="tfAuthenticationDescription" HBox.hgrow="ALWAYS" editable="false"/>
+                                <Button mnemonicParsing="false" HBox.hgrow="NEVER" text="%btn_more"
+                                        onAction="#handleAuthenticationDescription"/>
+                            </HBox>
+                        </VBox>
+                    </VBox>
+                    <!--accessory-->
+                    <VBox fx:id="vbAccessoryBox" styleClass="vbox-component" visible="false" managed="false">
+                        <HBox styleClass="hbox-line">
+                            <Label HBox.hgrow="NEVER" text="%label_accessories" styleClass="label-name"/>
+                            <VBox HBox.hgrow="ALWAYS">
+                                <HBox styleClass="hbox-line-inner">
+                                    <TableView fx:id="tvAccessory" HBox.hgrow="ALWAYS">
+                                        <columnResizePolicy>
+                                            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
+                                        </columnResizePolicy>
+                                        <placeholder>
+                                            <Label text="%label_no_accessory"/>
+                                        </placeholder>
+                                        <columns>
+                                            <TableColumn fx:id="tcAccessoryType" text="%table_accessory_type"
+                                                         minWidth="60" maxWidth="150"/>
+                                            <TableColumn fx:id="tcAccessoryVendorId" text="%table_accessory_vendor_id"
+                                                         minWidth="60"/>
+                                            <TableColumn fx:id="tcAccessoryProductId" text="%table_accessory_product_id"
+                                                         minWidth="60"/>
+                                            <TableColumn fx:id="tcAccessoryDetail" minWidth="30" maxWidth="30"/>
+                                        </columns>
+                                    </TableView>
+                                </HBox>
+                            </VBox>
+                        </HBox>
+                    </VBox>
+                    <!--Copy-->
+                    <VBox fx:id="vbCopyAgentBox" styleClass="vbox-component" visible="false" managed="false">
+                        <HBox styleClass="hbox-line">
+                            <Label HBox.hgrow="NEVER" text="%label_copy_agent" styleClass="label-name"/>
+                            <CheckBox fx:id="cbEnableCopyAgent" text="%checkbox_enable" disable="true"/>
+                        </HBox>
+                    </VBox>
+                    <!--print-->
+                    <VBox fx:id="vbPrintAgentBox" styleClass="vbox-component" visible="false" managed="false">
+                        <HBox styleClass="hbox-line">
+                            <Label HBox.hgrow="NEVER" text="%label_print_agent" styleClass="label-name"/>
+                            <CheckBox fx:id="cbEnablePrintAgent" text="%checkbox_enable" disable="true"/>
+                        </HBox>
+                    </VBox>
+                    <!--scan-->
+                    <VBox fx:id="vbScanAgentBox" styleClass="vbox-component" visible="false" managed="false">
+                        <HBox styleClass="hbox-line">
+                            <Label HBox.hgrow="NEVER" text="%label_scan_agent" styleClass="label-name"/>
+                            <CheckBox fx:id="cbEnableScanAgent" text="%checkbox_enable" disable="true"/>
+                        </HBox>
+                    </VBox>
+                    <!--Device Usage-->
+                    <VBox fx:id="vbDeviceUsageBox" styleClass="vbox-component" visible="false" managed="false">
+                        <HBox styleClass="hbox-line">
+                            <Label HBox.hgrow="NEVER" text="%label_device_usage" styleClass="label-name"/>
+                            <CheckBox fx:id="cbEnableDeviceUsage" text="%checkbox_enable" disable="true"/>
+                        </HBox>
+                    </VBox>
+                    <!--Statistics TODO-->
+                    <VBox fx:id="vbStatisticsBox" styleClass="vbox-component" visible="false" managed="false">
+                        <HBox styleClass="hbox-line">
+                            <Label HBox.hgrow="NEVER" text="TODO" styleClass="label-name"/>
+                        </HBox>
+                    </VBox>
+                    <!--Supplies-->
+                    <VBox fx:id="vbSuppliesBox" styleClass="vbox-component" visible="false" managed="false">
+                        <HBox styleClass="hbox-line">
+                            <Label HBox.hgrow="NEVER" text="%label_supplies" styleClass="label-name"/>
+                            <CheckBox fx:id="cbEnableSupplies" text="%checkbox_enable" disable="true"/>
+                        </HBox>
+                    </VBox>
+                    <!--webservice TODO-->
+                    <VBox fx:id="vbWebServiceBox" styleClass="vbox-component" visible="false" managed="false">
+                        <HBox styleClass="hbox-line">
+                            <Label HBox.hgrow="NEVER" text="%label_webservice_title" styleClass="label-name"/>
+                            <TextField fx:id="tfWebServiceTitle" HBox.hgrow="ALWAYS" editable="false"/>
+                            <!--                            <Button mnemonicParsing="false" HBox.hgrow="NEVER" text="%btn_more"-->
+                            <!--                                    onAction="#handleWebServiceTitle"/>-->
+                        </HBox>
+                        <HBox styleClass="hbox-line">
+                            <Label HBox.hgrow="NEVER" text="%label_webservice_description"
+                                   styleClass="label-name"/>
+                            <TextField fx:id="tfWebServiceDescription" HBox.hgrow="ALWAYS" editable="false"/>
+                            <!--                            <Button mnemonicParsing="false" HBox.hgrow="NEVER" text="%btn_more"-->
+                            <!--                                    onAction="#handleWebServiceDescription"/>-->
+                        </HBox>
+                        <HBox styleClass="hbox-line">
+                            <Label HBox.hgrow="NEVER" text="%label_endpoints" styleClass="label-name"/>
+                            <VBox HBox.hgrow="ALWAYS">
+                                <HBox styleClass="hbox-line-inner">
+                                    <TableView fx:id="tvWebservice" HBox.hgrow="ALWAYS">
+                                        <columnResizePolicy>
+                                            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
+                                        </columnResizePolicy>
+                                        <placeholder>
+                                            <Label text="%label_no_webservice"/>
+                                        </placeholder>
+                                        <columns>
+                                            <TableColumn fx:id="tcWebserviceMethod" text="%table_webservice_method"
+                                                         minWidth="60"
+                                                         maxWidth="150"/>
+                                            <TableColumn fx:id="tcWebserviceCategory"
+                                                         text="%table_webservice_category"
+                                                         minWidth="60" maxWidth="300"/>
+                                            <TableColumn fx:id="tcWebserviceAbsolutePath"
+                                                         text="%table_webservice_absolute_path"
+                                                         minWidth="60"/>
+                                            <TableColumn fx:id="tcWebserviceAuth" text="%table_webservice_auth"
+                                                         minWidth="60"
+                                                         maxWidth="150"/>
+                                            <TableColumn fx:id="tcWebserviceDetail" minWidth="30" maxWidth="30"/>
+                                        </columns>
+                                    </TableView>
+                                </HBox>
+                            </VBox>
+                        </HBox>
+                    </VBox>
+                </VBox>
+            </VBox>
+        </ScrollPane>
+    </center>
+    <bottom>
+        <VBox styleClass="vbox-footer">
+            <HBox styleClass="hbox-line">
+                <Button fx:id="btClose" mnemonicParsing="false" HBox.hgrow="NEVER" text="%btn_close"
+                        styleClass="button-white" onAction="#handleClose"/>
+                <Button fx:id="btRawData" mnemonicParsing="false" HBox.hgrow="NEVER" text="%btn_raw_data"
+                        styleClass="button-main-alt" onAction="#handleRawData"/>
+                <ProgressIndicator fx:id="piProgress" HBox.hgrow="NEVER" visible="false" managed="false"/>
+                <Label fx:id="lbResult" HBox.hgrow="ALWAYS"/>
+            </HBox>
+        </VBox>
+    </bottom>
+</BorderPane>

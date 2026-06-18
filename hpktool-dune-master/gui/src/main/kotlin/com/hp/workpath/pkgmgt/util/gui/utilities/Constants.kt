@@ -1,0 +1,22 @@
+package com.hp.workpath.pkgmgt.util.gui.utilities
+
+const val BUTTON = "button"
+const val BUTTON_TAB = "button-tab"
+const val BUTTON_TAB_SELECTED = "button-tab-selected"
+const val BUTTON_DETAIL = "detail"
+const val BUTTON_DETAIL_STYLE = "button-information"
+const val BUTTON_DELETE = "delete"
+const val BUTTON_DELETE_STYLE = "button-uninstall"
+const val TEXT_FIELD_ERROR = "text-field-error"
+const val TEXT_AREA_ERROR = "text-area-error"
+const val LABEL_ERROR = "label-error"
+const val TABLE_VIEW_ERROR = "table-view-error"
+const val CHECK_BOX_ERROR = "checkbox-error"
+const val HBOX_LINE = "hbox-line"
+const val LABEL_NAME = "label-name"
+const val BUTTON_WHITE = "button-white"
+const val VBOX_IMAGE = "vbox-image"
+
+var DEFAULT_HOST=""
+var DEFAULT_PASSWORD=""
+var DEFAULT_UUID=""
