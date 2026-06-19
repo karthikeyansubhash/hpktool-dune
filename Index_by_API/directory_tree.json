@@ -1,0 +1,277 @@
+{
+    ".github": {
+        "pull_request_template.md": "file"
+    },
+    "README.md": "file",
+    "build.gradle": "file",
+    "cli": {
+        "build.gradle": "file",
+        "src": {
+            "main": {
+                "kotlin": {
+                    "com": {
+                        "hp": {
+                            "workpath": {
+                                "pkgmgt": {
+                                    "util": {
+                                        "cli": {
+                                            "HpkParser.kt": "file",
+                                            "HpkTool.kt": "file",
+                                            "utilities": {
+                                                "Utility.kt": "file"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "common": {
+        "HPK2ToolCli-linux.sh": "file",
+        "HPK2ToolGui-linux.sh": "file",
+        "build.gradle": "file",
+        "spu_windows": {
+            "README.md": "file",
+            "spu-cli.deps.json": "file",
+            "spu-cli.runtimeconfig.json": "file"
+        },
+        "src": {
+            "main": {
+                "java": {
+                    "com": {
+                        "hp": {
+                            "workpath": {
+                                "pkgmgt": {
+                                    "lib": {
+                                        "Config.java": "file",
+                                        "Connector.java": "file",
+                                        "ConnectorType.java": "file",
+                                        "ExplicitLocalizedString.java": "file",
+                                        "HpkFile.java": "file",
+                                        "LimitedStringConverter.java": "file",
+                                        "LocalizedString.java": "file",
+                                        "Mod.java": "file",
+                                        "Param.java": "file",
+                                        "PlatformType.java": "file",
+                                        "Provider.java": "file",
+                                        "SubApp.java": "file",
+                                        "UUIDConverter.java": "file"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "kotlin": {
+                    "com": {
+                        "hp": {
+                            "workpath": {
+                                "pkgmgt": {
+                                    "util": {
+                                        "models": {
+                                            "BaseModel.kt": "file",
+                                            "ConnectionData.kt": "file",
+                                            "LocalContentModel.kt": "file",
+                                            "LocalizedStringReferenceModel.kt": "file",
+                                            "SolutionProject.kt": "file",
+                                            "WorkpathPlatformClientTargetModel.kt": "file",
+                                            "application": {
+                                                "ApplicationAgentDetailsModel.kt": "file",
+                                                "ApplicationAgentModel.kt": "file",
+                                                "ApplicationIconDetailModel.kt": "file",
+                                                "I18nAssetInlineContentModel.kt": "file",
+                                                "I18nAssetLanguageModel.kt": "file",
+                                                "I18nAssetModel.kt": "file",
+                                                "I18nAssetStringModel.kt": "file",
+                                                "WorkpathApplicationTargetModel.kt": "file"
+                                            },
+                                            "attestation": {
+                                                "AttestationData.kt": "file"
+                                            },
+                                            "authentication": {
+                                                "AuthenticationAgentModel.kt": "file"
+                                            },
+                                            "connection": {
+                                                "AccessTokenInfo.kt": "file",
+                                                "AccessTokenType.kt": "file",
+                                                "BoundDevice.kt": "file",
+                                                "DeviceModel.kt": "file",
+                                                "TaskState.kt": "file",
+                                                "TokenStatus.kt": "file"
+                                            },
+                                            "copyJob": {
+                                                "CopyJobAgentModel.kt": "file",
+                                                "CopyNotificationTargetModel.kt": "file"
+                                            },
+                                            "deviceUsage": {
+                                                "DeviceUsageAgentModel.kt": "file"
+                                            },
+                                            "hpk": {
+                                                "HPKVersion.kt": "file",
+                                                "WebServiceEndPoint.kt": "file",
+                                                "WebServiceInfo.kt": "file",
+                                                "WorkpathPlatformVersion.kt": "file"
+                                            },
+                                            "messageCenter": {
+                                                "MessageCenterAgentModel.kt": "file"
+                                            },
+                                            "printJob": {
+                                                "PrintJobAgentModel.kt": "file"
+                                            },
+                                            "scanJob": {
+                                                "ScanJobAgentModel.kt": "file",
+                                                "ScanNotificationTargetModel.kt": "file"
+                                            },
+                                            "security": {
+                                                "SecurityAgentModel.kt": "file"
+                                            },
+                                            "solutionManager": {
+                                                "ConfigurationModel.kt": "file",
+                                                "DefaultConfigurationModel.kt": "file",
+                                                "SolutionDescriptionModel.kt": "file",
+                                                "SolutionDetailsModel.kt": "file",
+                                                "SolutionDiagnosticsModel.kt": "file",
+                                                "SolutionNotificationAgentModel.kt": "file",
+                                                "SolutionNotificationTargetModel.kt": "file",
+                                                "TrustedSitesModel.kt": "file",
+                                                "WorkpathPlatformPackageModel.kt": "file"
+                                            },
+                                            "statisticsJob": {
+                                                "ContentFilterModel.kt": "file",
+                                                "StatisticsJobAgentModel.kt": "file",
+                                                "StatisticsNotificationTargetModel.kt": "file"
+                                            },
+                                            "supplies": {
+                                                "SuppliesAgentModel.kt": "file"
+                                            },
+                                            "usbAccessories": {
+                                                "RegistrationTargetModel.kt": "file",
+                                                "UsbAccessoriesAgentModel.kt": "file",
+                                                "UsbRegistrationModel.kt": "file"
+                                            }
+                                        },
+                                        "services": {
+                                            "AttestationService.kt": "file",
+                                            "BoundDeviceException.kt": "file",
+                                            "ConnectionService.kt": "file",
+                                            "WorkpathSolutionProjectService.kt": "file",
+                                            "deviceManagement": {
+                                                "DeviceManagementService.kt": "file",
+                                                "DeviceManagementServiceDefault.kt": "file"
+                                            },
+                                            "solutionManager": {
+                                                "SolutionManagerService.kt": "file",
+                                                "SolutionManagerServiceDefault.kt": "file"
+                                            }
+                                        },
+                                        "utilities": {
+                                            "BundleExtractor.kt": "file",
+                                            "ConfigUtils.kt": "file",
+                                            "Constants.kt": "file",
+                                            "HpkConverter.kt": "file",
+                                            "HttpClientFactory.kt": "file",
+                                            "InsecureHttpClientFactory.kt": "file",
+                                            "SpuExecutor.kt": "file",
+                                            "TaskInterface.kt": "file",
+                                            "TaskStatus.kt": "file",
+                                            "Utility.kt": "file",
+                                            "apk": {
+                                                "ApkParser.kt": "file",
+                                                "Manifest.kt": "file",
+                                                "Resource.kt": "file"
+                                            },
+                                            "attestation": {
+                                                "AttestationManager.kt": "file"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "resources": {
+                    "configs": {
+                        "default.json": "file"
+                    }
+                }
+            },
+            "test": {
+                "kotlin": {
+                    "com": {
+                        "hp": {
+                            "workpath": {
+                                "pkgmgt": {
+                                    "util": {
+                                        "utilities": {
+                                            "BundleExtractorCommandBuilderUnitTest.kt": "file",
+                                            "SpuExecutableResolverUnitTest.kt": "file",
+                                            "UtilityKtUnitTest.kt": "file"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "gui": {
+        "build.gradle": "file",
+        "src": {
+            "main": {
+                "kotlin": {
+                    "com": {
+                        "hp": {
+                            "workpath": {
+                                "pkgmgt": {
+                                    "util": {
+                                        "gui": {
+                                            "HpkTool.kt": "file",
+                                            "controllers": {
+                                                "AboutController.kt": "file",
+                                                "AttestationController.kt": "file",
+                                                "ConfigurationController.kt": "file",
+                                                "Controller.kt": "file",
+                                                "InstallController.kt": "file",
+                                                "ManagementController.kt": "file",
+                                                "ManagementDetailApplicationController.kt": "file",
+                                                "ManagementDetailController.kt": "file",
+                                                "MenuController.kt": "file",
+                                                "PopupMessageController.kt": "file",
+                                                "RawDataController.kt": "file",
+                                                "SolutionAccessoryController.kt": "file",
+                                                "SolutionApplicationController.kt": "file",
+                                                "SolutionController.kt": "file",
+                                                "SolutionIconSetController.kt": "file",
+                                                "SolutionLocalizationController.kt": "file",
+                                                "SolutionWebServiceController.kt": "file"
+                                            },
+                                            "models": {
+                                                "ApplicationInfo.kt": "file"
+                                            },
+                                            "services": {
+                                                "ConnectionServiceGui.kt": "file",
+                                                "WorkpathSolutionProjectServiceGui.kt": "file"
+                                            },
+                                            "utilities": {
+                                                "ActionType.kt": "file",
+                                                "Constants.kt": "file",
+                                                "Utility.kt": "file"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
