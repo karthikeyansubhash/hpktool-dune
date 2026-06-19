@@ -1,0 +1,927 @@
+{
+    ".github": {
+        "generated_doc_filepath": "",
+        "purpose": "",
+        "associated_knowledge_bases": {
+            "raw_code": [
+                {
+                    "file_identity": "pull_request_template.md",
+                    ".github/pull_request_template.md": {
+                        "chunks": [
+                            {
+                                "endLine": 1,
+                                "indexedAt": "2026-06-19T10:25:43.295555306Z",
+                                "filePath": ".github/pull_request_template.md",
+                                "startLine": 1,
+                                "blobSha": "a7a7bdbb85d8eea564794cb5b715fb3c3ebc7d1b",
+                                "name": "Description",
+                                "language": "markdown",
+                                "id": "08694f62b4fca049cbd568643340091cd2a24150ee645266ffb78eb2e988ebe3",
+                                "chunkType": "section",
+                                "isTestFile": false
+                            },
+                            {
+                                "endLine": 1,
+                                "indexedAt": "2026-06-19T10:25:43.295555306Z",
+                                "filePath": ".github/pull_request_template.md",
+                                "startLine": 1,
+                                "blobSha": "a7a7bdbb85d8eea564794cb5b715fb3c3ebc7d1b",
+                                "name": "Motivation and Context",
+                                "language": "markdown",
+                                "id": "110503a776d228e28793d91cdcccee7b3c93fda44478c56f30d210ee5e390099",
+                                "chunkType": "section",
+                                "isTestFile": false
+                            },
+                            {
+                                "endLine": 1,
+                                "indexedAt": "2026-06-19T10:25:43.295555306Z",
+                                "filePath": ".github/pull_request_template.md",
+                                "startLine": 1,
+                                "blobSha": "a7a7bdbb85d8eea564794cb5b715fb3c3ebc7d1b",
+                                "name": "Affected Modules",
+                                "language": "markdown",
+                                "id": "0a808d74b032a8f0fe1fa7e272fb1da799abaf3cf636c96b545761230d63d2e4",
+                                "chunkType": "section",
+                                "isTestFile": false
+                            },
+                            {
+                                "endLine": 1,
+                                "indexedAt": "2026-06-19T10:25:43.295555306Z",
+                                "filePath": ".github/pull_request_template.md",
+                                "startLine": 1,
+                                "blobSha": "a7a7bdbb85d8eea564794cb5b715fb3c3ebc7d1b",
+                                "name": "Types of changes",
+                                "language": "markdown",
+                                "id": "cb465f62fcada6d6ebd2208743d8799997257d5bc902bd946494e9764648076f",
+                                "chunkType": "section",
+                                "isTestFile": false
+                            },
+                            {
+                                "endLine": 1,
+                                "indexedAt": "2026-06-19T10:25:43.295555306Z",
+                                "filePath": ".github/pull_request_template.md",
+                                "startLine": 1,
+                                "blobSha": "a7a7bdbb85d8eea564794cb5b715fb3c3ebc7d1b",
+                                "name": "Testing - Describe how this was qualified",
+                                "language": "markdown",
+                                "id": "1506e45d5451cd4f8dbf8a893994e54de3267a5f3c01422140a108ad169dca95",
+                                "chunkType": "section",
+                                "isTestFile": false
+                            },
+                            {
+                                "endLine": 1,
+                                "indexedAt": "2026-06-19T10:25:43.295555306Z",
+                                "filePath": ".github/pull_request_template.md",
+                                "startLine": 1,
+                                "blobSha": "a7a7bdbb85d8eea564794cb5b715fb3c3ebc7d1b",
+                                "name": "Output Results - Describe the results after your changes and provide screenshots",
+                                "language": "markdown",
+                                "id": "7c44cef4a128dd16fbf081cd2befc25ff27c25667739a1a9af24971114fcc7e1",
+                                "chunkType": "section",
+                                "isTestFile": false
+                            },
+                            {
+                                "endLine": 1,
+                                "indexedAt": "2026-06-19T10:25:43.295555306Z",
+                                "filePath": ".github/pull_request_template.md",
+                                "startLine": 1,
+                                "blobSha": "a7a7bdbb85d8eea564794cb5b715fb3c3ebc7d1b",
+                                "name": "pull_request_template.md",
+                                "language": "markdown",
+                                "id": "9efcf2a132dddb0ebf45b403f8a357234c772fb256a9a52b55be1d189b449a74",
+                                "chunkType": "module",
+                                "isTestFile": false
+                            }
+                        ]
+                    }
+                }
+            ],
+            "code_doc": [
+                {
+                    "kb_id": "",
+                    "kb_name": ""
+                }
+            ]
+        }
+    },
+    "generated_doc_filepath": "",
+    "purpose": "",
+    "associated_knowledge_bases": {
+        "raw_code": [
+            {
+                "file_identity": "README.md",
+                "README.md": {
+                    "chunks": [
+                        {
+                            "endLine": 1,
+                            "indexedAt": "2026-06-19T10:25:43.295555306Z",
+                            "filePath": "README.md",
+                            "startLine": 1,
+                            "blobSha": "994a094f2225f16401cca54c5b22b137c104c39e",
+                            "name": "HP Workpath Solution Utility > Requirement",
+                            "language": "markdown",
+                            "id": "37a804758d11dd11c745d8d8a977603a13fc3d6f8f98364636439c4e7e13cc71",
+                            "chunkType": "section",
+                            "isTestFile": false
+                        },
+                        {
+                            "endLine": 1,
+                            "indexedAt": "2026-06-19T10:25:43.295555306Z",
+                            "filePath": "README.md",
+                            "startLine": 1,
+                            "blobSha": "994a094f2225f16401cca54c5b22b137c104c39e",
+                            "name": "HP Workpath Solution Utility > This project uses hp codes",
+                            "language": "markdown",
+                            "id": "2e958ae0abc39e668e480eedd53926c6468f72c1afc56d56abcd72ebf514ce3c",
+                            "chunkType": "section",
+                            "isTestFile": false
+                        },
+                        {
+                            "endLine": 1,
+                            "indexedAt": "2026-06-19T10:25:43.295555306Z",
+                            "filePath": "README.md",
+                            "startLine": 1,
+                            "blobSha": "994a094f2225f16401cca54c5b22b137c104c39e",
+                            "name": "HP Workpath Solution Utility > This project uses forked opensource library",
+                            "language": "markdown",
+                            "id": "ee846bfd5ac93e2e99cbf9aaecb5d7debaaee773f97b429c296b8f7b6fbda303",
+                            "chunkType": "section",
+                            "isTestFile": false
+                        },
+                        {
+                            "endLine": 1,
+                            "indexedAt": "2026-06-19T10:25:43.295555306Z",
+                            "filePath": "README.md",
+                            "startLine": 1,
+                            "blobSha": "994a094f2225f16401cca54c5b22b137c104c39e",
+                            "name": "HP Workpath Solution Utility > This project uses opensource libraries",
+                            "language": "markdown",
+                            "id": "a0c0da5ec413273ef99ddf6efa6be7dd6ace856c834ac83065a0b9c7947e701f",
+                            "chunkType": "section",
+                            "isTestFile": false
+                        },
+                        {
+                            "endLine": 1,
+                            "indexedAt": "2026-06-19T10:25:43.295555306Z",
+                            "filePath": "README.md",
+                            "startLine": 1,
+                            "blobSha": "994a094f2225f16401cca54c5b22b137c104c39e",
+                            "name": "HP Workpath Solution Utility > Command Line Interface Program",
+                            "language": "markdown",
+                            "id": "2e2aa418a1b3b4a39e0d0dc890428473ee43576a4c370cd99394ba17ef49fd6f",
+                            "chunkType": "section",
+                            "isTestFile": false
+                        },
+                        {
+                            "endLine": 1,
+                            "indexedAt": "2026-06-19T10:25:43.295555306Z",
+                            "filePath": "README.md",
+                            "startLine": 1,
+                            "blobSha": "994a094f2225f16401cca54c5b22b137c104c39e",
+                            "name": "HP Workpath Solution Utility > Attestation Update Feature",
+                            "language": "markdown",
+                            "id": "73f0ed661d95b3e16f52fd810dbd33a3092d123a895404b9ad5a6ec2590d2876",
+                            "chunkType": "section",
+                            "isTestFile": false
+                        },
+                        {
+                            "endLine": 1,
+                            "indexedAt": "2026-06-19T10:25:43.295555306Z",
+                            "filePath": "README.md",
+                            "startLine": 1,
+                            "blobSha": "994a094f2225f16401cca54c5b22b137c104c39e",
+                            "name": "HP Workpath Solution Utility > Attestation Update Feature > New File-based Input Support",
+                            "language": "markdown",
+                            "id": "77adb3b7db2593b6b0b2c5540f40c057dc61d92a4dff6817663d600e6f74018a",
+                            "chunkType": "section",
+                            "isTestFile": false
+                        },
+                        {
+                            "endLine": 1,
+                            "indexedAt": "2026-06-19T10:25:43.295555306Z",
+                            "filePath": "README.md",
+                            "startLine": 1,
+                            "blobSha": "994a094f2225f16401cca54c5b22b137c104c39e",
+                            "name": "HP Workpath Solution Utility > Attestation Update Feature > Usage Examples",
+                            "language": "markdown",
+                            "id": "6dc91304d116ae16596a619faa677398d069933e91691237352698d8d376000d",
+                            "chunkType": "section",
+                            "isTestFile": false
+                        },
+                        {
+                            "endLine": 1,
+                            "indexedAt": "2026-06-19T10:25:43.295555306Z",
+                            "filePath": "README.md",
+                            "startLine": 1,
+                            "blobSha": "994a094f2225f16401cca54c5b22b137c104c39e",
+                            "name": "HP Workpath Solution Utility > Graphic User Interface Program",
+                            "language": "markdown",
+                            "id": "2e023bc88de22ed84fd2ffc353bc852138626b670b77ef1c6f2d9e519bad8b2c",
+                            "chunkType": "section",
+                            "isTestFile": false
+                        },
+                        {
+                            "endLine": 1,
+                            "indexedAt": "2026-06-19T10:25:43.295555306Z",
+                            "filePath": "README.md",
+                            "startLine": 1,
+                            "blobSha": "994a094f2225f16401cca54c5b22b137c104c39e",
+                            "name": "README.md",
+                            "language": "markdown",
+                            "id": "b510c4b3a1e8bc275acb3a732fb7fa83c3a955b90526ca65149b7f22539c78f3",
+                            "chunkType": "module",
+                            "isTestFile": false
+                        }
+                    ]
+                }
+            },
+            {
+                "file_identity": "build.gradle",
+                "build.gradle": {
+                    "chunks": [
+                        {
+                            "endLine": 44,
+                            "indexedAt": "2026-06-19T10:25:43.295555306Z",
+                            "filePath": "build.gradle",
+                            "startLine": 1,
+                            "blobSha": "fd2e74f82d03f4483c0c9fd443919b48f9f021d7",
+                            "name": "",
+                            "language": "unknown",
+                            "id": "ffb33060d310f88d0f2456fa1bfffe208e982a9242c264a0f1c8357fd39a9101",
+                            "chunkType": "fallback",
+                            "isTestFile": false
+                        }
+                    ]
+                }
+            }
+        ],
+        "code_doc": [
+            {
+                "kb_id": "",
+                "kb_name": ""
+            }
+        ]
+    },
+    "cli": {
+        "generated_doc_filepath": "",
+        "purpose": "",
+        "associated_knowledge_bases": {
+            "raw_code": [
+                {
+                    "file_identity": "build.gradle",
+                    "cli/build.gradle": {
+                        "chunks": [
+                            {
+                                "endLine": 80,
+                                "indexedAt": "2026-06-19T10:25:43.295555306Z",
+                                "filePath": "cli/build.gradle",
+                                "startLine": 1,
+                                "blobSha": "c6f3231886c7afb682fee918b69935bb10852d5a",
+                                "name": "",
+                                "language": "unknown",
+                                "id": "2abd215c2691dd3bb5d52f8753181ec4830478180182f2207f1e2780523052e5",
+                                "chunkType": "fallback",
+                                "isTestFile": false
+                            },
+                            {
+                                "endLine": 126,
+                                "indexedAt": "2026-06-19T10:25:43.295555306Z",
+                                "filePath": "cli/build.gradle",
+                                "startLine": 66,
+                                "blobSha": "c6f3231886c7afb682fee918b69935bb10852d5a",
+                                "name": "",
+                                "language": "unknown",
+                                "id": "a09db31b8203a9becaf258c627fa7d730d751d163c8dfd4809065e5347e126a6",
+                                "chunkType": "fallback",
+                                "isTestFile": false
+                            }
+                        ]
+                    }
+                }
+            ],
+            "code_doc": [
+                {
+                    "kb_id": "",
+                    "kb_name": ""
+                }
+            ]
+        },
+        "src": {
+            "main": {
+                "kotlin": {
+                    "com": {
+                        "hp": {
+                            "workpath": {
+                                "pkgmgt": {
+                                    "util": {
+                                        "cli": {
+                                            "generated_doc_filepath": "",
+                                            "purpose": "",
+                                            "associated_knowledge_bases": {
+                                                "raw_code": [
+                                                    {
+                                                        "file_identity": "HpkParser.kt",
+                                                        "cli/src/main/kotlin/com/hp/workpath/pkgmgt/util/cli/HpkParser.kt": {
+                                                            "chunks": [
+                                                                {
+                                                                    "endLine": 80,
+                                                                    "indexedAt": "2026-06-19T10:25:43.295555306Z",
+                                                                    "filePath": "cli/src/main/kotlin/com/hp/workpath/pkgmgt/util/cli/HpkParser.kt",
+                                                                    "startLine": 1,
+                                                                    "blobSha": "74499f3445f5c15c11b6f9afc424693593c24fa7",
+                                                                    "name": "",
+                                                                    "language": "kotlin",
+                                                                    "id": "d79cfe2472ba060ff2e6301acec904cdaae4186cdf06f5005be3caf44ce75525",
+                                                                    "chunkType": "fallback",
+                                                                    "isTestFile": false
+                                                                },
+                                                                {
+                                                                    "endLine": 145,
+                                                                    "indexedAt": "2026-06-19T10:25:43.295555306Z",
+                                                                    "filePath": "cli/src/main/kotlin/com/hp/workpath/pkgmgt/util/cli/HpkParser.kt",
+                                                                    "startLine": 66,
+                                                                    "blobSha": "74499f3445f5c15c11b6f9afc424693593c24fa7",
+                                                                    "name": "",
+                                                                    "language": "kotlin",
+                                                                    "id": "85a99eb4ceb74b97e426da64a5e57bd48f111ec8073d9e4cc0c6fc218a83dae6",
+                                                                    "chunkType": "fallback",
+                                                                    "isTestFile": false
+                                                                },
+                                                                {
+                                                                    "endLine": 210,
+                                                                    "indexedAt": "2026-06-19T10:25:43.295555306Z",
+                                                                    "filePath": "cli/src/main/kotlin/com/hp/workpath/pkgmgt/util/cli/HpkParser.kt",
+                                                                    "startLine": 131,
+                                                                    "blobSha": "74499f3445f5c15c11b6f9afc424693593c24fa7",
+                                                                    "name": "",
+                                                                    "language": "kotlin",
+                                                                    "id": "e7cb175045be9f8456441ec9f17d25596a1341c5f4eb1d2dac611a480a36440a",
+                                                                    "chunkType": "fallback",
+                                                                    "isTestFile": false
+                                                                },
+                                                                {
+                                                                    "endLine": 275,
+                                                                    "indexedAt": "2026-06-19T10:25:43.295555306Z",
+                                                                    "filePath": "cli/src/main/kotlin/com/hp/workpath/pkgmgt/util/cli/HpkParser.kt",
+                                                                    "startLine": 196,
+                                                                    "blobSha": "74499f3445f5c15c11b6f9afc424693593c24fa7",
+                                                                    "name": "",
+                                                                    "language": "kotlin",
+                                                                    "id": "c03234774896c161ee1e9be5d96779a5f498f92d0fc1d29d18c99fa1a9a82716",
+                                                                    "chunkType": "fallback",
+                                                                    "isTestFile": false
+                                                                },
+                                                                {
+                                                                    "endLine": 340,
+                                                                    "indexedAt": "2026-06-19T10:25:43.295555306Z",
+                                                                    "filePath": "cli/src/main/kotlin/com/hp/workpath/pkgmgt/util/cli/HpkParser.kt",
+                                                                    "startLine": 261,
+                                                                    "blobSha": "74499f3445f5c15c11b6f9afc424693593c24fa7",
+                                                                    "name": "",
+                                                                    "language": "kotlin",
+                                                                    "id": "4c28e458ee42342b1c45950704bb10a84cc2bfb3a4fce3f083dbd8292885addd",
+                                                                    "chunkType": "fallback",
+                                                                    "isTestFile": false
+                                                                },
+                                                                {
+                                                                    "endLine": 405,
+                                                                    "indexedAt": "2026-06-19T10:25:43.295555306Z",
+                                                                    "filePath": "cli/src/main/kotlin/com/hp/workpath/pkgmgt/util/cli/HpkParser.kt",
+                                                                    "startLine": 326,
+                                                                    "blobSha": "74499f3445f5c15c11b6f9afc424693593c24fa7",
+                                                                    "name": "",
+                                                                    "language": "kotlin",
+                                                                    "id": "7604d0ca2496a7c4f07809d3beb67c6f611d61d69d63eab2d5586decd44ff677",
+                                                                    "chunkType": "fallback",
+                                                                    "isTestFile": false
+                                                                },
+                                                                {
+                                                                    "endLine": 470,
+                                                                    "indexedAt": "2026-06-19T10:25:43.295555306Z",
+                                                                    "filePath": "cli/src/main/kotlin/com/hp/workpath/pkgmgt/util/cli/HpkParser.kt",
+                                                                    "startLine": 391,
+                                                                    "blobSha": "74499f3445f5c15c11b6f9afc424693593c24fa7",
+                                                                    "name": "",
+                                                                    "language": "kotlin",
+                                                                    "id": "9ed5c79b8b260ca4c5127e1081afca78d7ec25e18b1e2f7dfc7c4e61acd97369",
+                                                                    "chunkType": "fallback",
+                                                                    "isTestFile": false
+                                                                },
+                                                                {
+                                                                    "endLine": 507,
+                                                                    "indexedAt": "2026-06-19T10:25:43.295555306Z",
+                                                                    "filePath": "cli/src/main/kotlin/com/hp/workpath/pkgmgt/util/cli/HpkParser.kt",
+                                                                    "startLine": 456,
+                                                                    "blobSha": "74499f3445f5c15c11b6f9afc424693593c24fa7",
+                                                                    "name": "",
+                                                                    "language": "kotlin",
+                                                                    "id": "972a20d3ea9c83f3f1292eaae8c3a0657851a213f0597142eeccc613097d0a76",
+                                                                    "chunkType": "fallback",
+                                                                    "isTestFile": false
+                                                                },
+                                                                {
+                                                                    "endLine": 540,
+                                                                    "indexedAt": "2026-06-19T10:25:43.295555306Z",
+                                                                    "filePath": "cli/src/main/kotlin/com/hp/workpath/pkgmgt/util/cli/HpkParser.kt",
+                                                                    "startLine": 538,
+                                                                    "blobSha": "74499f3445f5c15c11b6f9afc424693593c24fa7",
+                                                                    "name": "parse",
+                                                                    "language": "kotlin",
+                                                                    "id": "9cf3da9cefcd802d59c3fe0b055e041119d9e30304e4ac484449a56bc314cb0e",
+                                                                    "chunkType": "function",
+                                                                    "isTestFile": false
+                                                                },
+                                                                {
+                                                                    "endLine": 544,
+                                                                    "indexedAt": "2026-06-19T10:25:43.295555306Z",
+                                                                    "filePath": "cli/src/main/kotlin/com/hp/workpath/pkgmgt/util/cli/HpkParser.kt",
+                                                                    "startLine": 542,
+                                                                    "blobSha": "74499f3445f5c15c11b6f9afc424693593c24fa7",
+                                                                    "name": "CliCommands",
+                                                                    "language": "kotlin",
+                                                                    "id": "b02c824a66df77c2b521f7df502fa5f13fafa66002fc3aece74b6e8daa6f1437",
+                                                                    "chunkType": "class",
+                                                                    "isTestFile": false
+                                                                },
+                                                                {
+                                                                    "endLine": 579,
+                                                                    "indexedAt": "2026-06-19T10:25:43.295555306Z",
+                                                                    "filePath": "cli/src/main/kotlin/com/hp/workpath/pkgmgt/util/cli/HpkParser.kt",
+                                                                    "startLine": 546,
+                                                                    "blobSha": "74499f3445f5c15c11b6f9afc424693593c24fa7",
+                                                                    "name": "getMainCommand",
+                                                                    "language": "kotlin",
+                                                                    "id": "56c20dc3159611f797ac1d0f55de72ef8bb0e7c140868b92561824a389d6b0a5",
+                                                                    "chunkType": "function",
+                                                                    "isTestFile": false
+                                                                },
+                                                                {
+                                                                    "endLine": 585,
+                                                                    "indexedAt": "2026-06-19T10:25:43.295555306Z",
+                                                                    "filePath": "cli/src/main/kotlin/com/hp/workpath/pkgmgt/util/cli/HpkParser.kt",
+                                                                    "startLine": 582,
+                                                                    "blobSha": "74499f3445f5c15c11b6f9afc424693593c24fa7",
+                                                                    "name": "format",
+                                                                    "language": "kotlin",
+                                                                    "id": "a01f0d7b1380f19967b9a17f61f38fee5f7f1b5e4d3bcebec9704f2d14937fdd",
+                                                                    "chunkType": "function",
+                                                                    "isTestFile": false
+                                                                },
+                                                                {
+                                                                    "endLine": 669,
+                                                                    "indexedAt": "2026-06-19T10:25:43.295555306Z",
+                                                                    "filePath": "cli/src/main/kotlin/com/hp/workpath/pkgmgt/util/cli/HpkParser.kt",
+                                                                    "startLine": 590,
+                                                                    "blobSha": "74499f3445f5c15c11b6f9afc424693593c24fa7",
+                                                                    "name": "printHelp",
+                                                                    "language": "kotlin",
+                                                                    "id": "57ea83ac01b40ae5810750f310f158d1db9093f38a28ceb3f0c6063279eb974c",
+                                                                    "chunkType": "function",
+                                                                    "isTestFile": false
+                                                                },
+                                                                {
+                                                                    "endLine": 80,
+                                                                    "indexedAt": "2026-06-19T10:25:43.295555306Z",
+                                                                    "filePath": "cli/src/main/kotlin/com/hp/workpath/pkgmgt/util/cli/HpkParser.kt",
+                                                                    "startLine": 1,
+                                                                    "blobSha": "74499f3445f5c15c11b6f9afc424693593c24fa7",
+                                                                    "name": "",
+                                                                    "language": "kotlin",
+                                                                    "id": "f4d0bb03f33c67d1db2fbd6f29a6191e1a021001e1f29274a50d3902ef175b17",
+                                                                    "chunkType": "fallback",
+                                                                    "isTestFile": false
+                                                                },
+                                                                {
+                                                                    "endLine": 145,
+                                                                    "indexedAt": "2026-06-19T10:25:43.295555306Z",
+                                                                    "filePath": "cli/src/main/kotlin/com/hp/workpath/pkgmgt/util/cli/HpkParser.kt",
+                                                                    "startLine": 66,
+                                                                    "blobSha": "74499f3445f5c15c11b6f9afc424693593c24fa7",
+                                                                    "name": "",
+                                                                    "language": "kotlin",
+                                                                    "id": "82d0f9fbfdd16ceb2e4a71235373ca5f70284605fbce9552597e398008bb98bd",
+                                                                    "chunkType": "fallback",
+                                                                    "isTestFile": false
+                                                                },
+                                                                {
+                                                                    "endLine": 210,
+                                                                    "indexedAt": "2026-06-19T10:25:43.295555306Z",
+                                                                    "filePath": "cli/src/main/kotlin/com/hp/workpath/pkgmgt/util/cli/HpkParser.kt",
+                                                                    "startLine": 131,
+                                                                    "blobSha": "74499f3445f5c15c11b6f9afc424693593c24fa7",
+                                                                    "name": "",
+                                                                    "language": "kotlin",
+                                                                    "id": "a5f6f541a7e874ce89577704b77cfa258710a3be42fe50cffa33c1e0a0de1e92",
+                                                                    "chunkType": "fallback",
+                                                                    "isTestFile": false
+                                                                },
+                                                                {
+                                                                    "endLine": 275,
+                                                                    "indexedAt": "2026-06-19T10:25:43.295555306Z",
+                                                                    "filePath": "cli/src/main/kotlin/com/hp/workpath/pkgmgt/util/cli/HpkParser.kt",
+                                                                    "startLine": 196,
+                                                                    "blobSha": "74499f3445f5c15c11b6f9afc424693593c24fa7",
+                                                                    "name": "",
+                                                                    "language": "kotlin",
+                                                                    "id": "b69ffd42c05dc9366ade4cf7399b68416da0c634e766f7f732e52f20371d4a63",
+                                                                    "chunkType": "fallback",
+                                                                    "isTestFile": false
+                                                                },
+                                                                {
+                                                                    "endLine": 340,
+                                                                    "indexedAt": "2026-06-19T10:25:43.295555306Z",
+                                                                    "filePath": "cli/src/main/kotlin/com/hp/workpath/pkgmgt/util/cli/HpkParser.kt",
+                                                                    "startLine": 261,
+                                                                    "blobSha": "74499f3445f5c15c11b6f9afc424693593c24fa7",
+                                                                    "name": "",
+                                                                    "language": "kotlin",
+                                                                    "id": "62752bc07edbcc9171c43e7015e39cc568f2bfdf40754e70c5235c3cbaf82c80",
+                                                                    "chunkType": "fallback",
+                                                                    "isTestFile": false
+                                                                },
+                                                                {
+                                                                    "endLine": 405,
+                                                                    "indexedAt": "2026-06-19T10:25:43.295555306Z",
+                                                                    "filePath": "cli/src/main/kotlin/com/hp/workpath/pkgmgt/util/cli/HpkParser.kt",
+                                                                    "startLine": 326,
+                                                                    "blobSha": "74499f3445f5c15c11b6f9afc424693593c24fa7",
+                                                                    "name": "",
+                                                                    "language": "kotlin",
+                                                                    "id": "8e8ea8d28591897820d812b16976dad56e5991571462b5c4306f6a69b709e175",
+                                                                    "chunkType": "fallback",
+                                                                    "isTestFile": false
+                                                                },
+                                                                {
+                                                                    "endLine": 470,
+                                                                    "indexedAt": "2026-06-19T10:25:43.295555306Z",
+                                                                    "filePath": "cli/src/main/kotlin/com/hp/workpath/pkgmgt/util/cli/HpkParser.kt",
+                                                                    "startLine": 391,
+                                                                    "blobSha": "74499f3445f5c15c11b6f9afc424693593c24fa7",
+                                                                    "name": "",
+                                                                    "language": "kotlin",
+                                                                    "id": "db2249f1a5604e1f529eb556862fcf4641cf68d1e985fec69b4d9f804565e35d",
+                                                                    "chunkType": "fallback",
+                                                                    "isTestFile": false
+                                                                },
+                                                                {
+                                                                    "endLine": 535,
+                                                                    "indexedAt": "2026-06-19T10:25:43.295555306Z",
+                                                                    "filePath": "cli/src/main/kotlin/com/hp/workpath/pkgmgt/util/cli/HpkParser.kt",
+                                                                    "startLine": 456,
+                                                                    "blobSha": "74499f3445f5c15c11b6f9afc424693593c24fa7",
+                                                                    "name": "",
+                                                                    "language": "kotlin",
+                                                                    "id": "08f048c0d426f081639e10b948658853fd7f3bb5d458252e2df32a0f8e5236b1",
+                                                                    "chunkType": "fallback",
+                                                                    "isTestFile": false
+                                                                },
+                                                                {
+                                                                    "endLine": 571,
+                                                                    "indexedAt": "2026-06-19T10:25:43.295555306Z",
+                                                                    "filePath": "cli/src/main/kotlin/com/hp/workpath/pkgmgt/util/cli/HpkParser.kt",
+                                                                    "startLine": 521,
+                                                                    "blobSha": "74499f3445f5c15c11b6f9afc424693593c24fa7",
+                                                                    "name": "",
+                                                                    "language": "kotlin",
+                                                                    "id": "11bce10f791c27e1893d76e8c4bf5fc14bec8db13b3551e03a0560a34a96b4fa",
+                                                                    "chunkType": "fallback",
+                                                                    "isTestFile": false
+                                                                },
+                                                                {
+                                                                    "endLine": 1343,
+                                                                    "indexedAt": "2026-06-19T10:25:43.295555306Z",
+                                                                    "filePath": "cli/src/main/kotlin/com/hp/workpath/pkgmgt/util/cli/HpkParser.kt",
+                                                                    "startLine": 1243,
+                                                                    "blobSha": "74499f3445f5c15c11b6f9afc424693593c24fa7",
+                                                                    "name": "getJsonBundleFromCommand",
+                                                                    "language": "kotlin",
+                                                                    "id": "6dc354372446dcec061aa0260f8b64e32be41437ec65f8da26d6096b8e043e8b",
+                                                                    "chunkType": "function",
+                                                                    "isTestFile": false
+                                                                },
+                                                                {
+                                                                    "endLine": 1355,
+                                                                    "indexedAt": "2026-06-19T10:25:43.295555306Z",
+                                                                    "filePath": "cli/src/main/kotlin/com/hp/workpath/pkgmgt/util/cli/HpkParser.kt",
+                                                                    "startLine": 1345,
+                                                                    "blobSha": "74499f3445f5c15c11b6f9afc424693593c24fa7",
+                                                                    "name": "parseUsbRegistration",
+                                                                    "language": "kotlin",
+                                                                    "id": "298fd8ed5b1b9813fc14b75fc01c01fc92792185b9613a7970f2b65f4de43395",
+                                                                    "chunkType": "function",
+                                                                    "isTestFile": false
+                                                                },
+                                                                {
+                                                                    "endLine": 1374,
+                                                                    "indexedAt": "2026-06-19T10:25:43.295555306Z",
+                                                                    "filePath": "cli/src/main/kotlin/com/hp/workpath/pkgmgt/util/cli/HpkParser.kt",
+                                                                    "startLine": 1357,
+                                                                    "blobSha": "74499f3445f5c15c11b6f9afc424693593c24fa7",
+                                                                    "name": "parseWebServiceEndPoint",
+                                                                    "language": "kotlin",
+                                                                    "id": "061e4ab4a2ce8b0596c18946f01e401e0aad32bc5e1351e5072f997b004d2cdb",
+                                                                    "chunkType": "function",
+                                                                    "isTestFile": false
+                                                                },
+                                                                {
+                                                                    "endLine": 1412,
+                                                                    "indexedAt": "2026-06-19T10:25:43.295555306Z",
+                                                                    "filePath": "cli/src/main/kotlin/com/hp/workpath/pkgmgt/util/cli/HpkParser.kt",
+                                                                    "startLine": 1376,
+                                                                    "blobSha": "74499f3445f5c15c11b6f9afc424693593c24fa7",
+                                                                    "name": "getConnectionDataFromCommand",
+                                                                    "language": "kotlin",
+                                                                    "id": "ba487cbb0f6024685a3bf7488f3e5a11e377c7813b953605d18cde0414a46c16",
+                                                                    "chunkType": "function",
+                                                                    "isTestFile": false
+                                                                },
+                                                                {
+                                                                    "endLine": 1459,
+                                                                    "indexedAt": "2026-06-19T10:25:43.295555306Z",
+                                                                    "filePath": "cli/src/main/kotlin/com/hp/workpath/pkgmgt/util/cli/HpkParser.kt",
+                                                                    "startLine": 1414,
+                                                                    "blobSha": "74499f3445f5c15c11b6f9afc424693593c24fa7",
+                                                                    "name": "getAttestationDataFromCommand",
+                                                                    "language": "kotlin",
+                                                                    "id": "a1b69c572733fe2fecbad17b4130c1211b7bd459f401f40797a0495dc50182d4",
+                                                                    "chunkType": "function",
+                                                                    "isTestFile": false
+                                                                }
+                                                            ]
+                                                        }
+                                                    },
+                                                    {
+                                                        "file_identity": "HpkTool.kt",
+                                                        "cli/src/main/kotlin/com/hp/workpath/pkgmgt/util/cli/HpkTool.kt": {
+                                                            "chunks": [
+                                                                {
+                                                                    "endLine": 38,
+                                                                    "indexedAt": "2026-06-19T10:25:43.295555306Z",
+                                                                    "filePath": "cli/src/main/kotlin/com/hp/workpath/pkgmgt/util/cli/HpkTool.kt",
+                                                                    "startLine": 29,
+                                                                    "blobSha": "7cefaacb8f728582366c402b5aabf62c61f597c4",
+                                                                    "name": "ConfigurationController.main",
+                                                                    "language": "kotlin",
+                                                                    "id": "4ac7f2fd2a92af426b0550bc33bf4defd6f70b94a0a4fdb27584e0bc3cdab1be",
+                                                                    "chunkType": "function",
+                                                                    "isTestFile": false
+                                                                },
+                                                                {
+                                                                    "endLine": 57,
+                                                                    "indexedAt": "2026-06-19T10:25:43.295555306Z",
+                                                                    "filePath": "cli/src/main/kotlin/com/hp/workpath/pkgmgt/util/cli/HpkTool.kt",
+                                                                    "startLine": 40,
+                                                                    "blobSha": "7cefaacb8f728582366c402b5aabf62c61f597c4",
+                                                                    "name": "AttestationController.processCli",
+                                                                    "language": "kotlin",
+                                                                    "id": "33c4ac019ae8e95f202ed7c96b15a256f4207f3bb64a6a7a7f07aed8e9bb6706",
+                                                                    "chunkType": "function",
+                                                                    "isTestFile": false
+                                                                },
+                                                                {
+                                                                    "endLine": 79,
+                                                                    "indexedAt": "2026-06-19T10:25:43.295555306Z",
+                                                                    "filePath": "cli/src/main/kotlin/com/hp/workpath/pkgmgt/util/cli/HpkTool.kt",
+                                                                    "startLine": 59,
+                                                                    "blobSha": "7cefaacb8f728582366c402b5aabf62c61f597c4",
+                                                                    "name": "BundleExtractorCommandBuilderUnitTest.exitWithError",
+                                                                    "language": "kotlin",
+                                                                    "id": "4ece5c40d1a712e702dff4ebfd210f0dfcfe97fab182df3f7782a2df8932e0e7",
+                                                                    "chunkType": "function",
+                                                                    "isTestFile": false
+                                                                },
+                                                                {
+                                                                    "endLine": 88,
+                                                                    "indexedAt": "2026-06-19T10:25:43.295555306Z",
+                                                                    "filePath": "cli/src/main/kotlin/com/hp/workpath/pkgmgt/util/cli/HpkTool.kt",
+                                                                    "startLine": 81,
+                                                                    "blobSha": "7cefaacb8f728582366c402b5aabf62c61f597c4",
+                                                                    "name": "ManagementDetailApplicationController.processCreateBundle",
+                                                                    "language": "kotlin",
+                                                                    "id": "8bdb9f903a710df4dab2955f4eee3984ac5829f10cc6337fa2c0021c4575b913",
+                                                                    "chunkType": "function",
+                                                                    "isTestFile": false
+                                                                },
+                                                                {
+                                                                    "endLine": 97,
+                                                                    "indexedAt": "2026-06-19T10:25:43.295555306Z",
+                                                                    "filePath": "cli/src/main/kotlin/com/hp/workpath/pkgmgt/util/cli/HpkTool.kt",
+                                                                    "startLine": 90,
+                                                                    "blobSha": "7cefaacb8f728582366c402b5aabf62c61f597c4",
+                                                                    "name": "ManagementDetailApplicationController.processCreateWithJsonBundle",
+                                                                    "language": "kotlin",
+                                                                    "id": "f2aab8ea64df94229a8bd04d180bd59e264719f52983aa0bfe7597ed65c3e186",
+                                                                    "chunkType": "function",
+                                                                    "isTestFile": false
+                                                                },
+                                                                {
+                                                                    "endLine": 101,
+                                                                    "indexedAt": "2026-06-19T10:25:43.295555306Z",
+                                                                    "filePath": "cli/src/main/kotlin/com/hp/workpath/pkgmgt/util/cli/HpkTool.kt",
+                                                                    "startLine": 99,
+                                                                    "blobSha": "7cefaacb8f728582366c402b5aabf62c61f597c4",
+                                                                    "name": "SpuExecutableResolverUnitTest.processInstallBundle",
+                                                                    "language": "kotlin",
+                                                                    "id": "611e3ec0a52c7d637729e712c32a3c731f8a17f3b1f70c7c7ccb32214978756f",
+                                                                    "chunkType": "function",
+                                                                    "isTestFile": false
+                                                                },
+                                                                {
+                                                                    "endLine": 105,
+                                                                    "indexedAt": "2026-06-19T10:25:43.295555306Z",
+                                                                    "filePath": "cli/src/main/kotlin/com/hp/workpath/pkgmgt/util/cli/HpkTool.kt",
+                                                                    "startLine": 103,
+                                                                    "blobSha": "7cefaacb8f728582366c402b5aabf62c61f597c4",
+                                                                    "name": "SolutionApplicationController.processUninstall",
+                                                                    "language": "kotlin",
+                                                                    "id": "db264d15ca403423183f256be4a17c756d2fd8fcf90a6f17b913b8f7149c727a",
+                                                                    "chunkType": "function",
+                                                                    "isTestFile": false
+                                                                },
+                                                                {
+                                                                    "endLine": 109,
+                                                                    "indexedAt": "2026-06-19T10:25:43.295555306Z",
+                                                                    "filePath": "cli/src/main/kotlin/com/hp/workpath/pkgmgt/util/cli/HpkTool.kt",
+                                                                    "startLine": 107,
+                                                                    "blobSha": "7cefaacb8f728582366c402b5aabf62c61f597c4",
+                                                                    "name": "SolutionApplicationController.processSolutionList",
+                                                                    "language": "kotlin",
+                                                                    "id": "2046dd6c02f00dea321711b5cbcaa0ba8ed055a9c1848555a0b125cc7fcfa710",
+                                                                    "chunkType": "function",
+                                                                    "isTestFile": false
+                                                                },
+                                                                {
+                                                                    "endLine": 113,
+                                                                    "indexedAt": "2026-06-19T10:25:43.295555306Z",
+                                                                    "filePath": "cli/src/main/kotlin/com/hp/workpath/pkgmgt/util/cli/HpkTool.kt",
+                                                                    "startLine": 111,
+                                                                    "blobSha": "7cefaacb8f728582366c402b5aabf62c61f597c4",
+                                                                    "name": "AuthenticationServiceData.processSolutionDetail",
+                                                                    "language": "kotlin",
+                                                                    "id": "ef7c1a97dc7f755325ec6ff7f406ab742556de6251c77f2802e63f7d21542ecf",
+                                                                    "chunkType": "function",
+                                                                    "isTestFile": false
+                                                                },
+                                                                {
+                                                                    "endLine": 117,
+                                                                    "indexedAt": "2026-06-19T10:25:43.295555306Z",
+                                                                    "filePath": "cli/src/main/kotlin/com/hp/workpath/pkgmgt/util/cli/HpkTool.kt",
+                                                                    "startLine": 115,
+                                                                    "blobSha": "7cefaacb8f728582366c402b5aabf62c61f597c4",
+                                                                    "name": "UsbAccessoriesServiceData.processConfigurationGet",
+                                                                    "language": "kotlin",
+                                                                    "id": "500f8fb279b7d14d576ae3d56c4428bf0464e15eb5707b12680055ec68507193",
+                                                                    "chunkType": "function",
+                                                                    "isTestFile": false
+                                                                },
+                                                                {
+                                                                    "endLine": 121,
+                                                                    "indexedAt": "2026-06-19T10:25:43.295555306Z",
+                                                                    "filePath": "cli/src/main/kotlin/com/hp/workpath/pkgmgt/util/cli/HpkTool.kt",
+                                                                    "startLine": 119,
+                                                                    "blobSha": "7cefaacb8f728582366c402b5aabf62c61f597c4",
+                                                                    "name": "CopyJobServiceData.processConfigurationUpdate",
+                                                                    "language": "kotlin",
+                                                                    "id": "6c57375210e8d31ab8a2c48ad5a65b5339d5e215bac89299541a954c6285570a",
+                                                                    "chunkType": "function",
+                                                                    "isTestFile": false
+                                                                },
+                                                                {
+                                                                    "endLine": 125,
+                                                                    "indexedAt": "2026-06-19T10:25:43.295555306Z",
+                                                                    "filePath": "cli/src/main/kotlin/com/hp/workpath/pkgmgt/util/cli/HpkTool.kt",
+                                                                    "startLine": 123,
+                                                                    "blobSha": "7cefaacb8f728582366c402b5aabf62c61f597c4",
+                                                                    "name": "PrintJobServiceData.processAttestationUpdate",
+                                                                    "language": "kotlin",
+                                                                    "id": "81ec71621d9c7060868ea3f1206d9baf207bef97b3ed7f1fe8005720b09d990e",
+                                                                    "chunkType": "function",
+                                                                    "isTestFile": false
+                                                                },
+                                                                {
+                                                                    "endLine": 140,
+                                                                    "indexedAt": "2026-06-19T10:25:43.295555306Z",
+                                                                    "filePath": "cli/src/main/kotlin/com/hp/workpath/pkgmgt/util/cli/HpkTool.kt",
+                                                                    "startLine": 128,
+                                                                    "blobSha": "7cefaacb8f728582366c402b5aabf62c61f597c4",
+                                                                    "name": "SolutionApplicationController.updateMessage",
+                                                                    "language": "kotlin",
+                                                                    "id": "c6df57dbf638e2ed8c031c2749ca992721dfdba46fa703e313e9ce6d979a09fb",
+                                                                    "chunkType": "function",
+                                                                    "isTestFile": false
+                                                                },
+                                                                {
+                                                                    "endLine": 172,
+                                                                    "indexedAt": "2026-06-19T10:25:43.295555306Z",
+                                                                    "filePath": "cli/src/main/kotlin/com/hp/workpath/pkgmgt/util/cli/HpkTool.kt",
+                                                                    "startLine": 142,
+                                                                    "blobSha": "7cefaacb8f728582366c402b5aabf62c61f597c4",
+                                                                    "name": "SolutionApplicationController.onSucceed",
+                                                                    "language": "kotlin",
+                                                                    "id": "6772ac1fe8f043ebc0bc88113a0c6ff4d3d1ce8967967df9c9bb84bbe7a2ca76",
+                                                                    "chunkType": "function",
+                                                                    "isTestFile": false
+                                                                },
+                                                                {
+                                                                    "endLine": 176,
+                                                                    "indexedAt": "2026-06-19T10:25:43.295555306Z",
+                                                                    "filePath": "cli/src/main/kotlin/com/hp/workpath/pkgmgt/util/cli/HpkTool.kt",
+                                                                    "startLine": 174,
+                                                                    "blobSha": "7cefaacb8f728582366c402b5aabf62c61f597c4",
+                                                                    "name": "SolutionProject.onFailed",
+                                                                    "language": "kotlin",
+                                                                    "id": "4cbd59fae17c8cf0f8ce9a2d289f48acb3667761e8493e725eb1e88d313a9094",
+                                                                    "chunkType": "function",
+                                                                    "isTestFile": false
+                                                                }
+                                                            ]
+                                                        }
+                                                    }
+                                                ],
+                                                "code_doc": [
+                                                    {
+                                                        "kb_id": "",
+                                                        "kb_name": ""
+                                                    }
+                                                ]
+                                            },
+                                            "utilities": {
+                                                "generated_doc_filepath": "",
+                                                "purpose": "",
+                                                "associated_knowledge_bases": {
+                                                    "raw_code": [
+                                                        {
+                                                            "file_identity": "Utility.kt",
+                                                            "cli/src/main/kotlin/com/hp/workpath/pkgmgt/util/cli/utilities/Utility.kt": {
+                                                                "chunks": [
+                                                                    {
+                                                                        "endLine": 21,
+                                                                        "indexedAt": "2026-06-19T10:25:43.295555306Z",
+                                                                        "filePath": "cli/src/main/kotlin/com/hp/workpath/pkgmgt/util/cli/utilities/Utility.kt",
+                                                                        "startLine": 10,
+                                                                        "blobSha": "ec8d8bb2d8916b0761ed5177d76231e6e8903092",
+                                                                        "name": "ApplicationInfo.getIconMapFromJsonString",
+                                                                        "language": "kotlin",
+                                                                        "id": "5fba296daa75cb2b3544ec73080bcb4d7dceba4e0a53410389630258e8fa2ae7",
+                                                                        "chunkType": "function",
+                                                                        "isTestFile": false
+                                                                    },
+                                                                    {
+                                                                        "endLine": 27,
+                                                                        "indexedAt": "2026-06-19T10:25:43.295555306Z",
+                                                                        "filePath": "cli/src/main/kotlin/com/hp/workpath/pkgmgt/util/cli/utilities/Utility.kt",
+                                                                        "startLine": 23,
+                                                                        "blobSha": "ec8d8bb2d8916b0761ed5177d76231e6e8903092",
+                                                                        "name": "SolutionLocalizationController.checkKeyFormat",
+                                                                        "language": "kotlin",
+                                                                        "id": "9408019d0dc8c5ef3ad85a638813aff71309f608b00a6a5b1abe6055508dfee9",
+                                                                        "chunkType": "function",
+                                                                        "isTestFile": false
+                                                                    },
+                                                                    {
+                                                                        "endLine": 38,
+                                                                        "indexedAt": "2026-06-19T10:25:43.295555306Z",
+                                                                        "filePath": "cli/src/main/kotlin/com/hp/workpath/pkgmgt/util/cli/utilities/Utility.kt",
+                                                                        "startLine": 29,
+                                                                        "blobSha": "ec8d8bb2d8916b0761ed5177d76231e6e8903092",
+                                                                        "name": "ConfigurationController.getLocalizedArrayFromJsonString",
+                                                                        "language": "kotlin",
+                                                                        "id": "7514e950926f2fa3e156ee43f92c0dd02c65265b215f1fd5fc1b2cc4aa6f0070",
+                                                                        "chunkType": "function",
+                                                                        "isTestFile": false
+                                                                    },
+                                                                    {
+                                                                        "endLine": 48,
+                                                                        "indexedAt": "2026-06-19T10:25:43.295555306Z",
+                                                                        "filePath": "cli/src/main/kotlin/com/hp/workpath/pkgmgt/util/cli/utilities/Utility.kt",
+                                                                        "startLine": 40,
+                                                                        "blobSha": "ec8d8bb2d8916b0761ed5177d76231e6e8903092",
+                                                                        "name": "Activity.getMapFromJsonString",
+                                                                        "language": "kotlin",
+                                                                        "id": "71e764abce165912bc257b3c50a9f8718ec6efbba7d6a2b1d0db9b098024a40f",
+                                                                        "chunkType": "function",
+                                                                        "isTestFile": false
+                                                                    }
+                                                                ]
+                                                            }
+                                                        }
+                                                    ],
+                                                    "code_doc": [
+                                                        {
+                                                            "kb_id": "",
+                                                            "kb_name": ""
+                                                        }
+                                                    ]
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
